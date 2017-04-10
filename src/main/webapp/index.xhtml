@@ -7,14 +7,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-</h:head>
 <h:body>
-	<h1>Hello World PrimeFaces</h1>
+	<h2>Car Names List</h2>
+	<ul>
+		<ui:repeat var="cars" value="#{carBean.fetchCarDetails()}">
+			<li><h3>#{cars}</h3></li>
+		</ui:repeat>
 
-	<h:form>
-	<p:editor value="#{editor.value}" />
-	</h:form>
-
+	</ul>
 </h:body>
 </html>
