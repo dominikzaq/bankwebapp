@@ -8,14 +8,4 @@
 
 	<context:component-scan base-package="com.pkproject" />
 
-	<!-- If you prefer XML based Dependency Injection
-		remove annotation from class and uncomment below configuration -->	
-	<!-- 
-	<bean class="com.journaldev.jsfspring.CarImpl" id="carDAO" />
-	
-	<bean class="com.journaldev.jsfspring.CarBean" id="carBean">
-		<property name="carDao" ref="carDAO"></property>
-	</bean>
-	 -->
-	 
 </beans>
