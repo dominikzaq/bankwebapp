@@ -10,7 +10,7 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
-public class UserLoginView {
+public class UserLogin {
     private String username;
 
     private String password;
@@ -34,8 +34,11 @@ public class UserLoginView {
     public String isValidPassword() {
         if(username.equals("root") && password.equals("root")) {
             return "home";
-        } else {
-            return "failure";
         }
+        return null;
+    }
+
+    public String logout() {
+       return "login";
     }
 }

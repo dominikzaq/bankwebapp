@@ -12,17 +12,20 @@
 </h:head>
 
 <h:body>
+
     <h:form id="login">
+        <h1>Login</h1>
         <h:panelGrid columns="3">
-            <h:outputLabel for="username" value="UserName"/>
-            <h:inputText id="username" value="#{userLoginView.username}"/>
+            <p:outputLabel for="username" value="UserName"/>
+            <p:inputText id="username" value="#{userLogin.username}"/>
             <br/>
-            <h:outputLabel for="password" value="Password"/>
-            <h:inputSecret id="password" value="#{userLoginView.password}"/>
+            <p:outputLabel for="password" value="Password"/>
+            <p:password id="password" value="#{userLogin.password}"/>
             <br/>
-            <h:commandButton value="submit" action="#{userLoginView.isValidPassword}"/>
+            <p:commandButton value="submit" action="#{userLogin.isValidPassword}"/>
         </h:panelGrid>
     </h:form>
 </h:body>
+
 
 </html>

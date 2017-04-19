@@ -16,7 +16,7 @@
 
 	<!-- Welcome page -->
 	<welcome-file-list>
-		<welcome-file>faces/login.xhtml</welcome-file>
+		<welcome-file>faces/home.xhtml</welcome-file>
 	</welcome-file-list>
 
 	<!-- JSF mapping -->
@@ -55,5 +55,13 @@
 			org.springframework.web.context.request.RequestContextListener
 		</listener-class>
 	</listener>
-	
+
+
+	<context-param>
+		<param-name>
+			javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL
+		</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
 </web-app>
