@@ -8,11 +8,17 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-
+    <title>Home Page</title>
 </h:head>
-
+    <h1></h1>
 <h:body>
-    <h1>View account</h1>
+    <p:tabMenu>
+        <p:menuitem value="Home"  outcome="/client/placing" iconPos="top"/>
+        <p:menuitem value="remit" outcome="/client/remit" iconPos="top"/>
+        <p:menuitem value="placing"  outcome="/client/placing" iconPos="top"/>
+        <p:menuitem value="logout"  outcome="/login" iconPos="top"/>
+
+    </p:tabMenu>
 </h:body>
 
 </html>

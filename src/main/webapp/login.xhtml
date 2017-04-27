@@ -1,31 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!--
+  Created by IntelliJ IDEA.
+  User: domin
+  Date: 4/27/17
+  Time: 6:02 PM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-
+    <title>Title</title>
 </h:head>
 
 <h:body>
 
     <h:form id="login">
         <h1>Login</h1>
-        <h:panelGrid columns="3">
+        <p:panelGrid columns="2">
             <p:outputLabel for="username" value="UserName"/>
             <p:inputText id="username" value="#{userLogin.username}"/>
-            <br/>
+
             <p:outputLabel for="password" value="Password"/>
             <p:password id="password" value="#{userLogin.password}"/>
-            <br/>
-            <p:commandButton value="submit" action="#{userLogin.isValidPassword}"/>
-        </h:panelGrid>
+
+            <p:commandButton value="mainclient" action="/client/mainclient"/>
+            <p:commandButton value="mainemployee" action="/employee/mainemployee"/>
+        </p:panelGrid>
+    </h:form>
+
+    <h:form>
+        <p:commandButton value="submit" action="home" />
+        <p:button outcome="/home" value="check"></p:button>
     </h:form>
 </h:body>
-
 
 </html>

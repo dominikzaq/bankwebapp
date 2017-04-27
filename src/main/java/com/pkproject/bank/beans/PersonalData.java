@@ -16,7 +16,7 @@ public class PersonalData implements Serializable{
     private int money;
     private String login;
     private String password;
-
+    private int phoneNumber;
 
     public String getFullname() {
         return fullname;
@@ -64,5 +64,13 @@ public class PersonalData implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
