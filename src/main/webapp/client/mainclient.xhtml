@@ -12,13 +12,16 @@
 </h:head>
     <h1></h1>
 <h:body>
-    <p:tabMenu>
-        <p:menuitem value="Home"  outcome="/client/placing" iconPos="top"/>
-        <p:menuitem value="remit" outcome="/client/remit" iconPos="top"/>
-        <p:menuitem value="placing"  outcome="/client/placing" iconPos="top"/>
-        <p:menuitem value="logout"  outcome="/login" iconPos="top"/>
 
-    </p:tabMenu>
+    <hr/>
+        <p:tabMenu>
+            <p:menuitem value="Home"  outcome="/client/placing/placing" iconPos="top"/>
+            <p:menuitem value="transfer" outcome="/client/transfer/transfer" iconPos="top"/>
+            <p:menuitem value="placing"  outcome="/client/placing/placing" iconPos="top"/>
+        </p:tabMenu>
+    <h:form>
+        <p:commandButton value="log out" action="#{login.logout}"/>
+    </h:form>
 </h:body>
 
 </html>

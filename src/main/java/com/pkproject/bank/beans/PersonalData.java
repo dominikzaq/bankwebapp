@@ -12,11 +12,15 @@ import java.io.Serializable;
 public class PersonalData implements Serializable{
     private String fullname;
     private int numberAccount;
+    private int Pesel;
     private String address;
+    private String postcode;
     private int money;
     private String login;
     private String password;
+    private String reTypePasword;
     private int phoneNumber;
+    private String email;
 
     public String getFullname() {
         return fullname;
@@ -34,12 +38,24 @@ public class PersonalData implements Serializable{
         this.numberAccount = numberAccount;
     }
 
+    public int getPesel() {
+        return Pesel;
+    }
+
+    public void setPesel(int pesel) {
+        Pesel = pesel;
+    }
+
     public String getAddress() {
         return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPostcode() {
+        return postcode;
     }
 
     public int getMoney() {
@@ -66,11 +82,32 @@ public class PersonalData implements Serializable{
         this.password = password;
     }
 
+    public String getReTypePasword() {
+        return reTypePasword;
+    }
+
+    public void setReTypePasword(String reTypePasword) {
+        this.reTypePasword = reTypePasword;
+    }
+
     public int getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

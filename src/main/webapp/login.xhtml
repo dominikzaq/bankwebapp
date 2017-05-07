@@ -5,37 +5,52 @@
   Date: 4/27/17
   Time: 6:02 PM
 -->
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
     <title>Title</title>
+
 </h:head>
 
 <h:body>
-
-    <h:form id="login">
-        <h1>Login</h1>
-        <p:panelGrid columns="2">
-            <p:outputLabel for="username" value="UserName"/>
-            <p:inputText id="username" value="#{userLogin.username}"/>
-
-            <p:outputLabel for="password" value="Password"/>
-            <p:password id="password" value="#{userLogin.password}"/>
-
-            <p:commandButton value="mainclient" action="/client/mainclient"/>
-            <p:commandButton value="mainemployee" action="/employee/mainemployee"/>
-        </p:panelGrid>
+    <h:form>
+        <p:toolbar>
+            <f:facet name="left">
+                <h1><p:outputLabel value="#{bank.nameOfTheBank}"></p:outputLabel></h1>
+            </f:facet>
+        </p:toolbar>
     </h:form>
 
-    <h:form>
+    <p:separator/>
+
+    <h:form id="loginForm">
+        <p:messages id="msg"/>
+
+        <h1>Login</h1>
+        <p:panelGrid columns="2">
+
+            <p:outputLabel for="username" value="UserName"/>
+            <p:inputText id="username" value="#{login.username}" required="true"
+                         requiredMessage="fill field">
+                <f:validateLength minimum="4"/>
+            </p:inputText>
+
+            <p:outputLabel for="password" value="Password"/>
+            <p:password id="password" value="#{login.password}" required="true"  requiredMessage="fill field"/>
+
+            <f:facet name="footer">
+                <p:commandButton value="mainclient" action="#{login.validateUsernamePassword}"/>
+                <p:commandButton value="mainemployee" action="/employee/mainemployee"/>
+                <p:commandButton value="clean field" type="reset"></p:commandButton>
+            </f:facet>
+        </p:panelGrid>
         <p:commandButton value="submit" action="home" />
-        <p:button outcome="/home" value="check"></p:button>
     </h:form>
 </h:body>
 
