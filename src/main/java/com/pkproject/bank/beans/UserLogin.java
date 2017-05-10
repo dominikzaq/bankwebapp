@@ -47,7 +47,7 @@ public class UserLogin {
             FacesContext.getCurrentInstance().addMessage(
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
-                            "Incorrect Username and Passowrd",
+                            "Incorrect Username or Passowrd",
                             "Please enter correct username and Password"));
             return "login";
         }

@@ -30,28 +30,27 @@
     <p:separator/>
 
     <h:form id="loginForm">
-        <p:messages id="msg"/>
+        <p:messages id="msgs" />
 
         <h1>Login</h1>
         <p:panelGrid columns="2">
-
-            <p:outputLabel for="username" value="UserName"/>
-            <p:inputText id="username" value="#{login.username}" required="true"
-                         requiredMessage="fill field">
-                <f:validateLength minimum="4"/>
-            </p:inputText>
+            <p:outputLabel for="username" value="Username"/>
+            <p:inputText id="username" value="#{login.username}" required="true" />
 
             <p:outputLabel for="password" value="Password"/>
-            <p:password id="password" value="#{login.password}" required="true"  requiredMessage="fill field"/>
+            <p:password id="password" value="#{login.password}" required="true" />
 
             <f:facet name="footer">
-                <p:commandButton value="mainclient" action="#{login.validateUsernamePassword}"/>
-                <p:commandButton value="mainemployee" action="/employee/mainemployee"/>
-                <p:commandButton value="clean field" type="reset"></p:commandButton>
+                <p:commandButton value="mainclient" action="#{login.validateUsernamePassword}" update="loginForm"/>
+                <p:commandButton value="mainemployee" action="/employee/mainemployee" update="loginForm"/>
+                <p:commandButton value="clean field" type="reset" update="loginForm"></p:commandButton>
             </f:facet>
         </p:panelGrid>
-        <p:commandButton value="submit" action="home" />
     </h:form>
-</h:body>
 
+
+
+
+</h:body>
+<p:separator/>
 </html>
