@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Home Page</title>
+</h:head>
+    <h1>Placing</h1>
+<h:body>
+    <h:form>
+        <h3>Adding Form Components</h3>
+        <p:panelGrid columns="2">
+            <p:outputLabel for="fullname">Fullname:</p:outputLabel>
+            <p:inputText id="fullname" value="#{personalData.fullname}"></p:inputText>
+
+
+            <p:outputLabel for="login">Login:</p:outputLabel>
+            <p:inputText id="login" value="#{personalData.login}"></p:inputText>
+
+
+            <p:outputLabel for="password">Password:</p:outputLabel>
+            <p:inputText id="password" value="#{personalData.password}"></p:inputText>
+
+
+            <p:outputLabel for="accountNumber">Account number:</p:outputLabel>
+            <p:inputText id="accountNumber" value="#{personalData.numberAccount}"></p:inputText>
+
+
+            <p:outputLabel for="address">address:</p:outputLabel>
+            <p:inputText id="address" value="#{personalData.address}"></p:inputText>
+
+
+            <p:outputLabel for="money">money:</p:outputLabel>
+            <p:inputText id="money" value="#{personalData.money}"></p:inputText>
+
+
+            <p:commandButton action="viewdetails" value="Submit"></p:commandButton>
+        </p:panelGrid>
+    </h:form>
+
+
+    <h:form>
+        <p:commandButton value="back" action="/client/mainclient"/>
+    </h:form>
+
+
+</h:body>
+
+</html>
