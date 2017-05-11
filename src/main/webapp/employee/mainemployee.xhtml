@@ -22,18 +22,19 @@
                 </h:panelGrid>
             </p:tab>
             <p:tab title="Client account operations">
-                    <p:commandButton value="add client" action="/employee/operation/addclient"></p:commandButton>
-                    <p:commandButton value="delete client" action="/client/transfer/seedeposit"></p:commandButton>
-                    <p:commandButton value="view client" action="/client/transfer/seedeposit"></p:commandButton>
+                    <p:commandButton value="create client" action="/employee/operation/createclient"></p:commandButton>
+                    <p:commandButton value="delete client" action="/employee/operation/deleteclient"></p:commandButton>
+                    <p:commandButton value="view client" action="/employee/operation/viewclient"></p:commandButton>
             </p:tab>
             <p:tab title="Messages">
                 <h:panelGrid columns="2" cellpadding="10">
-                    <p:commandButton value="send message" action="/client/saving/createdeposit"></p:commandButton>
-                    <p:commandButton value="" action="/client/transfer/seedeposit" styleClass="ui-btn-b"></p:commandButton>
+                    <p:commandButton value="send message" action="/employee/operation/createclient"></p:commandButton>
+                    <p:commandButton value="" action="/employee/operation/createclient" styleClass="ui-btn-b"></p:commandButton>
                 </h:panelGrid>
             </p:tab>
-            <p:commandButton value="back" action="/login"/>
         </p:tabView>
+
+        <p:commandButton value="logout" action="/login"/>
     </h:form>
 </h:body>
 

@@ -27,30 +27,30 @@
         </p:toolbar>
     </h:form>
 
-    <p:separator/>
+    <h1>pko</h1>
+    <p:separator />
+    <h1>have fun</h1>
 
-    <h:form id="loginForm">
-        <p:messages id="msgs" />
+    <h:form>
+        <p:panel id="loginForm" header="login" style="margin-bottom:10px;">
+            <p:messages id="messages" />
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel value="Username"/>
+                <p:inputText  value="#{login.username}" required="true" label="username"/>
 
-        <h1>Login</h1>
-        <p:panelGrid columns="2">
-            <p:outputLabel for="username" value="Username"/>
-            <p:inputText id="username" value="#{login.username}" required="true" />
+                <p:outputLabel value="Password"/>
+                <p:password  value="#{login.password}" required="true" label="password"/>
 
-            <p:outputLabel for="password" value="Password"/>
-            <p:password id="password" value="#{login.password}" required="true" />
-
-            <f:facet name="footer">
-                <p:commandButton value="mainclient" action="#{login.validateUsernamePassword}" update="loginForm"/>
-                <p:commandButton value="mainemployee" action="/employee/mainemployee" update="loginForm"/>
-                <p:commandButton value="clean field" type="reset" update="loginForm"></p:commandButton>
-            </f:facet>
-        </p:panelGrid>
+                <f:facet name="footer">
+                    <p:commandButton value="mainclient" action="#{login.validateUsernamePassword}" update="loginForm"/>
+                    <p:commandButton value="mainemployee" action="/employee/mainemployee" update="loginForm"/>
+                    <p:commandButton value="clean field" type="reset" update="loginForm"></p:commandButton>
+                </f:facet>
+            </h:panelGrid>
+        </p:panel>
     </h:form>
 
-
-
-
 </h:body>
+
 <p:separator/>
 </html>
