@@ -29,8 +29,6 @@
                         <p:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname"/>
 
                         <h:outputText value="Sex:" />
-                        <p:inputText value="#{userWizard.user.sex}" required="true" label="Sex"/>
-
                         <p:selectOneRadio id="sex" value="#{userWizard.user.sex}">
                             <f:selectItem itemLabel="male" itemValue="Male" />
                             <f:selectItem itemLabel="female" itemValue="Female" />
@@ -102,10 +100,10 @@
                         <p:inputText value="#{userWizard.user.login}" required="true" label="Phone"/>
 
                         <h:outputText value="Password1: " />
-                        <p:inputText value="#{userWizard.user.password1}" required="true" label="Password1"/>
+                        <p:password value="#{userWizard.user.password1}" required="true" label="Password1"/>
 
                         <h:outputText value="Password2: " />
-                        <p:inputText value="#{userWizard.user.password2}" required="true" label="Password2"/>
+                        <p:password value="#{userWizard.user.password2}" required="true" label="Password2"/>
                     </h:panelGrid>
                 </p:panel>
             </p:tab>
@@ -188,7 +186,6 @@
                 </p:panel>
             </p:tab>
         </p:wizard>
-
 
         <p:commandButton value="back" action="/employee/mainemployee"/>
     </h:form>

@@ -12,34 +12,33 @@
 </h:head>
     <h1>Placing</h1>
 <h:body>
+
+
     <h:form>
         <h3>Adding Form Components</h3>
         <p:panelGrid columns="2">
-            <p:outputLabel for="fullname">Fullname:</p:outputLabel>
-            <p:inputText id="fullname" value="#{personalData.fullname}"></p:inputText>
+            <h:outputText value="Name deposit: " />
+            <p:inputText value="xxxx" required="true" label="name deposit"/>
 
+            <h:outputText value="Currency deposits: " />
+            <p:inputText value="xxx" required="true" label="Currency deposits"/>
 
-            <p:outputLabel for="login">Login:</p:outputLabel>
-            <p:inputText id="login" value="#{personalData.login}"></p:inputText>
+            <h:outputText value="The interest rate per annum: " />
+            <p:inputText value="xxx" required="true" label="The interest rate per annum"/>
+        </p:panelGrid>
+    </h:form>
 
+    <h:form>
+        <h3>Adding Form Components</h3>
+        <p:panelGrid columns="2">
+            <h:outputText value="Minimum deposit amount: " />
+            <p:inputText value="xxx" required="true" label="Minimum deposit amount"/>
 
-            <p:outputLabel for="password">Password:</p:outputLabel>
-            <p:inputText id="password" value="#{personalData.password}"></p:inputText>
+            <h:outputText value="Renewability: " />
+            <p:inputText value="xxx" required="true" label="Renewability"/>
 
-
-            <p:outputLabel for="accountNumber">Account number:</p:outputLabel>
-            <p:inputText id="accountNumber" value="#{personalData.numberAccount}"></p:inputText>
-
-
-            <p:outputLabel for="address">address:</p:outputLabel>
-            <p:inputText id="address" value="#{personalData.address}"></p:inputText>
-
-
-            <p:outputLabel for="money">money:</p:outputLabel>
-            <p:inputText id="money" value="#{personalData.money}"></p:inputText>
-
-
-            <p:commandButton action="viewdetails" value="Submit"></p:commandButton>
+            <h:outputText value="The amount of deposit: " />
+            <p:inputText value="xxx" required="true" label="The amount of deposit"/>
         </p:panelGrid>
     </h:form>
 

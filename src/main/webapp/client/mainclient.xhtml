@@ -8,16 +8,23 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>Home Page</title>
+    <title>    private String city;
+    private String street;
+    private int streetNumber;
+    private String postCode;
+    private String country;</title>
 </h:head>
-    <h1></h1>
 <h:body>
     <h:form>
-        <h1><p:outputLabel value="#{bank.nameOfTheBank}"  /></h1>
-        <p:commandButton value="log out" action="#{login.logout}"/>
-    </h:form>
-
-    <h:form>
+        <p:toolbar>
+            <f:facet name="left">
+                <h:outputText value="Bank name: #{bank.nameOfTheBank}" styleClass="outputLabel"/>
+            </f:facet>
+            <f:facet name="right">
+                <h:outputText value="Account name" styleClass="outputLabel"/>
+                <p:commandButton value="log out" action="#{login.logout}"/>
+            </f:facet>
+        </p:toolbar>
         <p:tabView>
             <p:tab title="Home">
             </p:tab>

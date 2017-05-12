@@ -1,10 +1,14 @@
-package com.pkproject.bank.beans;
+package com.pkproject.bank.model;
+
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 
 /**
  * Created by domin on 5/11/17.
  */
+@Service
 public class User implements Serializable {
 
     //personal data
