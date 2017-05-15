@@ -12,11 +12,27 @@
 </h:head>
 
 <h:body>
-    <h3>Delete client</h3>
+    <div id="page">
+        <div id="header">
+            <ui:insert name="header" >
+                <ui:include src="/employee/template/commonHeader.xhtml" />
+            </ui:insert>
+        </div>
 
-    <h:form>
-        <p:commandButton value="back" action="/employee/mainemployee"/>
-    </h:form>
+        <div id="content">
+            <h:form>
+                <p:panelGrid columns="2">
+                    <h:commandButton action="#{searchBean.search}" value="Search" />
+                </p:panelGrid>
+            </h:form>
+        </div>
+
+        <div id="footer">
+            <ui:insert name="footer" >
+                <ui:include src="/employee/template/commonFooter.xhtml" />
+            </ui:insert>
+        </div>
+    </div>
 </h:body>
 
 </html>

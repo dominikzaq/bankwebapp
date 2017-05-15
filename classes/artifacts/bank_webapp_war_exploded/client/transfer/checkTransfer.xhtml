@@ -8,31 +8,26 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-
+    <title>Home Page</title>
 </h:head>
-
+    <h1>Remit</h1>
 <h:body>
     <div id="page">
         <div id="header">
             <ui:insert name="header" >
-                <ui:include src="/employee/template/commonHeader.xhtml" />
+                <ui:include src="/client/template/commonHeader.xhtml" />
             </ui:insert>
         </div>
 
         <div id="content">
-            <h:form>
-                <p:panelGrid columns="2">
-                    <h:commandButton action="#{searchBean.search}" value="Search" />
-                </p:panelGrid>
-            </h:form>
+            <p>check transfer</p>
         </div>
 
         <div id="footer">
             <ui:insert name="footer" >
-                <ui:include src="/employee/template/commonFooter.xhtml" />
+                <ui:include src="/client/template/commonFooter.xhtml" />
             </ui:insert>
         </div>
     </div>
 </h:body>
-
 </html>

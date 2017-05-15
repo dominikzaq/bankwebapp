@@ -8,73 +8,55 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>    private String city;
-    private String street;
-    private int streetNumber;
-    private String postCode;
-    private String country;</title>
 </h:head>
 <h:body>
-    <h:form>
-        <p:toolbar>
-            <f:facet name="left">
-                <h:outputText value="Bank name: #{bank.nameOfTheBank}" styleClass="outputLabel"/>
-            </f:facet>
-            <f:facet name="right">
-                <h:outputText value="Account name" styleClass="outputLabel"/>
-                <p:commandButton value="log out" action="#{login.logout}"/>
-            </f:facet>
-        </p:toolbar>
-        <p:tabView>
-            <p:tab title="Home">
-            </p:tab>
-            <p:tab title="Transaction">
-                <h:panelGrid columns="2" cellpadding="10">
-                    <p:commandButton value="transfer" action="/client/transfer/transfer"></p:commandButton>
-                </h:panelGrid>
-            </p:tab>
-            <p:tab title="Savings">
-                <h:panelGrid columns="2" cellpadding="10">
-                    <p:commandButton value="create deposit" action="/client/saving/createdeposit"></p:commandButton>
-                    <p:commandButton value="see deposit" action="/client/transfer/seedeposit" styleClass="ui-btn-b"></p:commandButton>
-                </h:panelGrid>
-            </p:tab>
-        </p:tabView>
-    </h:form>
+    <div id="page">
+        <div id="header">
+            <ui:insert name="header" >
+                <ui:include src="/client/template/commonHeader.xhtml" />
+            </ui:insert>
+        </div>
 
+        <div id="content">
+            <h:form>
+                <p>Available funds: </p>
+                <h1><p:outputLabel value="#{personalData.money}"  /></h1>
 
-    <h:form>
-        <p>Available funds: </p>
-        <h1><p:outputLabel value="#{personalData.money}"  /></h1>
+                <p>Number of account: </p>
+                <h1><p:outputLabel value="#{personalData.numberAccount}"  /></h1>
+                <hr/>
 
-        <p>Number of account: </p>
-        <h1><p:outputLabel value="#{personalData.numberAccount}"  /></h1>
-        <hr/>
+            </h:form>
 
-    </h:form>
+            <h1>operations carried out on the account</h1>
+            <p:dataTable var="operation" value="#{operation.niezrobionejeszcze}">
+                <p:column headerText="Id">
 
+                </p:column>
 
-    <h1>operations carried out on the account</h1>
-    <p:dataTable var="operation" value="#{operation.niezrobionejeszcze}">
-        <p:column headerText="Id">
+                <p:column headerText="Data">
+                </p:column>
 
-        </p:column>
+                <p:column headerText="receiver/sender">
+                </p:column>
 
-        <p:column headerText="Data">
-        </p:column>
+                <p:column headerText="description of the operation">
+                </p:column>
+                <p:column headerText="kind of operation">
+                </p:column>
+                <p:column headerText="The amount of operation">
+                </p:column>
+                <p:column headerText="balance">
+                </p:column>
+            </p:dataTable>
+        </div>
 
-        <p:column headerText="receiver/sender">
-        </p:column>
-
-        <p:column headerText="description of the operation">
-        </p:column>
-        <p:column headerText="kind of operation">
-        </p:column>
-        <p:column headerText="The amount of operation">
-        </p:column>
-        <p:column headerText="balance">
-        </p:column>
-    </p:dataTable>
+        <div id="footer">
+            <ui:insert name="footer" >
+                <ui:include src="/client/template/commonFooter.xhtml" />
+            </ui:insert>
+        </div>
+    </div>
 </h:body>
 
 </html>

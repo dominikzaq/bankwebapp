@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Home Page</title>
+</h:head>
+    <h1>Placing</h1>
+<h:body>
+    <div id="page">
+        <div id="header">
+            <ui:insert name="header" >
+                <ui:include src="/client/template/commonHeader.xhtml" />
+            </ui:insert>
+        </div>
+
+        <div id="content">
+            <h:form>
+                <h3>Adding Form Components</h3>
+                <p:panelGrid columns="2">
+                    <h:outputText value="Name deposit: " />
+                    <p:inputText value="xxxx" required="true" label="name deposit"/>
+
+                    <h:outputText value="Currency deposits: " />
+                    <p:inputText value="xxx" required="true" label="Currency deposits"/>
+
+                    <h:outputText value="The interest rate per annum: " />
+                    <p:inputText value="xxx" required="true" label="The interest rate per annum"/>
+                </p:panelGrid>
+            </h:form>
+
+            <h:form>
+                <h3>Adding Form Components</h3>
+                <p:panelGrid columns="2">
+                    <h:outputText value="Minimum deposit amount: " />
+                    <p:inputText value="xxx" required="true" label="Minimum deposit amount"/>
+
+                    <h:outputText value="Renewability: " />
+                    <p:inputText value="xxx" required="true" label="Renewability"/>
+
+                    <h:outputText value="The amount of deposit: " />
+                    <p:inputText value="xxx" required="true" label="The amount of deposit"/>
+                </p:panelGrid>
+            </h:form>
+        </div>
+
+        <div id="footer">
+            <ui:insert name="footer" >
+                <ui:include src="/client/template/commonFooter.xhtml" />
+            </ui:insert>
+        </div>
+    </div>
+</h:body>
+
+
+
+</html>
