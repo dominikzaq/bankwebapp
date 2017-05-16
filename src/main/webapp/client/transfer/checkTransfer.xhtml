@@ -20,12 +20,36 @@
         </div>
 
         <div id="content">
-            <p>check transfer</p>
+            <p:inputText value="#{search.search}" required="true" label="search"/>
+
+            <p:dataTable var="operation" value="#{operation.niezrobionejeszcze}">
+                <p:column headerText="Id">
+                    <h:outputText value="#{transfer.idTransfer}" />
+                </p:column>
+
+                <p:column headerText="Data">
+                    <h:outputText value="#{transfer.data}" />
+                </p:column>
+
+                <p:column headerText="receiver/sender">
+                    <h:outputText value="#{transfer.accountNumber}" />
+                </p:column>
+
+                <p:column headerText="description of the operation">
+                    <h:outputText value="#{transfer.description}" />
+                </p:column>
+                <p:column headerText="The amount of operation">
+                    <h:outputText value="#{transfer.operation}" />
+                </p:column>
+                <p:column headerText="balance">
+                    <h:outputText value="#{transfer.balance}" />
+                </p:column>
+            </p:dataTable>
         </div>
 
         <div id="footer">
             <ui:insert name="footer" >
-                <ui:include src="/client/template/commonFooter.xhtml" />
+                <ui:include src="/template/commonFooter.xhtml" />
             </ui:insert>
         </div>
     </div>

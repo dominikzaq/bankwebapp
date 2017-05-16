@@ -2,6 +2,7 @@ package com.pkproject.bank.beans;
 
 import javax.annotation.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
  */
 @ManagedBean
 @SessionScoped
-public class CalendarManagedBean {
+public class CalendarManagedBean implements Serializable {
     private Date date = new Date();
 
     public Date getDate() {

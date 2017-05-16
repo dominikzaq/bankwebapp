@@ -31,16 +31,16 @@
                             <p:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname"/>
 
                             <h:outputText value="Sex:" />
-                            <p:selectOneRadio id="sex" value="#{userWizard.user.sex}">
-                                <f:selectItem itemLabel="male" itemValue="Male" />
+                            <p:selectOneRadio id="sex" value="#{userWizard.user.sex}" required="true" label="Sex">
+                                <f:selectItem itemLabel="male" itemValue="Male"/>
                                 <f:selectItem itemLabel="female" itemValue="Female" />
                             </p:selectOneRadio>
 
                             <h:outputText value="Pesel: *" />
-                            <p:inputText value="#{personalData.pesel}" required="true" label="Pesel"/>
+                            <p:inputText value="#{userWizard.user.pesel}" required="true" label="Pesel" />
 
                             <h:outputText value="dateOfBirth: " />
-                            <p:inputText value="#{userWizard.user.dateOfBirth}" required="true" label="DateOfBirth"/>
+                            <p:calendar id="button" value="#{userWizard.user.dateOfBirth}" showOn="button" required="true" label="Date of birth"/>
 
                             <h:outputText value="placeOfBirth: " />
                             <p:inputText value="#{userWizard.user.placeOfBirth}" required="true" label="PlaceOfBirth"/>
@@ -66,7 +66,7 @@
                             <p:inputText value="#{userWizard.user.streetNumber}" required="true" label="Street number"/>
 
                             <h:outputText value="Post Code: " />
-                            <p:inputText value="#{userWizard.user.postCode}" required="true" label="Post Code"/>
+                            <p:inputMask value="#{userWizard.user.postCode}" required="true" label="Post Code" mask="99-999"/>
 
                             <h:outputText value="Country: " />
                             <p:inputText value="#{userWizard.user.country}" required="true" label="Countr"/>
@@ -102,101 +102,124 @@
                             <p:inputText value="#{userWizard.user.login}" required="true" label="Phone"/>
 
                             <h:outputText value="Password1: " />
-                            <p:password value="#{userWizard.user.password1}" required="true" label="Password1"/>
+                            <p:password id="password1" value="#{userWizard.user.password1}" match="password2" required="true" label="Password1"/>
 
                             <h:outputText value="Password2: " />
-                            <p:password value="#{userWizard.user.password2}" required="true" label="Password2"/>
+                            <p:password id="password2" value="#{userWizard.user.password2}" required="true" label="Password2"/>
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
 
                 <p:tab id="confirm" title="Confirmation">
                     <p:panel header="Confirmation">
-                        <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
-                            <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="Firstname: " />
-                                <h:outputText value="#{userWizard.user.firstname}" styleClass="outputLabel"/>
+                        <div class="ui-g">
+                            <div class="ui-g-6">
+                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    <h:outputText value="Firstname: " />
+                                    <h:outputText value="#{userWizard.user.firstname}" styleClass="outputLabel"/>
 
-                                <h:outputText value="Lastname: " />
-                                <h:outputText value="#{userWizard.user.lastname}" styleClass="outputLabel"/>
+                                    <h:outputText value="Lastname: " />
+                                    <h:outputText value="#{userWizard.user.lastname}" styleClass="outputLabel"/>
 
-                                <h:outputText value="Sex:" />
-                                <h:outputText value="#{userWizard.user.sex}" styleClass="outputLabel"/>
+                                    <h:outputText value="Sex:" />
+                                    <h:outputText value="#{userWizard.user.sex}" styleClass="outputLabel"/>
 
-                                <h:outputText value="Pesel: " />
-                                <h:outputText value="#{personalData.pesel}" styleClass="outputLabel"/>
+                                    <h:outputText value="Pesel: " />
+                                    <h:outputText value="#{userWizard.user.pesel}" styleClass="outputLabel"/>
 
-                                <h:outputText value="dateOfBirth: " />
-                                <h:outputText value="#{userWizard.user.dateOfBirth}" styleClass="outputLabel"/>
+                                    <h:outputText value="dateOfBirth: " />
+                                    <h:outputText value="#{userWizard.user.dateOfBirth}" styleClass="outputLabel"/>
 
-                                <h:outputText value="placeOfBirth: " />
-                                <h:outputText value="#{userWizard.user.placeOfBirth}" styleClass="outputLabel"/>
+                                    <h:outputText value="placeOfBirth: " />
+                                    <h:outputText value="#{userWizard.user.placeOfBirth}" styleClass="outputLabel"/>
 
-                                <h:outputText value="citizenship: " />
-                                <h:outputText value="#{userWizard.user.citizenship}" styleClass="outputLabel"/>
+                                    <h:outputText value="citizenship: " />
+                                    <h:outputText value="#{userWizard.user.citizenship}" styleClass="outputLabel"/>
 
-                            </h:panelGrid>
+                                </h:panelGrid>
+                            </div>
+                            <div class="ui-g-6">
+                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    <h:outputText value="City: " />
+                                    <h:outputText value="#{userWizard.user.city}" styleClass="outputLabel"/>
 
-                            <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="City: " />
-                                <h:outputText value="#{userWizard.user.city}" styleClass="outputLabel"/>
+                                    <h:outputText value="Street: " />
+                                    <h:outputText value="#{userWizard.user.street}" styleClass="outputLabel"/>
 
-                                <h:outputText value="Street: " />
-                                <h:outputText value="#{userWizard.user.street}" styleClass="outputLabel"/>
+                                    <h:outputText value="Street number: " />
+                                    <h:outputText value="#{userWizard.user.streetNumber}" styleClass="outputLabel"/>
 
-                                <h:outputText value="Street number: " />
-                                <h:outputText value="#{userWizard.user.streetNumber}" styleClass="outputLabel"/>
+                                    <h:outputText value="Post Code: " />
+                                    <h:outputText value="#{userWizard.user.postCode}" styleClass="outputLabel"/>
 
-                                <h:outputText value="Post Code: " />
-                                <h:outputText value="#{userWizard.user.postCode}" styleClass="outputLabel"/>
+                                    <h:outputText value="Country: " />
+                                    <h:outputText value="#{userWizard.user.country}" required="true" label="Countr"/>
+                                </h:panelGrid>
+                            </div>
+                            <div class="ui-g-6">
+                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    <h:outputText value="City: " />
+                                    <h:outputText value="#{userWizard.user.city}" styleClass="outputLabel"/>
 
-                                <h:outputText value="Country: " />
-                                <h:outputText value="#{userWizard.user.country}" required="true" label="Countr"/>
-                            </h:panelGrid>
+                                    <h:outputText value="Street: " />
+                                    <h:outputText value="#{userWizard.user.street}" styleClass="outputLabel"/>
 
-                            <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="Email: " />
-                                <h:outputText value="#{userWizard.user.email}" styleClass="outputLabel"/>
+                                    <h:outputText value="Street number: " />
+                                    <h:outputText value="#{userWizard.user.streetNumber}" styleClass="outputLabel"/>
 
-                                <h:outputText value="Phone " />
-                                <h:outputText value="#{userWizard.user.phoneNumber}" styleClass="outputLabel"/>
+                                    <h:outputText value="Post Code: " />
+                                    <h:outputText value="#{userWizard.user.postCode}" styleClass="outputLabel"/>
 
-                            </h:panelGrid>
+                                    <h:outputText value="Country: " />
+                                    <h:outputText value="#{userWizard.user.country}" required="true" label="Countr"/>
+                                </h:panelGrid>
+                            </div>
+                            <div class="ui-g-6">
+                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    <h:outputText value="Email: " />
+                                    <h:outputText value="#{userWizard.user.email}" styleClass="outputLabel"/>
 
-                            <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="account number: " />
-                                <h:outputText value="#{userWizard.user.numberAccount}" styleClass="outputLabel"/>
+                                    <h:outputText value="Phone " />
+                                    <h:outputText value="#{userWizard.user.phoneNumber}" styleClass="outputLabel"/>
 
-                                <h:outputText value="Money: " />
-                                <h:outputText value="#{userWizard.user.money}" styleClass="outputLabel"/>
+                                </h:panelGrid>
+                            </div>
+                            <div class="ui-g-6">
+                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    <h:outputText value="account number: " />
+                                    <h:outputText value="#{userWizard.user.numberAccount}" styleClass="outputLabel"/>
 
-                                <h:outputText value="Login: " />
-                                <h:outputText value="#{userWizard.user.login}" styleClass="outputLabel"/>
+                                    <h:outputText value="Money: " />
+                                    <h:outputText value="#{userWizard.user.money}" styleClass="outputLabel"/>
 
-                                <h:outputText value="Password1: " />
-                                <h:outputText value="#{userWizard.user.password1}" styleClass="outputLabel"/>
+                                    <h:outputText value="Login: " />
+                                    <h:outputText value="#{userWizard.user.login}" styleClass="outputLabel"/>
 
-                                <h:outputText value="Password2: " />
-                                <h:outputText value="#{userWizard.user.password2}" rstyleClass="outputLabel"/>
+                                    <h:outputText value="Password1: " />
+                                    <h:outputText value="#{userWizard.user.password1}" styleClass="outputLabel"/>
 
-                                <h:outputText />
-                                <h:outputText />
-                            </h:panelGrid>
-                        </h:panelGrid>
+                                    <h:outputText value="Password2: " />
+                                    <h:outputText value="#{userWizard.user.password2}" rstyleClass="outputLabel"/>
 
-                        <!-- <p:commandButton value="Submit" actionListener="#{userWizard.save}" update="growl" process="@this"/>-->
+                                    <h:outputText />
+                                    <h:outputText />
+                                </h:panelGrid>
+
+                                <!-- <p:commandButton value="Submit" actionListener="#{userWizard.save}" update="growl" process="@this"/>-->
+                            </div>
+                        </div>
                     </p:panel>
                 </p:tab>
             </p:wizard>
             </h:form>
-
+        </div>
 
         <div id="footer">
             <ui:insert name="footer" >
-                <ui:include src="/employee/template/commonFooter.xhtml" />
+                <ui:include src="/template/commonFooter.xhtml" />
             </ui:insert>
         </div>
-    </div>
+
     </div>
 </h:body>
 

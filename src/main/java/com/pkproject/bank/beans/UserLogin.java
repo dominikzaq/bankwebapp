@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import java.io.Serializable;
 
 /**
  * Created by domin on 12.04.17.
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 @ManagedBean(name = "login")
 @SessionScoped
-public class UserLogin {
+public class UserLogin implements Serializable {
     private String username;
     private String password;
     private String typeAccount;
@@ -57,5 +58,13 @@ public class UserLogin {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         session.invalidate();
         return "/login";
+    }
+
+    public String getTypeAccount() {
+        return typeAccount;
+    }
+
+    public void setTypeAccount(String typeAccount) {
+        this.typeAccount = typeAccount;
     }
 }

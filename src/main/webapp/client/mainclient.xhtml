@@ -18,15 +18,17 @@
         </div>
 
         <div id="content">
-            <h:form>
-                <p>Available funds: </p>
-                <h1><p:outputLabel value="#{personalData.money}"  /></h1>
-
-                <p>Number of account: </p>
-                <h1><p:outputLabel value="#{personalData.numberAccount}"  /></h1>
-                <hr/>
-
-            </h:form>
+            <div class="ui-g">
+                <div class="ui-g-6">
+                    <h1>Available funds: </h1>
+                    <p:outputLabel value="#{personalData.user.money}"  />
+                </div>
+                <div class="ui-g-6">
+                    <h1>Number of account: </h1>
+                    <p:outputLabel value="#{personalData.user.numberAccount}"  />
+                </div>
+            </div>
+            <p:separator />
 
             <h1>operations carried out on the account</h1>
             <p:dataTable var="operation" value="#{operation.niezrobionejeszcze}">
@@ -53,7 +55,7 @@
 
         <div id="footer">
             <ui:insert name="footer" >
-                <ui:include src="/client/template/commonFooter.xhtml" />
+                <ui:include src="/template/commonFooter.xhtml" />
             </ui:insert>
         </div>
     </div>

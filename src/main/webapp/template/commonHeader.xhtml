@@ -16,12 +16,9 @@
         <h:form>
             <p:toolbar>
                 <f:facet name="left">
-                    <h:outputText value="Bank name: #{bank.nameOfTheBank}" styleClass="outputLabel"/>
                 </f:facet>
 
                 <f:facet name="right">
-                    <h:outputText value="Account name" styleClass="outputLabel"/>
-                    <p:commandButton value="Settings" action="/employee/setting/setting"/>
                     <p:commandButton value="log out" action="#{login.logout}"/>
                 </f:facet>
             </p:toolbar>

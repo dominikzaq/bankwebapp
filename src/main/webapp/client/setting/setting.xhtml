@@ -18,20 +18,28 @@
                 <ui:include src="/client/template/commonHeader.xhtml" />
             </ui:insert>
         </div>
+           <h:form>
+            <p:tab id="account" title="Account">
+                <p:panel header="Account">
+                    <p:messages />
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="Login: " />
+                        <p:inputText value="#{userWizard.user.login}" required="true" label="Phone"/>
 
-        <div id="content">
+                        <h:outputText value="Password1: " />
+                        <p:password id="password1" value="#{userWizard.user.password1}" match="password2" required="true" label="Password1"/>
+                    </h:panelGrid>
+                </p:panel>
+            </p:tab>
 
-            <h:form>
-                <h3>check deposit</h3>
-            </h:form>
+
+
+           </h:form>
         </div>
-
         <div id="footer">
             <ui:insert name="footer" >
                 <ui:include src="/template/commonFooter.xhtml" />
             </ui:insert>
         </div>
-    </div>
 </h:body>
-
 </html>

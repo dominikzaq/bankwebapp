@@ -21,37 +21,74 @@
 
         <div id="content">
             <h:form>
-                <h3>Adding Form Components</h3>
-                <p:panelGrid columns="2">
-                    <h:outputText value="Name deposit: " />
-                    <p:inputText value="xxxx" required="true" label="name deposit"/>
+                <p:wizard>
+                    <p:tab id="basic" title="Basic">
+                        <p:panel header="Personal Details">
+                            <p:messages />
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="Name deposit: " />
+                                <p:inputText value="#{transferWizard.}" required="true" label="name deposit"/>
 
-                    <h:outputText value="Currency deposits: " />
-                    <p:inputText value="xxx" required="true" label="Currency deposits"/>
+                                <h:outputText value="Currency deposits: " />
+                                <p:inputText value="xxx" required="true" label="Currency deposits"/>
 
-                    <h:outputText value="The interest rate per annum: " />
-                    <p:inputText value="xxx" required="true" label="The interest rate per annum"/>
-                </p:panelGrid>
-            </h:form>
+                                <h:outputText value="The interest rate per annum: " />
+                                <p:inputText value="xxx" required="true" label="The interest rate per annum"/>
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
 
-            <h:form>
-                <h3>Adding Form Components</h3>
-                <p:panelGrid columns="2">
-                    <h:outputText value="Minimum deposit amount: " />
-                    <p:inputText value="xxx" required="true" label="Minimum deposit amount"/>
+                    <p:tab id="address" title="Address">
+                        <p:panel header="Address Details">
+                            <p:messages />
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="Minimum deposit amount: " />
+                                <p:inputText value="xxx" required="true" label="Minimum deposit amount"/>
 
-                    <h:outputText value="Renewability: " />
-                    <p:inputText value="xxx" required="true" label="Renewability"/>
+                                <h:outputText value="Renewability: " />
+                                <p:inputText value="xxx" required="true" label="Renewability"/>
 
-                    <h:outputText value="The amount of deposit: " />
-                    <p:inputText value="xxx" required="true" label="The amount of deposit"/>
-                </p:panelGrid>
+                                <h:outputText value="The amount of deposit: " />
+                                <p:inputText value="xxx" required="true" label="The amount of deposit"/>
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
+
+                    <p:tab id="confirm" title="Confirmation">
+                        <p:panel header="Confirmation">
+                            <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    <h:outputText value="Name deposit: " />
+                                    <h:outputText value="xxxx" styleClass="outputLabel"/>
+
+                                    <h:outputText value="Currency deposits: " />
+                                    <h:outputText value="xxx" styleClass="outputLabel"/>
+
+                                    <h:outputText value="The interest rate per annum: " />
+                                    <h:outputText value="xxx" styleClass="outputLabel"/>
+                                </h:panelGrid>
+
+                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    <h:outputText value="Minimum deposit amount: " />
+                                    <h:outputText value="xxx" styleClass="outputLabel"/>
+
+                                    <h:outputText value="Renewability: " />
+                                    <h:outputText value="xxx" styleClass="outputLabel"/>
+
+                                    <h:outputText value="The amount of deposit: " />
+                                    <h:outputText value="xxx" styleClass="outputLabel"/>
+                                </h:panelGrid>
+                            </h:panelGrid>
+
+                            <!-- <p:commandButton value="Submit" actionListener="#{userWizard.save}" update="growl" process="@this"/>-->
+                        </p:panel>
+                    </p:tab>
+                </p:wizard>
             </h:form>
         </div>
-
         <div id="footer">
             <ui:insert name="footer" >
-                <ui:include src="/client/template/commonFooter.xhtml" />
+                <ui:include src="/template/commonFooter.xhtml" />
             </ui:insert>
         </div>
     </div>

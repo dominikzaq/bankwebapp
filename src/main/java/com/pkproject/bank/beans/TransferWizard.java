@@ -1,21 +1,21 @@
 package com.pkproject.bank.beans;
 
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
- * Created by domin on 4/27/17.
+ * Created by domin on 5/16/17.
  */
 @ManagedBean
 @SessionScoped
-public class Transfer implements Serializable {
+public class TransferWizard implements Serializable {
     private String recipientName;
     private String accountNumberRecipient;
     private String recipientAddress;
     private String transferTitle;
-    private String dataTransfer;
+    private Date dataTransfer;
     private int amount;
     private String nameSender;
 
@@ -51,11 +51,11 @@ public class Transfer implements Serializable {
         this.transferTitle = transferTitle;
     }
 
-    public String getDataTransfer() {
+    public Date getDataTransfer() {
         return dataTransfer;
     }
 
-    public void setDataTransfer(String dataTransfer) {
+    public void setDataTransfer(Date dataTransfer) {
         this.dataTransfer = dataTransfer;
     }
 
@@ -76,3 +76,4 @@ public class Transfer implements Serializable {
     }
 
 }
+

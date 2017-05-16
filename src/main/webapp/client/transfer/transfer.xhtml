@@ -22,40 +22,46 @@
         </div>
 
         <div id="content">
-            <h:form>
-                <p:outputLabel for="from">FROM:</p:outputLabel>
-                <p:outputLabel id="from" value=""></p:outputLabel> <!--we need fill here-->
+            <h:form id="transfer">
+            <div class="ui-g">
+                <div class="ui-g-6">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="FROM"/>
+                            <h:outputText value="#{personalData.user.numberAccount}" styleClass="outputLabel"/>
 
-                <p:outputLabel for="amount">amount:</p:outputLabel>
-                <p:inputNumber id="amount" value="#{transfer.amount}"></p:inputNumber>
+                            <p:outputLabel value="Available funds"/>
+                            <h:outputText value="#{personalData.user.money}" styleClass="outputLabel"/>
 
-                <p:outputLabel for="datatransfer">Data transfer:</p:outputLabel>
-                <p:inputText id="datatransfer" value="#{transfer.dataTransfer}"></p:inputText>
-            </h:form>
+                            <p:outputLabel value="Amount"/>
+                            <p:inputNumber value="#{transferView.amount}" required="true" label="Amount:"/>
 
-            <h:form>
-                <h3>Adding Form Components</h3>
-                <p:panelGrid columns="2">
-                    <p:outputLabel for="recipientname">Recipient's name:</p:outputLabel>
-                    <p:inputText id="recipientname" value="#{transfer.recipientName}"></p:inputText>
+                            <p:outputLabel value="Data transfer"/>
+                            <p:calendar id="button" value="#{transferView.dataTransfer}" showOn="button" required="true" label="Data transfer:" />
+                        </p:panelGrid>
+                </div>
+                <div class="ui-g-6">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Recipient's name:"/>
+                            <p:inputText value="#{transferView.recipientName}"/>
 
-                    <p:outputLabel for="accountnumber">Account number:</p:outputLabel>
-                    <p:inputText id="accountnumber" value="#{transfer.accountNumberRecipient}"></p:inputText>
+                            <p:outputLabel value="Account number:"/>
+                            <p:inputText value="#{transferView.accountNumberRecipient}" required="true" label="Account number:" />
 
-                    <p:outputLabel for="recipientaddress">The recipient's address:</p:outputLabel>
-                    <p:inputText id="recipientaddress" value="#{transfer.recipientAddress}"></p:inputText>
+                            <p:outputLabel value="The recipient's address:"/>
+                            <p:inputText value="#{transferView.recipientAddress}" required="true" label="The recipient's address:"/>
 
-                    <p:outputLabel for="transfertitle">Transfer title:</p:outputLabel>
-                    <p:inputText id="transfertitle" value="#{transfer.transferTitle}"></p:inputText>
-
-                    <p:commandButton action="viewdetails" value="Submit"></p:commandButton>
-                </p:panelGrid>
-            </h:form>
+                            <p:outputLabel value="Transfer title:"/>
+                            <p:inputText value="#{transferView.transferTitle}"/>
+                        </p:panelGrid>
+                    <p:commandButton action="viewdetails" value="send"/>
+                    <p:commandButton value="clean field" type="reset" update="transfer"/>
+                </div>
+            </div>
+        </h:form>
         </div>
-
         <div id="footer">
             <ui:insert name="footer" >
-                <ui:include src="/client/template/commonFooter.xhtml" />
+                <ui:include src="/template/commonFooter.xhtml" />
             </ui:insert>
         </div>
     </div>

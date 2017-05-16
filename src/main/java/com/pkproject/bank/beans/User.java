@@ -1,13 +1,17 @@
-package com.pkproject.bank.model;
+package com.pkproject.bank.beans;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.faces.bean.ManagedBean;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by domin on 5/11/17.
  */
+@ManagedBean
 @Service
 public class User implements Serializable {
 
@@ -16,7 +20,7 @@ public class User implements Serializable {
     private String lastname;
     private String sex;
     private int pesel;
-    private String dateOfBirth;
+    private Date dateOfBirth;
     private String placeOfBirth;
     private String citizenship;
 
@@ -71,11 +75,11 @@ public class User implements Serializable {
         this.pesel = pesel;
     }
 
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

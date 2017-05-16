@@ -27,26 +27,26 @@
                 <p:outputLabel id="from" value=""></p:outputLabel> <!--we need fill here-->
 
                 <p:outputLabel for="amount">amount:</p:outputLabel>
-                <p:inputNumber id="amount" value="#{transfer.amount}"></p:inputNumber>
+                <p:inputNumber id="amount" value="#{transferView.amount}"></p:inputNumber>
 
                 <p:outputLabel for="datatransfer">Data transfer:</p:outputLabel>
-                <p:inputText id="datatransfer" value="#{transfer.dataTransfer}"></p:inputText>
+                <p:inputText id="datatransfer" value="#{transferView.dataTransfer}"></p:inputText>
             </h:form>
 
             <h:form>
                 <h3>Adding Form Components</h3>
                 <p:panelGrid columns="2">
                     <p:outputLabel for="recipientname">Recipient's name:</p:outputLabel>
-                    <p:inputText id="recipientname" value="#{transfer.recipientName}"></p:inputText>
+                    <p:inputText id="recipientname" value="#{transferView.recipientName}"></p:inputText>
 
                     <p:outputLabel for="accountnumber">Account number:</p:outputLabel>
-                    <p:inputText id="accountnumber" value="#{transfer.accountNumberRecipient}"></p:inputText>
+                    <p:inputText id="accountnumber" value="#{transferView.accountNumberRecipient}"></p:inputText>
 
                     <p:outputLabel for="recipientaddress">The recipient's address:</p:outputLabel>
-                    <p:inputText id="recipientaddress" value="#{transfer.recipientAddress}"></p:inputText>
+                    <p:inputText id="recipientaddress" value="#{transferView.recipientAddress}"></p:inputText>
 
                     <p:outputLabel for="transfertitle">Transfer title:</p:outputLabel>
-                    <p:inputText id="transfertitle" value="#{transfer.transferTitle}"></p:inputText>
+                    <p:inputText id="transfertitle" value="#{transferView.transferTitle}"></p:inputText>
 
                     <p:commandButton action="viewdetails" value="Submit"></p:commandButton>
                 </p:panelGrid>
