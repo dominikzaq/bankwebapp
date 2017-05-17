@@ -33,27 +33,28 @@
                             <h:outputText value="#{personalData.user.money}" styleClass="outputLabel"/>
 
                             <p:outputLabel value="Amount"/>
-                            <p:inputNumber value="#{transferView.amount}" required="true" label="Amount:"/>
+                            <p:inputNumber value="#{transferMoney.amount}" required="true" label="Amount:"/>
 
                             <p:outputLabel value="Data transfer"/>
-                            <p:calendar id="button" value="#{transferView.dataTransfer}" showOn="button" required="true" label="Data transfer:" />
+                            <p:calendar id="button" value="#{transferMoney.dataTransfer}" showOn="button" required="true" label="Data transfer:" />
                         </p:panelGrid>
                 </div>
                 <div class="ui-g-6">
                         <p:panelGrid columns="2">
                             <p:outputLabel value="Recipient's name:"/>
-                            <p:inputText value="#{transferView.recipientName}"/>
+                            <p:inputText value="#{transferMoney.recipientName}"/>
 
                             <p:outputLabel value="Account number:"/>
-                            <p:inputText value="#{transferView.accountNumberRecipient}" required="true" label="Account number:" />
+                            <p:inputText value="#{transferMoney.accountNumberRecipient}" required="true" label="Account number:" />
 
                             <p:outputLabel value="The recipient's address:"/>
-                            <p:inputText value="#{transferView.recipientAddress}" required="true" label="The recipient's address:"/>
+                            <p:inputText value="#{transferMoney.recipientAddress}" required="true" label="The recipient's address:"/>
 
                             <p:outputLabel value="Transfer title:"/>
-                            <p:inputText value="#{transferView.transferTitle}"/>
+                            <p:inputText value="#{transferMoney.transferTitle}"/>
                         </p:panelGrid>
-                    <p:commandButton action="viewdetails" value="send"/>
+                    <p:commandButton value="sssssss" type="reset" update="transfer"/>
+                    <p:commandButton type="button" value="send" onclick="PF('cd').show()" />
                     <p:commandButton value="clean field" type="reset" update="transfer"/>
                 </div>
             </div>
@@ -65,6 +66,16 @@
             </ui:insert>
         </div>
     </div>
+
+
+    <h:form>
+        <p:confirmDialog message="Are you sure about destroying the world?"
+                         header="Initiating destroy process" widgetVar="cd">
+            <p:commandButton value="Yes Sure" actionListener="#{transferMoney.send}"
+                              oncomplete="PF('cd').hide()"/>
+            <p:commandButton value="Not Yet" onclick="PF('cd').hide();" type="button" />
+        </p:confirmDialog>
+    </h:form>
 </h:body>
 
 </html>

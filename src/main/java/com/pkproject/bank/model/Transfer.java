@@ -8,6 +8,7 @@ import java.util.Date;
 /**
  * Created by domin on 5/16/17.
  */
+
 @ManagedBean
 @SessionScoped
 public class Transfer implements Serializable {

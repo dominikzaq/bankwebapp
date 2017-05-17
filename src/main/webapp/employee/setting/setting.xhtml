@@ -15,38 +15,51 @@
     <div id="page">
         <div id="header">
             <ui:insert name="header" >
-                <ui:include src="/client/template/commonHeader.xhtml" />
+                <ui:include src="/employee/template/commonHeader.xhtml" />
             </ui:insert>
         </div>
 
         <div id="content">
            <h:form>
-               <h1>Personal Details</h1>
-               <h:outputText value="Firstname: *" />
-               <p:inputText value="#{userWizard.user.firstname}" required="true" label="Firstname"/>
+               <p:tab id="personal" title="Personal">
+                   <p:panel header="Personal Details">
+                       <p:messages />
+                       <h:panelGrid columns="2" columnClasses="label, value">
+                           <h:outputText value="Firstname: *" />
+                           <p:inputText value="#{userWizard.user.firstname}" required="true" label="Firstname">
+                               <f:validateRegex pattern="[a-zA-Z]+"/>
+                           </p:inputText>
 
-               <h:outputText value="Lastname: *" />
-               <p:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname"/>
+                           <h:outputText value="Lastname: *" />
+                           <p:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname">
+                               <f:validateRegex pattern="[a-zA-Z]+"/>
+                           </p:inputText>
 
-               <h:outputText value="Sex:" />
-               <p:selectOneRadio id="sex" value="#{userWizard.user.sex}" required="true" label="Sex">
-                   <f:selectItem itemLabel="male" itemValue="Male"/>
-                   <f:selectItem itemLabel="female" itemValue="Female" />
-               </p:selectOneRadio>
+                           <h:outputText value="Sex:" />
+                           <p:selectOneRadio id="sex" value="#{userWizard.user.sex}" required="true" label="Sex">
+                               <f:selectItem itemLabel="male" itemValue="Male"/>
+                               <f:selectItem itemLabel="female" itemValue="Female" />
+                           </p:selectOneRadio>
 
-               <h:outputText value="Pesel: *" />
-               <p:inputText value="#{userWizard.user.pesel}" required="true" label="Pesel" />
+                           <h:outputText value="Pesel: *" />
+                           <p:inputText value="#{userWizard.user.pesel}" required="true" label="Pesel" />
 
-               <h:outputText value="dateOfBirth: " />
-               <p:calendar id="button" value="#{userWizard.user.dateOfBirth}" showOn="button" required="true" label="Date of birth"/>
+                           <h:outputText value="dateOfBirth: " />
+                           <p:calendar id="button" value="#{userWizard.user.dateOfBirth}" showOn="button" required="true" label="Date of birth"/>
 
-               <h:outputText value="placeOfBirth: " />
-               <p:inputText value="#{userWizard.user.placeOfBirth}" required="true" label="PlaceOfBirth"/>
+                           <h:outputText value="placeOfBirth: " />
+                           <p:inputText value="#{userWizard.user.placeOfBirth}" required="true" label="PlaceOfBirth">
+                               <f:validateRegex pattern="[a-zA-Z]+"/>
+                           </p:inputText>
 
-               <h:outputText value="citizenship: " />
-               <p:inputText value="#{userWizard.user.citizenship}" required="true" label="Citizenship"/>
+                           <h:outputText value="citizenship: " />
+                           <p:inputText value="#{userWizard.user.citizenship}" required="true" label="Citizenship">
+                               <f:validateRegex pattern="[a-zA-Z]+"/>
+                           </p:inputText>
 
-
+                       </h:panelGrid>
+                   </p:panel>
+               </p:tab>
 
             <p:tab id="address" title="Address">
                 <p:panel header="Address Details">

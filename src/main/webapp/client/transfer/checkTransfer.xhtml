@@ -21,6 +21,7 @@
 
         <div id="content">
             <p:inputText value="#{search.search}" required="true" label="search"/>
+            <p:commandButton action="#{searchBean.search}" value="Search" />
 
             <p:dataTable var="operation" value="#{operation.niezrobionejeszcze}">
                 <p:column headerText="Id">

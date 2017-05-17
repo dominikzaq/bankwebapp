@@ -25,10 +25,14 @@
                         <p:messages />
                         <h:panelGrid columns="2" columnClasses="label, value">
                             <h:outputText value="Firstname: *" />
-                            <p:inputText value="#{userWizard.user.firstname}" required="true" label="Firstname"/>
+                            <p:inputText value="#{userWizard.user.firstname}" required="true" label="Firstname">
+                                <f:validateRegex pattern="[a-zA-Z]+"/>
+                            </p:inputText>
 
                             <h:outputText value="Lastname: *" />
-                            <p:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname"/>
+                            <p:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname">
+                                <f:validateRegex pattern="[a-zA-Z]+"/>
+                            </p:inputText>
 
                             <h:outputText value="Sex:" />
                             <p:selectOneRadio id="sex" value="#{userWizard.user.sex}" required="true" label="Sex">
@@ -43,10 +47,14 @@
                             <p:calendar id="button" value="#{userWizard.user.dateOfBirth}" showOn="button" required="true" label="Date of birth"/>
 
                             <h:outputText value="placeOfBirth: " />
-                            <p:inputText value="#{userWizard.user.placeOfBirth}" required="true" label="PlaceOfBirth"/>
+                            <p:inputText value="#{userWizard.user.placeOfBirth}" required="true" label="PlaceOfBirth">
+                                <f:validateRegex pattern="[a-zA-Z]+"/>
+                            </p:inputText>
 
                             <h:outputText value="citizenship: " />
-                            <p:inputText value="#{userWizard.user.citizenship}" required="true" label="Citizenship"/>
+                            <p:inputText value="#{userWizard.user.citizenship}" required="true" label="Citizenship">
+                                <f:validateRegex pattern="[a-zA-Z]+"/>
+                            </p:inputText>
 
                         </h:panelGrid>
                     </p:panel>
@@ -57,13 +65,19 @@
                         <p:messages />
                         <h:panelGrid columns="2" columnClasses="label, value">
                             <h:outputText value="City: " />
-                            <p:inputText value="#{userWizard.user.city}" required="true" label="City"/>
+                            <p:inputText value="#{userWizard.user.city}" required="true" label="City">
+                                <f:validateRegex pattern="[a-zA-Z]+"/>
+                            </p:inputText>
 
                             <h:outputText value="Street: " />
-                            <p:inputText value="#{userWizard.user.street}" required="true" label="Street" />
+                            <p:inputText value="#{userWizard.user.street}" required="true" label="Street">
+                                <f:validateRegex pattern="[a-zA-Z]+"/>
+                            </p:inputText>
 
                             <h:outputText value="Street number: " />
-                            <p:inputText value="#{userWizard.user.streetNumber}" required="true" label="Street number"/>
+                            <p:inputText value="#{userWizard.user.streetNumber}" required="true" label="Street number">
+                            
+                            </p:inputText>
 
                             <h:outputText value="Post Code: " />
                             <p:inputMask value="#{userWizard.user.postCode}" required="true" label="Post Code" mask="99-999"/>

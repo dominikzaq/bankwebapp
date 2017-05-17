@@ -17,7 +17,7 @@ import java.util.List;
 @SessionScoped
 public class TransferView implements Serializable{
 
-    @Autowired
+
     private List<Transfer> transfers;
 
     public List<Transfer> getTransfers() {

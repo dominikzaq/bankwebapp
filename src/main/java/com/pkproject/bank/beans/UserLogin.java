@@ -67,4 +67,12 @@ public class UserLogin implements Serializable {
     public void setTypeAccount(String typeAccount) {
         this.typeAccount = typeAccount;
     }
+
+    public void changePassword() {
+
+    }
+
+    public void changeLogin() {
+
+    }
 }

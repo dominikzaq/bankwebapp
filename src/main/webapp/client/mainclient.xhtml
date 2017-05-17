@@ -11,11 +11,11 @@
 </h:head>
 <h:body>
     <div id="page">
-        <div id="header">
+        <!--<div id="header">
             <ui:insert name="header" >
                 <ui:include src="/client/template/commonHeader.xhtml" />
             </ui:insert>
-        </div>
+        </div>-->
 
         <div id="content">
             <div class="ui-g">
@@ -30,27 +30,12 @@
             </div>
             <p:separator />
 
-            <h1>operations carried out on the account</h1>
-            <p:dataTable var="operation" value="#{operation.niezrobionejeszcze}">
-                <p:column headerText="Id">
+            <div id="account">
+                <ui:insert name="footer" >
+                    <ui:include src="/account/account.xhtml" />
+                </ui:insert>
+            </div>
 
-                </p:column>
-
-                <p:column headerText="Data">
-                </p:column>
-
-                <p:column headerText="receiver/sender">
-                </p:column>
-
-                <p:column headerText="description of the operation">
-                </p:column>
-                <p:column headerText="kind of operation">
-                </p:column>
-                <p:column headerText="The amount of operation">
-                </p:column>
-                <p:column headerText="balance">
-                </p:column>
-            </p:dataTable>
         </div>
 
         <div id="footer">

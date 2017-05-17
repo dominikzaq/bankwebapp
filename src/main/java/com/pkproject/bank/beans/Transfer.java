@@ -8,9 +8,9 @@ import java.util.Date;
 /**
  * Created by domin on 5/16/17.
  */
-@ManagedBean
+@ManagedBean(name = "transferMoney")
 @SessionScoped
-public class TransferWizard implements Serializable {
+public class Transfer implements Serializable {
     private String recipientName;
     private String accountNumberRecipient;
     private String recipientAddress;
@@ -74,6 +74,11 @@ public class TransferWizard implements Serializable {
     public void setNameSender(String nameSender) {
         this.nameSender = nameSender;
     }
+
+    public void send() {
+        System.out.println("udalo sie");
+    }
+
 
 }
 
