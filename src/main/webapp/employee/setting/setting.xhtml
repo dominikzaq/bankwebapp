@@ -23,7 +23,6 @@
            <h:form>
                <p:tab id="personal" title="Personal">
                    <p:panel header="Personal Details">
-                       <p:messages />
                        <h:panelGrid columns="2" columnClasses="label, value">
                            <h:outputText value="Firstname: *" />
                            <p:inputText value="#{userWizard.user.firstname}" required="true" label="Firstname">
@@ -56,10 +55,12 @@
                            <p:inputText value="#{userWizard.user.citizenship}" required="true" label="Citizenship">
                                <f:validateRegex pattern="[a-zA-Z]+"/>
                            </p:inputText>
-
+                           <p:commandButton value="change data" onclick="PF('pass').hide()"/>
                        </h:panelGrid>
                    </p:panel>
                </p:tab>
+
+
 
             <p:tab id="address" title="Address">
                 <p:panel header="Address Details">

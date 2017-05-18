@@ -21,7 +21,8 @@
 
         <div id="content">
             <h:form>
-                <p:panelGrid columns="2">
+                <p:panelGrid columns="3">
+                    <p:outputLabel value="Type pesel: "/>
                     <p:inputText value="#{search.search}" required="true" label="search"/>
                     <p:commandButton action="#{searchBean.search}" value="Search" />
                 </p:panelGrid>

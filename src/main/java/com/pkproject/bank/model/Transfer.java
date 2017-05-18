@@ -19,6 +19,7 @@ public class Transfer implements Serializable {
     private int operation;
     private Date date;
     private int accountNumber;
+    private boolean isFill = false;
     public int getIdTransfer() {
         return idTransfer;
     }
@@ -74,4 +75,9 @@ public class Transfer implements Serializable {
     public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
     }
+
+    public boolean isFill() {
+        return accountNumber != 0? true : false;
+    }
 }
+

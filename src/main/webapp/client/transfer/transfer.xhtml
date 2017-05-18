@@ -22,43 +22,51 @@
         </div>
 
         <div id="content">
-            <h:form id="transfer">
-            <div class="ui-g">
-                <div class="ui-g-6">
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="FROM"/>
-                            <h:outputText value="#{personalData.user.numberAccount}" styleClass="outputLabel"/>
+            <h:form id="send">
+                <p:panel header="send money">
+                <p:messages />
+                    <div class="ui-g">
+                        <div class="ui-g-4">
+                                <p:panelGrid columns="2">
+                                    <p:outputLabel value="FROM"/>
+                                    <h:outputText value="#{personalData.user.numberAccount}" styleClass="outputLabel"/>
 
-                            <p:outputLabel value="Available funds"/>
-                            <h:outputText value="#{personalData.user.money}" styleClass="outputLabel"/>
+                                    <p:outputLabel value="Available funds"/>
+                                    <h:outputText value="#{personalData.user.money}" styleClass="outputLabel"/>
 
-                            <p:outputLabel value="Amount"/>
-                            <p:inputNumber value="#{transferMoney.amount}" required="true" label="Amount:"/>
+                                    <p:outputLabel value="Amount"/>
+                                    <p:inputNumber value="#{transferMoney.amount}" required="true" label="Amount:"/>
 
-                            <p:outputLabel value="Data transfer"/>
-                            <p:calendar id="button" value="#{transferMoney.dataTransfer}" showOn="button" required="true" label="Data transfer:" />
-                        </p:panelGrid>
-                </div>
-                <div class="ui-g-6">
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="Recipient's name:"/>
-                            <p:inputText value="#{transferMoney.recipientName}"/>
+                                    <p:outputLabel value="Data transfer"/>
+                                    <p:calendar id="button" value="#{transferMoney.dataTransfer}" showOn="button" required="true" label="Data transfer:" />
+                                </p:panelGrid>
+                        </div>
+                        <div class="ui-g-4">
+                                <p:panelGrid columns="2">
+                                    <p:outputLabel value="Recipient's name:"/>
+                                    <p:inputText value="#{transferMoney.recipientName}">
+                                        <f:validateRegex pattern="[a-zA-Z]+"/>
+                                    </p:inputText>
 
-                            <p:outputLabel value="Account number:"/>
-                            <p:inputText value="#{transferMoney.accountNumberRecipient}" required="true" label="Account number:" />
+                                    <p:outputLabel value="Account number:"/>
+                                    <p:inputText value="#{transferMoney.accountNumberRecipient}" required="true" label="Account number:">
 
-                            <p:outputLabel value="The recipient's address:"/>
-                            <p:inputText value="#{transferMoney.recipientAddress}" required="true" label="The recipient's address:"/>
+                                    </p:inputText>
 
-                            <p:outputLabel value="Transfer title:"/>
-                            <p:inputText value="#{transferMoney.transferTitle}"/>
-                        </p:panelGrid>
-                    <p:commandButton value="sssssss" type="reset" update="transfer"/>
-                    <p:commandButton type="button" value="send" onclick="PF('cd').show()" />
-                    <p:commandButton value="clean field" type="reset" update="transfer"/>
-                </div>
-            </div>
-        </h:form>
+                                    <p:outputLabel value="The recipient's address:"/>
+                                    <p:inputText value="#{transferMoney.recipientAddress}" required="true" label="The recipient's address:"/>
+
+                                    <p:outputLabel value="Transfer title:"/>
+                                    <p:inputText value="#{transferMoney.transferTitle}"/>
+                                </p:panelGrid>
+                            <p:commandButton  value="send" oncomplete="if(conditionState)PF('cd').show()" update="@this"/>
+                            <p:commandButton  value="send" action="xd" update="send"/>
+
+                            <p:commandButton value="clean field" type="reset" update="transfer"/>
+                        </div>
+                    </div>
+                </p:panel>
+            </h:form>
         </div>
         <div id="footer">
             <ui:insert name="footer" >

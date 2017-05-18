@@ -35,7 +35,7 @@
                     <p:password  value="#{login.password}" required="true" label="password"/>
 
                     <f:facet name="footer">
-                        <p:commandButton value="mainclient" action="#{login.validateUsernamePassword}" update="loginForm"/>
+                        <p:commandButton value="mainclient" action="/client/mainclient" update="loginForm"/>
                         <p:commandButton value="mainemployee" action="/employee/mainemployee" update="loginForm"/>
                         <p:commandButton value="clean field" type="reset" update="loginForm"></p:commandButton>
                     </f:facet>

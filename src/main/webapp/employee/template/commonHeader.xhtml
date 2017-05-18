@@ -8,7 +8,6 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-
 </h:head>
 
 <h:body>
@@ -17,12 +16,12 @@
             <p:toolbar>
                 <f:facet name="left">
                     <p:commandButton value="Home" action="/employee/mainemployee"></p:commandButton>
-                    <h:outputText value="Bank name: #{bank.nameOfTheBank}" styleClass="outputLabel"/>
+                    <h1><h:outputText value="Bank name: #{bank.nameOfTheBank}" styleClass="outputLabel"/></h1>
                 </f:facet>
 
                 <f:facet name="right">
                     <h:outputText value="Account name" styleClass="outputLabel"/>
-                    <p:commandButton value="Settings" action="/employee/setting/setting"/>
+                    <p:commandButton value="Change password"  onclick="PF('pass').show();"/>
                     <p:commandButton value="log out" action="#{login.logout}"/>
                 </f:facet>
             </p:toolbar>
@@ -41,6 +40,23 @@
             </p:tabView>
         </h:form>
         <p style="padding: 20px;"></p>
+        <h:form>
+            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+            <p:dialog header="pass" widgetVar="pass" resizable="false" modal="true">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputText value="Password1: " />
+                    <p:password id="password1" value="#{userWizard.user.password1}" match="password2" required="true" label="Password1"/>
+
+                    <h:outputText value="Password2: " />
+                    <p:password id="password2" value="#{userWizard.user.password2}" required="true" label="Password2"/>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="changePassword" update="growl" actionListener="onpass"/>
+                        <p:commandButton value="cancel" onclick="PF('pass').hide()"/>
+                    </f:facet>
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
     </ui:composition>
 </h:body>
 

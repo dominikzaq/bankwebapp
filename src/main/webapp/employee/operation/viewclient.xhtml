@@ -20,15 +20,47 @@
 
         <div id="content">
             <h:form>
-                <p:panelGrid columns="2">
+                <p:panelGrid columns="3">
+                    <p:outputLabel value="Type pesel: "/>
                     <p:inputText value="#{search.search}" required="true" label="search"/>
                     <p:commandButton action="#{searchBean.search}" value="Search" />
                 </p:panelGrid>
             </h:form>
 
-
+            <h:form>
             <p:tab id="personal" title="Personal">
                 <p:panel header="Personal Details">
+                    <p:messages />
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="Firstname: " />
+                        <h:outputText value="#{userWizard.user.firstname}" styleClass="outputLabel"/>
+
+                        <h:outputText value="Lastname: " />
+                        <h:outputText value="#{userWizard.user.lastname}" styleClass="outputLabel"/>
+
+                        <h:outputText value="Sex:" />
+                        <h:outputText value="#{userWizard.user.sex}" styleClass="outputLabel"/>
+
+                        <h:outputText value="Pesel: " />
+                        <h:outputText value="#{userWizard.user.pesel}" styleClass="outputLabel"/>
+
+                        <h:outputText value="dateOfBirth: " />
+                        <h:outputText value="#{userWizard.user.dateOfBirth}" styleClass="outputLabel"/>
+
+                        <h:outputText value="placeOfBirth: " />
+                        <h:outputText value="#{userWizard.user.placeOfBirth}" styleClass="outputLabel"/>
+
+                        <h:outputText value="citizenship: " />
+                        <h:outputText value="#{userWizard.user.citizenship}" styleClass="outputLabel"/>
+
+                        <p:commandButton value="Change personal details"  onclick="PF('personal').show();"/>
+                    </h:panelGrid>
+                </p:panel>
+            </p:tab>
+            </h:form>
+            <h:form>
+                <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+                <p:dialog header="personal" widgetVar="personal" resizable="false" modal="true">
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="Firstname: *" />
@@ -61,12 +93,42 @@
                             <f:validateRegex pattern="[a-zA-Z]+"/>
                         </p:inputText>
 
+                        <f:facet name="footer">
+                            <p:commandButton value="changePassword" update="growl" actionListener="onpass"/>
+                            <p:commandButton value="cancel" onclick="PF('personal').hide()"/>
+                        </f:facet>
+                    </h:panelGrid>
+                </p:dialog>
+            </h:form>
+
+
+            <h:form>
+            <p:tab id="address" title="Address">
+                <p:panel header="Address Details">
+                    <p:messages />
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="City: " />
+                        <h:outputText value="#{userWizard.user.city}" styleClass="outputLabel"/>
+
+                        <h:outputText value="Street: " />
+                        <h:outputText value="#{userWizard.user.street}" styleClass="outputLabel"/>
+
+                        <h:outputText value="Street number: " />
+                        <h:outputText value="#{userWizard.user.streetNumber}" styleClass="outputLabel"/>
+
+                        <h:outputText value="Post Code: " />
+                        <h:outputText value="#{userWizard.user.postCode}" styleClass="outputLabel"/>
+
+                        <h:outputText value="Country: " />
+                        <h:outputText value="#{userWizard.user.country}" required="true" label="Countr"/>
+                        <p:commandButton value="Change address"  onclick="PF('address').show();"/>
                     </h:panelGrid>
                 </p:panel>
             </p:tab>
-
-            <p:tab id="address" title="Address">
-                <p:panel header="Address Details">
+            </h:form>
+            <h:form>
+                <p:growl id="growl2" sticky="true" showDetail="true" life="3000" />
+                <p:dialog header="Address" widgetVar="address" resizable="false" modal="true">
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="City: " />
@@ -90,12 +152,33 @@
                         <h:outputText value="Country: " />
                         <p:inputText value="#{userWizard.user.country}" required="true" label="Countr"/>
 
+                        <f:facet name="footer">
+                            <p:commandButton value="change address" update="growl2" actionListener="onpass"/>
+                            <p:commandButton value="cancel" onclick="PF('address').hide()"/>
+                        </f:facet>
+                    </h:panelGrid>
+                </p:dialog>
+            </h:form>
+
+
+            <h:form>
+            <p:tab id="contact" title="Contact">
+                <p:panel header="Contact Information">
+                    <p:messages />
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="Email: " />
+                        <h:outputText value="#{userWizard.user.email}" styleClass="outputLabel"/>
+
+                        <h:outputText value="Phone " />
+                        <h:outputText value="#{userWizard.user.phoneNumber}" styleClass="outputLabel"/>
+                        <p:commandButton value="Change contact"  onclick="PF('contact').show();"/>
                     </h:panelGrid>
                 </p:panel>
             </p:tab>
-
-            <p:tab id="contact" title="Contact">
-                <p:panel header="Contact Information">
+            </h:form>
+            <h:form>
+                <p:growl id="growl3" sticky="true" showDetail="true" life="3000" />
+                <p:dialog header="Contact" widgetVar="contact" resizable="false" modal="true">
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="Email: " />
@@ -103,31 +186,75 @@
 
                         <h:outputText value="Phone: " />
                         <p:inputText value="#{userWizard.user.phoneNumber}" required="true" label="Phone"/>
-                    </h:panelGrid>
-                </p:panel>
-            </p:tab>
 
+                        <f:facet name="footer">
+                            <p:commandButton value="change contact" update="growl3" actionListener="onpass"/>
+                            <p:commandButton value="cancel" onclick="PF('contact').hide()"/>
+                        </f:facet>
+                    </h:panelGrid>
+                </p:dialog>
+            </h:form>
+
+
+            <h:form>
             <p:tab id="account" title="Account">
                 <p:panel header="Account">
-                    <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="account number: " />
-                        <p:inputText value="#{userWizard.user.numberAccount}" />
+                        <h:outputText value="#{userWizard.user.numberAccount}" styleClass="outputLabel"/>
 
                         <h:outputText value="Money: " />
-                        <p:inputText value="#{userWizard.user.money}" required="true" label="Phone"/>
+                        <h:outputText value="#{userWizard.user.money}" styleClass="outputLabel"/>
 
                         <h:outputText value="Login: " />
-                        <p:inputText value="#{userWizard.user.login}" required="true" label="Phone"/>
+                        <h:outputText value="#{userWizard.user.login}" styleClass="outputLabel"/>
 
+                        <h:outputText value="Password1: " />
+                        <h:outputText value="#{userWizard.user.password1}" styleClass="outputLabel"/>
+
+                        <h:outputText value="Password2: " />
+                        <h:outputText value="#{userWizard.user.password2}" rstyleClass="outputLabel"/>
+
+                    </h:panelGrid>
+                    <p:commandButton value="Add money"  onclick="PF('money').show();"/>
+                    <p:commandButton value="Change password"  onclick="PF('password').show();"/>
+                </p:panel>
+            </p:tab>
+            </h:form>
+            <h:form>
+                <p:growl id="growl4" sticky="true" showDetail="true" life="3000" />
+                <p:dialog header="Password" widgetVar="password" resizable="false" modal="true">
+                    <p:messages />
+                    <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="Password1: " />
                         <p:password id="password1" value="#{userWizard.user.password1}" match="password2" required="true" label="Password1"/>
 
                         <h:outputText value="Password2: " />
                         <p:password id="password2" value="#{userWizard.user.password2}" required="true" label="Password2"/>
+
+                        <f:facet name="footer">
+                            <p:commandButton value="changePassword" update="growl4" actionListener="onpass"/>
+                            <p:commandButton value="cancel" onclick="PF('password').hide()"/>
+                        </f:facet>
                     </h:panelGrid>
-                </p:panel>
-            </p:tab>
+                </p:dialog>
+            </h:form>
+
+            <h:form>
+                <p:growl id="growl5" sticky="true" showDetail="true" life="3000" />
+                <p:dialog header="Money" widgetVar="money" resizable="false" modal="true">
+                    <p:messages />
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="Add money: " />
+                        <p:inputText value="#{userWizard.user.money}" required="true" label="Phone"/>
+
+                        <f:facet name="footer">
+                            <p:commandButton value="add money" update="growl5" actionListener="onpass"/>
+                            <p:commandButton value="cancel" onclick="PF('money').hide()"/>
+                        </f:facet>
+                    </h:panelGrid>
+                </p:dialog>
+            </h:form>
         </div>
 
         <div id="footer">

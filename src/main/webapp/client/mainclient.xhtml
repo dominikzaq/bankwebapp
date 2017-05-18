@@ -11,11 +11,11 @@
 </h:head>
 <h:body>
     <div id="page">
-        <!--<div id="header">
+        <div id="header">
             <ui:insert name="header" >
                 <ui:include src="/client/template/commonHeader.xhtml" />
             </ui:insert>
-        </div>-->
+        </div>
 
         <div id="content">
             <div class="ui-g">
@@ -29,13 +29,11 @@
                 </div>
             </div>
             <p:separator />
-
-            <div id="account">
-                <ui:insert name="footer" >
-                    <ui:include src="/account/account.xhtml" />
-                </ui:insert>
-            </div>
-
+        </div>
+        <div id="account">
+            <ui:insert name="account" >
+                <ui:include src="/client/account/account.xhtml" />
+            </ui:insert>
         </div>
 
         <div id="footer">
