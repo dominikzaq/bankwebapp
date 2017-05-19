@@ -1,5 +1,8 @@
-.idea
+.idea: programista J2EE
+
+Znajomość:
 *.iml
 out
 target
 .iml
+/classes

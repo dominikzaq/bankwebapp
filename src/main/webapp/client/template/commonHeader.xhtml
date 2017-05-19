@@ -26,17 +26,18 @@
                 </f:facet>
             </p:toolbar>
 
-            <p:tabView>
+
+            <p:tabView style="border: none">
                 <p:tab title="Transaction">
-                    <h:panelGrid columns="2" cellpadding="10">
-                        <p:commandButton value="transfer" action="/client/transfer/transfer"/>
-                        <p:commandButton value="check Transfer" action="/client/transfer/checkTransfer" />
+                    <h:panelGrid columns="2" cellspacing="0">
+                        <p:commandButton value="transfer" action="/client/transfer/transfer" style="width: 200px; height: 80px"/>
+                        <p:commandButton value="check Transfer" action="/client/transfer/checkTransfer" style="width: 200px; height: 80px"/>
                     </h:panelGrid>
                 </p:tab>
                 <p:tab title="Savings">
-                    <h:panelGrid columns="2" cellpadding="10">
-                        <p:commandButton value="create deposit" action="/client/saving/createDeposit"/>
-                        <p:commandButton value="check deposit" action="/client/saving/checkDeposit" />
+                    <h:panelGrid columns="2" cellspacing="0">
+                        <p:commandButton value="create deposit" action="/client/saving/createDeposit" style="width: 200px; height: 80px"/>
+                        <p:commandButton value="check deposit" action="/client/saving/checkDeposit"  style="width: 200px; height: 80px"/>
                     </h:panelGrid>
                 </p:tab>
             </p:tabView>

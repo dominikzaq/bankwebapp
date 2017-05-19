@@ -8,7 +8,6 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-
 </h:head>
 
 <h:body>
@@ -26,6 +25,101 @@
                     <p:inputText value="#{search.search}" required="true" label="search"/>
                     <p:commandButton action="#{searchBean.search}" value="Search" />
                 </p:panelGrid>
+            </h:form>
+
+            <h:form>
+                <p:tab id="personal" title="Personal">
+                    <p:panel header="Personal Details">
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="Firstname: " />
+                            <h:outputText value="#{userWizard.user.firstname}" styleClass="outputLabel"/>
+
+                            <h:outputText value="Lastname: " />
+                            <h:outputText value="#{userWizard.user.lastname}" styleClass="outputLabel"/>
+
+                            <h:outputText value="Sex:" />
+                            <h:outputText value="#{userWizard.user.sex}" styleClass="outputLabel"/>
+
+                            <h:outputText value="Pesel: " />
+                            <h:outputText value="#{userWizard.user.pesel}" styleClass="outputLabel"/>
+
+                            <h:outputText value="dateOfBirth: " />
+                            <h:outputText value="#{userWizard.user.dateOfBirth}" styleClass="outputLabel"/>
+
+                            <h:outputText value="placeOfBirth: " />
+                            <h:outputText value="#{userWizard.user.placeOfBirth}" styleClass="outputLabel"/>
+
+                            <h:outputText value="citizenship: " />
+                            <h:outputText value="#{userWizard.user.citizenship}" styleClass="outputLabel"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+            </h:form>
+            <h:form>
+                <p:tab id="address" title="Address">
+                    <p:panel header="Address Details">
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="City: " />
+                            <h:outputText value="#{userWizard.user.city}" styleClass="outputLabel"/>
+
+                            <h:outputText value="Street: " />
+                            <h:outputText value="#{userWizard.user.street}" styleClass="outputLabel"/>
+
+                            <h:outputText value="Street number: " />
+                            <h:outputText value="#{userWizard.user.streetNumber}" styleClass="outputLabel"/>
+
+                            <h:outputText value="Post Code: " />
+                            <h:outputText value="#{userWizard.user.postCode}" styleClass="outputLabel"/>
+
+                            <h:outputText value="Country: " />
+                            <h:outputText value="#{userWizard.user.country}" required="true" label="Countr"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+            </h:form>
+            <h:form>
+                <p:tab id="contact" title="Contact">
+                    <p:panel header="Contact Information">
+                        <p:messages />
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="Email: " />
+                            <h:outputText value="#{userWizard.user.email}" styleClass="outputLabel"/>
+
+                            <h:outputText value="Phone " />
+                            <h:outputText value="#{userWizard.user.phoneNumber}" styleClass="outputLabel"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+            </h:form>
+            <h:form>
+                <p:tab id="account" title="Account">
+                    <p:panel header="Account">
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="account number: " />
+                            <h:outputText value="#{userWizard.user.numberAccount}" styleClass="outputLabel"/>
+
+                            <h:outputText value="Money: " />
+                            <h:outputText value="#{userWizard.user.money}" styleClass="outputLabel"/>
+
+                            <h:outputText value="Login: " />
+                            <h:outputText value="#{userWizard.user.login}" styleClass="outputLabel"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+
+                <h1><p:commandButton value="delete account" onclick="PF('delete').show();"/></h1>
+            </h:form>
+            <h:form>
+                <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+                <p:dialog header="Delete account" widgetVar="delete" resizable="false" modal="true">
+                    <p:messages />
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <f:facet name="footer">
+                            <p:commandButton value="delete account" update="growl" actionListener="onpass"/>
+                            <p:commandButton value="cancel" onclick="PF('delete').hide()"/>
+                        </f:facet>
+                    </h:panelGrid>
+                </p:dialog>
             </h:form>
         </div>
 

@@ -18,6 +18,7 @@ public class Transfer implements Serializable {
     private Date dataTransfer;
     private int amount;
     private String nameSender;
+    private boolean conditionalFlag = false;
 
     public String getRecipientName() {
         return recipientName;
@@ -80,5 +81,15 @@ public class Transfer implements Serializable {
     }
 
 
+    public boolean isConditionalFlag() {
+        return conditionalFlag;
+    }
+
+    public void performCheck() {
+        conditionalFlag = true;
+    }
+    public boolean getTrue() {
+        return true;
+    }
 }
 
