@@ -16,28 +16,9 @@
         <h:form>
             <p:toolbar>
                 <f:facet name="left">
-                </f:facet>
-
-                <f:facet name="right">
-                    <p:commandButton value="log out" action="#{login.logout}"/>
+                    <h1><p:outputLabel value="#{bank.nameOfTheBank}"></p:outputLabel></h1>
                 </f:facet>
             </p:toolbar>
-
-            <p:tabView>
-                <p:tab title="Home">
-                    <p:commandButton value="back" action="/employee/mainemployee"></p:commandButton>
-                </p:tab>
-                <p:tab title="my account">
-                    <h:panelGrid columns="2" cellpadding="10">
-                        <p:commandButton value="account" action="/employee/operation/myAccount"></p:commandButton>
-                    </h:panelGrid>
-                </p:tab>
-                <p:tab title="Client account operations">
-                    <p:commandButton value="create client" action="/employee/operation/createClient"></p:commandButton>
-                    <p:commandButton value="delete client" action="/employee/operation/deleteclient"></p:commandButton>
-                    <p:commandButton value="view client" action="/employee/operation/viewclient"></p:commandButton>
-                </p:tab>
-            </p:tabView>
         </h:form>
     </ui:composition>
 </h:body>

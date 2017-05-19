@@ -10,7 +10,7 @@ import java.io.Serializable;
 @ManagedBean
 @SessionScoped
 public class Bank implements Serializable{
-    private String nameOfTheBank = "Polibuda bank";
+    private String nameOfTheBank = "Amber Gold";
 
     public String getNameOfTheBank() {
         return nameOfTheBank;

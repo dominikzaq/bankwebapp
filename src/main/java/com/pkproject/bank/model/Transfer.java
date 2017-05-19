@@ -12,15 +12,15 @@ import java.util.Date;
 @ManagedBean
 @SessionScoped
 public class Transfer implements Serializable {
-    private int idTransfer;
+    private Integer idTransfer;
     private String description;
     private String money;
-    private int balance;
-    private int operation;
+    private Integer balance;
+    private Integer operation;
     private Date date;
     private int accountNumber;
 
-    public int getIdTransfer() {
+    public Integer getIdTransfer() {
         return idTransfer;
     }
 
@@ -44,7 +44,7 @@ public class Transfer implements Serializable {
         this.money = money;
     }
 
-    public int getBalance() {
+    public Integer getBalance() {
         return balance;
     }
 
@@ -60,7 +60,7 @@ public class Transfer implements Serializable {
         this.date = date;
     }
 
-    public int getOperation() {
+    public Integer getOperation() {
         return operation;
     }
 

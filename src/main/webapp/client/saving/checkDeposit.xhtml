@@ -20,9 +20,36 @@
         </div>
 
         <div id="content">
+            <h:form>
+                <p:panelGrid columns="3">
+                    <p:outputLabel value="Delete deposit: "/>
+                    <p:inputText value="#{search.search}" required="true" label="search"/>
+                    <p:commandButton action="#{searchBean.search}" value="Search" />
+                </p:panelGrid>
+            </h:form>
 
             <h:form>
-                <h3>check deposit</h3>
+                <p:dataTable var="car" value="#{depositView.deposits}">
+                    <p:column headerText="Id">
+                        <h:outputText value="#{deposit.id}" />
+                    </p:column>
+
+                    <p:column headerText="Name of deposit:">
+                        <h:outputText value="#{deposit.nameOfDeposit}" />
+                    </p:column>
+
+                    <p:column headerText="The contractual of deposit">
+                        <h:outputText value="#{deposit.duration}" />
+                    </p:column>
+
+                    <p:column headerText="Minimum deposit amount">
+                        <h:outputText value="#{deposit.minimumOfDepositAmount}" />
+                    </p:column>
+
+                    <p:column headerText="The amount of deposit">
+                        <h:outputText value="#{deposit.amount}" />
+                    </p:column>
+                </p:dataTable>
             </h:form>
         </div>
 

@@ -12,11 +12,11 @@ import java.util.Date;
 @SessionScoped
 public class Transfer implements Serializable {
     private String recipientName;
-    private String accountNumberRecipient;
+    private Integer accountNumberRecipient;
     private String recipientAddress;
     private String transferTitle;
     private Date dataTransfer;
-    private int amount;
+    private Integer amount;
     private String nameSender;
     private boolean conditionalFlag = false;
 
@@ -28,11 +28,11 @@ public class Transfer implements Serializable {
         this.recipientName = recipientName;
     }
 
-    public String getAccountNumberRecipient() {
+    public Integer getAccountNumberRecipient() {
         return accountNumberRecipient;
     }
 
-    public void setAccountNumberRecipient(String accountNumberRecipient) {
+    public void setAccountNumberRecipient(Integer accountNumberRecipient) {
         this.accountNumberRecipient = accountNumberRecipient;
     }
 
@@ -60,7 +60,7 @@ public class Transfer implements Serializable {
         this.dataTransfer = dataTransfer;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 

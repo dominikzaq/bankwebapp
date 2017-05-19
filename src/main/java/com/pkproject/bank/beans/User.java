@@ -19,7 +19,7 @@ public class User implements Serializable {
     private String firstname;
     private String lastname;
     private String sex;
-    private int pesel;
+    private String pesel;
     private Date dateOfBirth;
     private String placeOfBirth;
     private String citizenship;
@@ -27,7 +27,7 @@ public class User implements Serializable {
     //address
     private String city;
     private String street;
-    private int streetNumber;
+    private Integer streetNumber;
     private String postCode;
     private String country;
 
@@ -67,11 +67,11 @@ public class User implements Serializable {
         this.sex = sex;
     }
 
-    public int getPesel() {
+    public String getPesel() {
         return pesel;
     }
 
-    public void setPesel(int pesel) {
+    public void setPesel(String pesel) {
         this.pesel = pesel;
     }
 
@@ -115,11 +115,11 @@ public class User implements Serializable {
         this.street = street;
     }
 
-    public int getStreetNumber() {
+    public Integer getStreetNumber() {
         return streetNumber;
     }
 
-    public void setStreetNumber(int streetNumber) {
+    public void setStreetNumber(Integer streetNumber) {
         this.streetNumber = streetNumber;
     }
 

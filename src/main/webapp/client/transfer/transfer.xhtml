@@ -20,7 +20,7 @@
 
         <div id="content">
             <h:form id="send">
-                <p:panel header="send money">
+                <p:panel header="Send money">
                     <p:messages />
                     <div class="ui-g">
                         <div class="ui-g-4">
@@ -54,9 +54,9 @@
                                 <p:inputText value="#{transferMoney.recipientAddress}" required="true" label="The recipient's address:"/>
 
                                 <p:outputLabel value="Transfer title:"/>
-                                <p:inputText value="#{transferMoney.transferTitle}"/>
+                                <p:inputText value="#{transferMoney.transferTitle}" required="true" label="Transfer title"/>
                             </p:panelGrid>
-                            <p:commandButton  value="send" actionListener="#{transferMoney.performCheck}" oncomplete="if(true)PF('sm').show()" update=":dialogSend"/>
+                            <p:commandButton  value="send" actionListener="#{transferMoney.performCheck}"  update="send"/>
                             <p:commandButton value="clean field" type="reset" update="send"/>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
 
 
     <h:form id="dialogSend" >
-        <p:confirmDialog id ="d" message="Are you sure to transfer money?"
+        <p:dialog visible="false" id ="d" message="Are you sure to transfer money?"
                          header="Transfer money" widgetVar="sm">
             <div class="ui-g">
             <div class="ui-g-6">
@@ -110,7 +110,7 @@
             <p:commandButton value="send" actionListener="#{transferMoney.send}"
                               oncomplete="PF('sm').hide()"/>
             <p:commandButton value="cancel" onclick="PF('sm').hide();" type="button" />
-        </p:confirmDialog>
+        </p:dialog>
 
     </h:form>
 </h:body>

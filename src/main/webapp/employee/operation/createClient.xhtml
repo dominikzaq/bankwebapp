@@ -41,7 +41,7 @@
                             </p:selectOneRadio>
 
                             <h:outputText value="Pesel: *" />
-                            <p:inputText value="#{userWizard.user.pesel}" required="true" label="Pesel" />
+                            <p:inputMask value="#{userWizard.user.pesel}" required="true" label="Pesel" mask="99999999999"/>
 
                             <h:outputText value="dateOfBirth: " />
                             <p:calendar id="button" value="#{userWizard.user.dateOfBirth}" showOn="button" required="true" label="Date of birth"/>
