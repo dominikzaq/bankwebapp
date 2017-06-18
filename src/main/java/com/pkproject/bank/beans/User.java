@@ -32,14 +32,14 @@ public class User implements Serializable {
     private String country;
 
     //account
-    private int numberAccount;
-    private int money;
-    private String login;
+    private String numberAccount;
+    private Double money;
+    private String username;
     private String password1;
     private String password2;
 
     //contact
-    private int phoneNumber;
+    private Integer phoneNumber;
     private String email;
 
 
@@ -139,28 +139,33 @@ public class User implements Serializable {
         this.country = country;
     }
 
-    public int getNumberAccount() {
+
+    public String getNumberAccount() {
         return numberAccount;
     }
 
-    public void setNumberAccount(int numberAccount) {
+    public void setNumberAccount(String numberAccount) {
         this.numberAccount = numberAccount;
     }
 
-    public int getMoney() {
+    public Double getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(Double money) {
         this.money = money;
     }
 
-    public String getLogin() {
-        return login;
+    public void setPhoneNumber(Integer phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword1() {
@@ -179,12 +184,8 @@ public class User implements Serializable {
         this.password2 = password2;
     }
 
-    public int getPhoneNumber() {
+    public Integer getPhoneNumber() {
         return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {

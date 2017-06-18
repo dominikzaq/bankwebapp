@@ -1,6 +1,9 @@
-package com.pkproject.bank.beans;
+package com.pkproject.bank;
 
+import com.pkproject.bank.beans.User;
 import com.pkproject.bank.dao.LoginDAO;
+import com.pkproject.bank.model.Employee;
+import com.pkproject.bank.util.SessionUtil;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -37,13 +40,37 @@ public class UserLogin implements Serializable {
         this.password = password;
     }
 
-    public String validateUsernamePassword() {
-        boolean valid = LoginDAO.validate(username, password);
+    public String validateClient() {
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword1(password);
+        boolean valid = LoginDAO.validate(user, "client");
 
         if (valid) {
-            HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-            session.setAttribute("username", username);
+            HttpSession session = SessionUtil.getSession();
+
+            session.setAttribute("client", user);
             return "client/mainclient";
+        } else {
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                            "Incorrect Username or Password",
+                            "Please enter correct username and Password"));
+            return "login";
+        }
+    }
+
+    public String validateEmployee() {
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword1(password);
+        boolean valid = LoginDAO.validate(user, "employee");
+
+        if (valid) {
+            HttpSession session = SessionUtil.getSession();
+            session.setAttribute("employee", user);
+            return "employee/mainemployee";
         } else {
             FacesContext.getCurrentInstance().addMessage(
                     null,
@@ -54,8 +81,9 @@ public class UserLogin implements Serializable {
         }
     }
 
+
     public String logout() {
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        HttpSession session = SessionUtil.getSession();
         session.invalidate();
         return "/login";
     }
