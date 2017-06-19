@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginDAO {
-
 	public static boolean validate(User user, String typeAccount) {
 		Connection con = null;
 		PreparedStatement ps = null;

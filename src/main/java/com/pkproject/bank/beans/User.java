@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Created by domin on 5/11/17.
@@ -14,6 +14,8 @@ import java.util.Date;
 @ManagedBean
 @Service
 public class User implements Serializable {
+    private int idClient;
+    private int idEmployee;
 
     //personal data
     private String firstname;
@@ -42,6 +44,21 @@ public class User implements Serializable {
     private Integer phoneNumber;
     private String email;
 
+    public int getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(int idClient) {
+        this.idClient = idClient;
+    }
+
+    public int getIdEmployee() {
+        return idEmployee;
+    }
+
+    public void setIdEmployee(int idEmployee) {
+        this.idEmployee = idEmployee;
+    }
 
     public String getFirstname() {
         return firstname;

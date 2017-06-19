@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.1">
+    <root id="1"/>
+    <schema id="2" parent="1" name="bank">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="cardb"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="mojaBaza"/>
+    <schema id="6" parent="1" name="mysql"/>
+    <schema id="7" parent="1" name="my_database"/>
+    <schema id="8" parent="1" name="performance_schema"/>
+    <schema id="9" parent="1" name="sakila"/>
+    <schema id="10" parent="1" name="sys"/>
+    <schema id="11" parent="1" name="test"/>
+    <table id="12" parent="2" name="Account"/>
+    <table id="13" parent="2" name="Account_has_Employee"/>
+    <table id="14" parent="2" name="Client"/>
+    <table id="15" parent="2" name="Deposit"/>
+    <table id="16" parent="2" name="Employee"/>
+    <table id="17" parent="2" name="Transfer"/>
+    <column id="18" parent="12" name="idAccount">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="19" parent="12" name="username">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="12" name="password">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="12" name="type_account">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="12" name="money">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="23" parent="12" name="number_account">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="12" name="Client_idClient">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="25" parent="12" name="Client_idClient">
+      <ColNames>Client_idClient</ColNames>
+    </index>
+    <key id="26" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idAccount</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="27" parent="12" name="Account_ibfk_1">
+      <ColNames>Client_idClient</ColNames>
+      <RefSchemaName>bank</RefSchemaName>
+      <RefTableName>Client</RefTableName>
+      <RefColNames>idClient</RefColNames>
+    </foreign-key>
+    <column id="28" parent="13" name="Account_idAccount">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="29" parent="13" name="Employee_idEmployee">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="30" parent="13" name="Account_idAccount">
+      <ColNames>Account_idAccount</ColNames>
+    </index>
+    <index id="31" parent="13" name="Employee_idEmployee">
+      <ColNames>Employee_idEmployee</ColNames>
+    </index>
+    <foreign-key id="32" parent="13" name="Account_has_Employee_ibfk_1">
+      <ColNames>Account_idAccount</ColNames>
+      <RefSchemaName>bank</RefSchemaName>
+      <RefTableName>Account</RefTableName>
+      <RefColNames>idAccount</RefColNames>
+    </foreign-key>
+    <foreign-key id="33" parent="13" name="Account_has_Employee_ibfk_2">
+      <ColNames>Employee_idEmployee</ColNames>
+      <RefSchemaName>bank</RefSchemaName>
+      <RefTableName>Employee</RefTableName>
+      <RefColNames>idEmployee</RefColNames>
+    </foreign-key>
+    <column id="34" parent="14" name="idClient">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="35" parent="14" name="firstname">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="14" name="lastname">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="14" name="sex">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="14" name="pesel">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="14" name="date_of_birth">
+      <Position>6</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="14" name="place_of_birth">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="14" name="citizenship">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="14" name="city">
+      <Position>9</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="14" name="street">
+      <Position>10</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="14" name="number_street">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="14" name="postcode">
+      <Position>12</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="14" name="country">
+      <Position>13</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="14" name="phone">
+      <Position>14</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="48" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idClient</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="49" parent="15" name="idDeposit">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="50" parent="15" name="name_deposit">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="15" name="opening_date">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="15" name="expiration">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="15" name="Account_idAccount">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="54" parent="15" name="Account_idAccount">
+      <ColNames>Account_idAccount</ColNames>
+    </index>
+    <key id="55" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idDeposit</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="56" parent="15" name="Deposit_ibfk_1">
+      <ColNames>Account_idAccount</ColNames>
+      <RefSchemaName>bank</RefSchemaName>
+      <RefTableName>Account</RefTableName>
+      <RefColNames>idAccount</RefColNames>
+    </foreign-key>
+    <column id="57" parent="16" name="idEmployee">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="58" parent="16" name="name">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="59" parent="16" name="idNumber">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="60" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idEmployee</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="61" parent="17" name="idTransfer">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="62" parent="17" name="recipient_name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="63" parent="17" name="recipient_account_number">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="64" parent="17" name="recipient_address">
+      <Position>4</Position>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <column id="65" parent="17" name="transfer_title">
+      <Position>5</Position>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <column id="66" parent="17" name="amount">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="67" parent="17" name="data_transfer">
+      <Position>7</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="68" parent="17" name="nazwa_nadawcy">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="69" parent="17" name="Account_idAccount">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="70" parent="17" name="Account_idAccount">
+      <ColNames>Account_idAccount</ColNames>
+    </index>
+    <key id="71" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idTransfer</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="72" parent="17" name="Transfer_ibfk_1">
+      <ColNames>Account_idAccount</ColNames>
+      <RefSchemaName>bank</RefSchemaName>
+      <RefTableName>Account</RefTableName>
+      <RefColNames>idAccount</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>
