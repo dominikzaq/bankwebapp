@@ -19,25 +19,25 @@
                     <p:panel header="Personal Details">
                         <h:panelGrid columns="2" columnClasses="label, value">
                             <h:outputText value="Firstname: " />
-                            <h:outputText value="#{user.firstname}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.firstname}" styleClass="outputLabel"/>
 
                             <h:outputText value="Lastname: " />
-                            <h:outputText value="#{user.lastname}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.lastname}" styleClass="outputLabel"/>
 
                             <h:outputText value="Sex:" />
-                            <h:outputText value="#{user.sex}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.sex}" styleClass="outputLabel"/>
 
                             <h:outputText value="Pesel: " />
-                            <h:outputText value="#{user.pesel}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.pesel}" styleClass="outputLabel"/>
 
                             <h:outputText value="dateOfBirth: " />
-                            <h:outputText value="#{user.dateOfBirth}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.dateOfBirth}" styleClass="outputLabel"/>
 
                             <h:outputText value="placeOfBirth: " />
-                            <h:outputText value="#{user.placeOfBirth}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.placeOfBirth}" styleClass="outputLabel"/>
 
                             <h:outputText value="citizenship: " />
-                            <h:outputText value="#{user.citizenship}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.citizenship}" styleClass="outputLabel"/>
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
@@ -45,19 +45,19 @@
                     <p:panel header="Address Details">
                         <h:panelGrid columns="2" columnClasses="label, value">
                             <h:outputText value="City: " />
-                            <h:outputText value="#{user.city}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.city}" styleClass="outputLabel"/>
 
                             <h:outputText value="Street: " />
-                            <h:outputText value="#{user.street}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.street}" styleClass="outputLabel"/>
 
                             <h:outputText value="Street number: " />
-                            <h:outputText value="#{user.streetNumber}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.streetNumber}" styleClass="outputLabel"/>
 
                             <h:outputText value="Post Code: " />
-                            <h:outputText value="#{user.postCode}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.postCode}" styleClass="outputLabel"/>
 
                             <h:outputText value="Country: " />
-                            <h:outputText value="#{user.country}" required="true" label="Countr"/>
+                            <h:outputText value="#{login.user.country}" required="true" label="Countr"/>
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
@@ -67,10 +67,10 @@
                         <p:messages />
                         <h:panelGrid columns="2" columnClasses="label, value">
                             <h:outputText value="Email: " />
-                            <h:outputText value="#{user.email}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.email}" styleClass="outputLabel"/>
 
                             <h:outputText value="Phone " />
-                            <h:outputText value="#{user.phoneNumber}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.phoneNumber}" styleClass="outputLabel"/>
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
@@ -79,19 +79,13 @@
                     <p:panel header="Account">
                         <h:panelGrid columns="2" columnClasses="label, value">
                             <h:outputText value="account number: " />
-                            <h:outputText value="#{user.numberAccount}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.numberAccount}" styleClass="outputLabel"/>
 
                             <h:outputText value="Money: " />
-                            <h:outputText value="#{user.money}" styleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.money}" styleClass="outputLabel"/>
 
                             <h:outputText value="Username: " />
-                            <h:outputText value="#{user.username}" styleClass="outputLabel"/>
-
-                            <h:outputText value="Password1: " />
-                            <h:outputText value="#{user.password1}" styleClass="outputLabel"/>
-
-                            <h:outputText value="Password2: " />
-                            <h:outputText value="#{user.password2}" rstyleClass="outputLabel"/>
+                            <h:outputText value="#{login.user.username}" styleClass="outputLabel"/>
 
                             <h:outputText />
                             <h:outputText />

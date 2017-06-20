@@ -24,6 +24,16 @@ public class UserLogin implements Serializable {
     private String password;
     private String typeAccount;
 
+    private User user = new User();
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -41,7 +51,6 @@ public class UserLogin implements Serializable {
     }
 
     public String validateClient() {
-        User user = new User();
         user.setUsername(username);
         user.setPassword1(password);
         boolean valid = LoginDAO.validate(user, "client");
@@ -62,7 +71,6 @@ public class UserLogin implements Serializable {
     }
 
     public String validateEmployee() {
-        User user = new User();
         user.setUsername(username);
         user.setPassword1(password);
         boolean valid = LoginDAO.validate(user, "employee");

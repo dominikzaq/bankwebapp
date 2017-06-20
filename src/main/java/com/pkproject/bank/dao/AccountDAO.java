@@ -1,5 +1,6 @@
 package com.pkproject.bank.dao;
 
+import com.pkproject.bank.beans.Account;
 import com.pkproject.bank.beans.User;
 
 import java.sql.Connection;
@@ -69,5 +70,57 @@ public class AccountDAO {
             }
         }
     }
+
+    public void deleteUser(User user) {
+    }
+
+    public void changePassword(User user) {
+
+    }
+
+    public boolean userByPesel(User user) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        String query = "";
+
+        try {
+            query = "Select * from Account as a join Client as c on a.Client_idClient = c.idClient where c.pesel=?";
+            con = DataConnect.getConnection();
+            ps = con.prepareStatement(query);
+            ps.setString(1, user.getPesel());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                user.setFirstname(rs.getString("firstname"));
+                user.setLastname(rs.getString("lastname"));
+                user.setSex(rs.getString("sex"));
+                user.setPesel(rs.getString("pesel"));
+                user.setDateOfBirth(rs.getDate("date_of_birth"));
+                user.setPlaceOfBirth(rs.getString("place_of_birth"));
+                user.setCitizenship(rs.getString("citizenship"));
+
+                user.setCity(rs.getString("city"));
+                user.setStreet(rs.getString("street"));
+                user.setPostCode(rs.getString("postcode"));
+                user.setCountry(rs.getString("country"));
+                user.setStreetNumber(rs.getInt("number_street"));
+
+                user.setEmail(rs.getString("email"));
+                user.setPhoneNumber(rs.getInt("phone"));
+
+                user.setNumberAccount(rs.getString("number_account"));
+                user.setMoney(rs.getDouble("money"));
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Login error -->" + ex.getMessage());
+            return false;
+        } finally {
+            DataConnect.close(con);
+        }
+        return false;
+    }
+
 }
 

@@ -11,10 +11,12 @@ public class LoginDAO {
 	public static boolean validate(User user, String typeAccount) {
 		Connection con = null;
 		PreparedStatement ps = null;
+		String query = "";
 
 		try {
+			query = "Select * from Account as a join Client as c on a.Client_idClient = c.idClient where a.username = ? and a.password = ? and a.type_account= ?";
 			con = DataConnect.getConnection();
-			ps = con.prepareStatement("Select * from Account where username = ? and password = ? and type_account= ?");
+			ps = con.prepareStatement(query);
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getPassword1());
 			ps.setString(3, typeAccount);
@@ -25,7 +27,7 @@ public class LoginDAO {
 				user.setFirstname(rs.getString("firstname"));
 				user.setLastname(rs.getString("lastname"));
 				user.setSex(rs.getString("sex"));
-				user.setPesel(rs.getString(""));
+				user.setPesel(rs.getString("pesel"));
 				user.setDateOfBirth(rs.getDate("date_of_birth"));
 				user.setPlaceOfBirth(rs.getString("place_of_birth"));
 				user.setCitizenship(rs.getString("citizenship"));
@@ -34,9 +36,10 @@ public class LoginDAO {
 				user.setStreet(rs.getString("street"));
 				user.setPostCode(rs.getString("postcode"));
 				user.setCountry(rs.getString("country"));
+				user.setStreetNumber(rs.getInt("number_street"));
 
 				user.setEmail(rs.getString("email"));
-				user.setPhoneNumber(rs.getInt("ph"));
+				user.setPhoneNumber(rs.getInt("phone"));
 
 				user.setNumberAccount(rs.getString("number_account"));
 				user.setMoney(rs.getDouble("money"));

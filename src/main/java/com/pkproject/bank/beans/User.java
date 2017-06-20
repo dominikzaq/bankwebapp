@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
 import java.util.*;
@@ -13,6 +14,7 @@ import java.util.*;
  */
 @ManagedBean
 @Service
+@SessionScoped
 public class User implements Serializable {
     private int idClient;
     private int idEmployee;

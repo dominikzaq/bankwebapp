@@ -91,5 +91,10 @@ public class Transfer implements Serializable {
     public boolean getTrue() {
         return true;
     }
+
+
+    public void transferMoney() {
+
+    }
 }
 
