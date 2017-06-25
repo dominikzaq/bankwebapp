@@ -8,17 +8,25 @@ import java.util.Date;
 /**
  * Created by domin on 5/16/17.
  */
-@ManagedBean(name = "transferMoney")
+@ManagedBean()
 @SessionScoped
 public class Transfer implements Serializable {
+    private int idTransfer;
     private String recipientName;
-    private Integer accountNumberRecipient;
+    private String accountNumberRecipient;
     private String recipientAddress;
     private String transferTitle;
     private Date dataTransfer;
     private Integer amount;
     private String nameSender;
-    private boolean conditionalFlag = false;
+
+    public int getIdTransfer() {
+        return idTransfer;
+    }
+
+    public void setIdTransfer(int idTransfer) {
+        this.idTransfer = idTransfer;
+    }
 
     public String getRecipientName() {
         return recipientName;
@@ -28,11 +36,11 @@ public class Transfer implements Serializable {
         this.recipientName = recipientName;
     }
 
-    public Integer getAccountNumberRecipient() {
+    public String getAccountNumberRecipient() {
         return accountNumberRecipient;
     }
 
-    public void setAccountNumberRecipient(Integer accountNumberRecipient) {
+    public void setAccountNumberRecipient(String accountNumberRecipient) {
         this.accountNumberRecipient = accountNumberRecipient;
     }
 
@@ -80,21 +88,13 @@ public class Transfer implements Serializable {
         System.out.println("udalo sie");
     }
 
-
-    public boolean isConditionalFlag() {
-        return conditionalFlag;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
-    public void performCheck() {
-        conditionalFlag = true;
-    }
     public boolean getTrue() {
         return true;
     }
 
-
-    public void transferMoney() {
-
-    }
 }
 

@@ -19,39 +19,39 @@
         </div>
 
         <div id="content">
-            <h:form>
+            <h:form id="searchForm">
                 <p:panelGrid columns="3">
                     <p:outputLabel value="Type pesel: "/>
-                    <p:inputText value="#{search.search}" required="true" label="search"/>
-                    <p:commandButton action="#{searchBean.search}" value="Search" />
+                    <p:inputMask value="#{search.search}" required="true" label="search" mask="99999999999"/>
+                    <p:commandButton action="#{search.searchClientByPesel}" value="Search" update="data"/>
                 </p:panelGrid>
             </h:form>
 
-            <h:form>
+            <h:form id="data">
             <p:tab id="personal" title="Personal">
                 <p:panel header="Personal Details">
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="Firstname: " />
-                        <h:outputText value="#{userWizard.user.firstname}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.firstname}" styleClass="outputLabel"/>
 
                         <h:outputText value="Lastname: " />
-                        <h:outputText value="#{userWizard.user.lastname}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.lastname}" styleClass="outputLabel"/>
 
                         <h:outputText value="Sex:" />
-                        <h:outputText value="#{userWizard.user.sex}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.sex}" styleClass="outputLabel"/>
 
                         <h:outputText value="Pesel: " />
-                        <h:outputText value="#{userWizard.user.pesel}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.pesel}" styleClass="outputLabel"/>
 
                         <h:outputText value="dateOfBirth: " />
-                        <h:outputText value="#{userWizard.user.dateOfBirth}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.dateOfBirth}" styleClass="outputLabel"/>
 
                         <h:outputText value="placeOfBirth: " />
-                        <h:outputText value="#{userWizard.user.placeOfBirth}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.placeOfBirth}" styleClass="outputLabel"/>
 
                         <h:outputText value="citizenship: " />
-                        <h:outputText value="#{userWizard.user.citizenship}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.citizenship}" styleClass="outputLabel"/>
 
                         <p:commandButton value="Change personal details"  onclick="PF('personal').show();"/>
                     </h:panelGrid>
@@ -68,28 +68,28 @@
                         </p:inputText>
 
                         <h:outputText value="Lastname: *" />
-                        <p:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname">
+                        <p:inputText value="#{search.user.lastname}" required="true" label="Lastname">
                         </p:inputText>
 
                         <h:outputText value="Sex:" />
-                        <p:selectOneRadio id="sex" value="#{userWizard.user.sex}" required="true" label="Sex">
+                        <p:selectOneRadio id="sex" value="#{search.user.sex}" required="true" label="Sex">
                             <f:selectItem itemLabel="male" itemValue="Male"/>
                             <f:selectItem itemLabel="female" itemValue="Female" />
                         </p:selectOneRadio>
 
                         <h:outputText value="Pesel: *" />
-                        <p:inputText value="#{userWizard.user.pesel}" required="true" label="Pesel" />
+                        <p:inputText value="#{search.user.pesel}" required="true" label="Pesel" />
 
                         <h:outputText value="dateOfBirth: " />
-                        <p:calendar id="button" value="#{userWizard.user.dateOfBirth}" showOn="button" required="true" label="Date of birth"/>
+                        <p:calendar id="button" value="#{search.user.dateOfBirth}" showOn="button" required="true" label="Date of birth"/>
 
                         <h:outputText value="placeOfBirth: " />
-                        <p:inputText value="#{userWizard.user.placeOfBirth}" required="true" label="PlaceOfBirth">
+                        <p:inputText value="#{search.user.placeOfBirth}" required="true" label="PlaceOfBirth">
                             <f:validateRegex pattern="[a-zA-Z]+"/>
                         </p:inputText>
 
                         <h:outputText value="citizenship: " />
-                        <p:inputText value="#{userWizard.user.citizenship}" required="true" label="Citizenship">
+                        <p:inputText value="#{search.user.citizenship}" required="true" label="Citizenship">
                             <f:validateRegex pattern="[a-zA-Z]+"/>
                         </p:inputText>
 
@@ -108,19 +108,19 @@
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="City: " />
-                        <h:outputText value="#{userWizard.user.city}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.city}" styleClass="outputLabel"/>
 
                         <h:outputText value="Street: " />
-                        <h:outputText value="#{userWizard.user.street}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.street}" styleClass="outputLabel"/>
 
                         <h:outputText value="Street number: " />
-                        <h:outputText value="#{userWizard.user.streetNumber}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.streetNumber}" styleClass="outputLabel"/>
 
                         <h:outputText value="Post Code: " />
-                        <h:outputText value="#{userWizard.user.postCode}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.postCode}" styleClass="outputLabel"/>
 
                         <h:outputText value="Country: " />
-                        <h:outputText value="#{userWizard.user.country}" required="true" label="Countr"/>
+                        <h:outputText value="#{search.user.country}" required="true" label="Countr"/>
                         <p:commandButton value="Change address"  onclick="PF('address').show();"/>
                     </h:panelGrid>
                 </p:panel>
@@ -132,25 +132,25 @@
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="City: " />
-                        <p:inputText value="#{userWizard.user.city}" required="true" label="City">
+                        <p:inputText value="#{search.user.city}" required="true" label="City">
                             <f:validateRegex pattern="[a-zA-Z]+"/>
                         </p:inputText>
 
                         <h:outputText value="Street: " />
-                        <p:inputText value="#{userWizard.user.street}" required="true" label="Street">
+                        <p:inputText value="#{search.user.street}" required="true" label="Street">
                             <f:validateRegex pattern="[a-zA-Z]+"/>
                         </p:inputText>
 
                         <h:outputText value="Street number: " />
-                        <p:inputText value="#{userWizard.user.streetNumber}" required="true" label="Street number">
+                        <p:inputText value="#{search.user.streetNumber}" required="true" label="Street number">
 
                         </p:inputText>
 
                         <h:outputText value="Post Code: " />
-                        <p:inputMask value="#{userWizard.user.postCode}" required="true" label="Post Code" mask="99-999"/>
+                        <p:inputMask value="#{search.user.postCode}" required="true" label="Post Code" mask="99-999"/>
 
                         <h:outputText value="Country: " />
-                        <p:inputText value="#{userWizard.user.country}" required="true" label="Countr"/>
+                        <p:inputText value="#{search.user.country}" required="true" label="Countr"/>
 
                         <f:facet name="footer">
                             <p:commandButton value="change address" update="growl2" actionListener="onpass"/>
@@ -167,10 +167,10 @@
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="Email: " />
-                        <h:outputText value="#{userWizard.user.email}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.email}" styleClass="outputLabel"/>
 
                         <h:outputText value="Phone " />
-                        <h:outputText value="#{userWizard.user.phoneNumber}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.phoneNumber}" styleClass="outputLabel"/>
                         <p:commandButton value="Change contact"  onclick="PF('contact').show();"/>
                     </h:panelGrid>
                 </p:panel>
@@ -182,10 +182,10 @@
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="Email: " />
-                        <p:inputText value="#{userWizard.user.email}"/>
+                        <p:inputText value="#{search.user.email}"/>
 
                         <h:outputText value="Phone: " />
-                        <p:inputText value="#{userWizard.user.phoneNumber}" required="true" label="Phone"/>
+                        <p:inputText value="#{search.user.phoneNumber}" required="true" label="Phone"/>
 
                         <f:facet name="footer">
                             <p:commandButton value="change contact" update="growl3" actionListener="onpass"/>
@@ -201,19 +201,19 @@
                 <p:panel header="Account">
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="account number: " />
-                        <h:outputText value="#{userWizard.user.numberAccount}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.numberAccount}" styleClass="outputLabel"/>
 
                         <h:outputText value="Money: " />
-                        <h:outputText value="#{userWizard.user.money}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.money}" styleClass="outputLabel"/>
 
                         <h:outputText value="Username: " />
-                        <h:outputText value="#{userWizard.user.username}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.username}" styleClass="outputLabel"/>
 
                         <h:outputText value="Password1: " />
-                        <h:outputText value="#{userWizard.user.password1}" styleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.password1}" styleClass="outputLabel"/>
 
                         <h:outputText value="Password2: " />
-                        <h:outputText value="#{userWizard.user.password2}" rstyleClass="outputLabel"/>
+                        <h:outputText value="#{search.user.password2}" rstyleClass="outputLabel"/>
 
                     </h:panelGrid>
                     <p:commandButton value="Add money"  onclick="PF('money').show();"/>
@@ -227,10 +227,10 @@
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="Password1: " />
-                        <p:password id="password1" value="#{userWizard.user.password1}" match="password2" required="true" label="Password1"/>
+                        <p:password id="password1" value="#{search.user.password1}" match="password2" required="true" label="Password1"/>
 
                         <h:outputText value="Password2: " />
-                        <p:password id="password2" value="#{userWizard.user.password2}" required="true" label="Password2"/>
+                        <p:password id="password2" value="#{search.user.password2}" required="true" label="Password2"/>
 
                         <f:facet name="footer">
                             <p:commandButton value="changePassword" update="growl4" actionListener="onpass"/>

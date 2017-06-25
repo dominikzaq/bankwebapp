@@ -10,7 +10,7 @@ import java.io.Serializable;
 @ManagedBean
 @SessionScoped
 public class Deposit implements Serializable {
-    private int id;
+    private int idDeposit;
     private String nameOfDeposit;
     private int accountDeposit;
     private String duration;
@@ -20,12 +20,12 @@ public class Deposit implements Serializable {
     private String expiration;
     private int minimumOfDepositAmount = 1000;
 
-    public int getId() {
-        return id;
+    public int getIdDeposit() {
+        return idDeposit;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdDeposit(int idDeposit) {
+        this.idDeposit = idDeposit;
     }
 
     public String getNameOfDeposit() {

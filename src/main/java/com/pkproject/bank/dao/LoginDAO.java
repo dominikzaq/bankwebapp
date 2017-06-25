@@ -24,6 +24,7 @@ public class LoginDAO {
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
+				user.setIdClient(rs.getInt("idClient"));
 				user.setFirstname(rs.getString("firstname"));
 				user.setLastname(rs.getString("lastname"));
 				user.setSex(rs.getString("sex"));

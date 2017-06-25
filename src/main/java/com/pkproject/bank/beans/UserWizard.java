@@ -38,6 +38,6 @@ public class UserWizard implements Serializable {
 
         accountDAO = new AccountDAO();
         accountDAO.createUser(user);
-        return "/login";
+        return "/employee/mainemployee";
     }
 }

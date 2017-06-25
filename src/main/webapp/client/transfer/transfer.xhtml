@@ -32,7 +32,7 @@
                                 <h:outputText value="#{login.user.money}" styleClass="outputLabel"/>
 
                                 <p:outputLabel value="Amount"/>
-                                <p:inputNumber value="#{transferMoney.amount}" required="true" label="Amount:"/>
+                                <p:inputNumber value="#{transferMoney.}" required="true" label="Amount:"/>
 
                                 <p:outputLabel value="Data transfer"/>
                                 <p:calendar id="button" value="#{transferMoney.dataTransfer}" showOn="button" required="true" label="Data transfer:" />
@@ -56,7 +56,7 @@
                                 <p:outputLabel value="Transfer title:"/>
                                 <p:inputText value="#{transferMoney.transferTitle}" required="true" label="Transfer title"/>
                             </p:panelGrid>
-                            <p:commandButton  value="send" actionListener="#{transferMoney.performCheck}"  update="send"/>
+                            <p:commandButton  value="send" actionListener="#{transferMoney.transferMoney}"  update="send"/>
                             <p:commandButton value="clean field" type="reset" update="send"/>
                         </div>
                     </div>
@@ -79,16 +79,16 @@
             <div class="ui-g-6">
             <p:panelGrid columns="2">
                 <p:outputLabel value="FROM"/>
-                <h:outputText value="#{personalData.user.numberAccount}" styleClass="outputLabel"/>
+                <h:outputText value="#{login.user.numberAccount}" styleClass="outputLabel"/>
 
                 <p:outputLabel value="Available funds"/>
-                <h:outputText value="#{personalData.user.money}"/>
+                <h:outputText value="#{login.user.money}"/>
 
                 <p:outputLabel value="Amount"/>
-                <h:outputText value="#{transferMoney.amount}" />
+                <h:outputText value="#{transfer.amount}" />
 
                 <p:outputLabel value="Data transfer"/>
-                <h:outputText  value="#{transferMoney.dataTransfer}"/>
+                <h:outputText  value="#{transfer.dataTransfer}"/>
             </p:panelGrid>
             </div>
             <div class="ui-g-6">
@@ -97,17 +97,17 @@
                 <h:outputText value="#{transferMoney.recipientName}"/>
 
                 <p:outputLabel value="Account number:"/>
-                <h:outputText value="#{transferMoney.accountNumberRecipient}"/>
+                <h:outputText value="#{transfer.accountNumberRecipient}"/>
 
                 <p:outputLabel value="The recipient's address:"/>
-                <h:outputText value="#{transferMoney.recipientAddress}"/>
+                <h:outputText value="#{transfer.recipientAddress}"/>
 
                 <p:outputLabel value="Transfer title:"/>
-                <h:outputText value="#{transferMoney.transferTitle}"/>
+                <h:outputText value="#{transfer.transferTitle}"/>
             </p:panelGrid>
             </div>
             </div>
-            <p:commandButton value="send" actionListener="#{transferMoney.send}"
+            <p:commandButton value="send" actionListener="#{transfer.send}"
                               oncomplete="PF('sm').hide()"/>
             <p:commandButton value="cancel" onclick="PF('sm').hide();" type="button" />
         </p:dialog>

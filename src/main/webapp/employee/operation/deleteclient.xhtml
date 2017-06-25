@@ -22,8 +22,8 @@
             <h:form>
                 <p:panelGrid columns="3">
                     <p:outputLabel value="Type pesel: "/>
-                    <p:inputText value="#{search.search}" required="true" label="search"/>
-                    <p:commandButton action="#{searchBean.search}" value="Search" />
+                    <p:inputMask value="#{search.search}" required="true" label="search" mask="99999999999"/>
+                    <p:commandButton action="#{search.searchClientByPesel}" value="Search" />
                 </p:panelGrid>
             </h:form>
 
@@ -32,25 +32,25 @@
                     <p:panel header="Personal Details">
                         <h:panelGrid columns="2" columnClasses="label, value">
                             <h:outputText value="Firstname: " />
-                            <h:outputText value="#{userWizard.user.firstname}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.firstname}" styleClass="outputLabel"/>
 
                             <h:outputText value="Lastname: " />
-                            <h:outputText value="#{userWizard.user.lastname}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.lastname}" styleClass="outputLabel"/>
 
                             <h:outputText value="Sex:" />
-                            <h:outputText value="#{userWizard.user.sex}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.sex}" styleClass="outputLabel"/>
 
                             <h:outputText value="Pesel: " />
-                            <h:outputText value="#{userWizard.user.pesel}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.pesel}" styleClass="outputLabel"/>
 
                             <h:outputText value="dateOfBirth: " />
-                            <h:outputText value="#{userWizard.user.dateOfBirth}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.dateOfBirth}" styleClass="outputLabel"/>
 
                             <h:outputText value="placeOfBirth: " />
-                            <h:outputText value="#{userWizard.user.placeOfBirth}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.placeOfBirth}" styleClass="outputLabel"/>
 
                             <h:outputText value="citizenship: " />
-                            <h:outputText value="#{userWizard.user.citizenship}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.citizenship}" styleClass="outputLabel"/>
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
@@ -60,19 +60,19 @@
                     <p:panel header="Address Details">
                         <h:panelGrid columns="2" columnClasses="label, value">
                             <h:outputText value="City: " />
-                            <h:outputText value="#{userWizard.user.city}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.city}" styleClass="outputLabel"/>
 
                             <h:outputText value="Street: " />
-                            <h:outputText value="#{userWizard.user.street}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.street}" styleClass="outputLabel"/>
 
                             <h:outputText value="Street number: " />
-                            <h:outputText value="#{userWizard.user.streetNumber}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.streetNumber}" styleClass="outputLabel"/>
 
                             <h:outputText value="Post Code: " />
-                            <h:outputText value="#{userWizard.user.postCode}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.postCode}" styleClass="outputLabel"/>
 
                             <h:outputText value="Country: " />
-                            <h:outputText value="#{userWizard.user.country}" required="true" label="Countr"/>
+                            <h:outputText value="#{search.user.country}" required="true" label="Countr"/>
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
@@ -83,10 +83,10 @@
                         <p:messages />
                         <h:panelGrid columns="2" columnClasses="label, value">
                             <h:outputText value="Email: " />
-                            <h:outputText value="#{userWizard.user.email}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.email}" styleClass="outputLabel"/>
 
                             <h:outputText value="Phone " />
-                            <h:outputText value="#{userWizard.user.phoneNumber}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.phoneNumber}" styleClass="outputLabel"/>
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
@@ -96,13 +96,13 @@
                     <p:panel header="Account">
                         <h:panelGrid columns="2" columnClasses="label, value">
                             <h:outputText value="account number: " />
-                            <h:outputText value="#{userWizard.user.numberAccount}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.numberAccount}" styleClass="outputLabel"/>
 
                             <h:outputText value="Money: " />
-                            <h:outputText value="#{userWizard.user.money}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.money}" styleClass="outputLabel"/>
 
                             <h:outputText value="username: " />
-                            <h:outputText value="#{userWizard.user.username}" styleClass="outputLabel"/>
+                            <h:outputText value="#{search.user.username}" styleClass="outputLabel"/>
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>

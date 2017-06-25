@@ -18,6 +18,9 @@ import java.util.*;
 public class User implements Serializable {
     private int idClient;
     private int idEmployee;
+    private int idDeposit;
+    private int idTransfer;
+    private int idAccount;
 
     //personal data
     private String firstname;
@@ -60,6 +63,30 @@ public class User implements Serializable {
 
     public void setIdEmployee(int idEmployee) {
         this.idEmployee = idEmployee;
+    }
+
+    public int getIdAccount() {
+        return idAccount;
+    }
+
+    public void setIdAccount(int idAccount) {
+        this.idAccount = idAccount;
+    }
+
+    public int getIdDeposit() {
+        return idDeposit;
+    }
+
+    public void setIdDeposit(int idDeposit) {
+        this.idDeposit = idDeposit;
+    }
+
+    public int getIdTransfer() {
+        return idTransfer;
+    }
+
+    public void setIdTransfer(int idTransfer) {
+        this.idTransfer = idTransfer;
     }
 
     public String getFirstname() {

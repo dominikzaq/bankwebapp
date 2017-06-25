@@ -1,9 +1,13 @@
 package com.pkproject.bank.beans;
 
 import com.pkproject.bank.dao.AccountDAO;
+import com.pkproject.bank.dao.SearchDAO;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import java.io.Serializable;
 
 /**
@@ -13,8 +17,17 @@ import java.io.Serializable;
 @SessionScoped
 public class SearchBean implements Serializable {
     private String search;
+    private SearchDAO searchDAO;
     private AccountDAO accountDAO;
     private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public String getSearch() {
         return search;
@@ -25,12 +38,23 @@ public class SearchBean implements Serializable {
     }
 
     public void searchClientByPesel() {
-        accountDAO = new AccountDAO();
+        searchDAO = new SearchDAO();
         user = new User();
         user.setPesel(search);
+        boolean isPesel = searchDAO.clientByPesel(user);
+        if(isPesel) {
 
-        if(accountDAO.userByPesel(user)) {
-
+        } else {
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                            "this pesel doesn't exist",
+                            "Please enter correct pesel"));
         }
+    }
+
+    public void deleteAccount() {
+        accountDAO = new AccountDAO();
+        accountDAO.deleteUser(user);
     }
 }
