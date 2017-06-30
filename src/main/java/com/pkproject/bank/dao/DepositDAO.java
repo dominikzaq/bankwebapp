@@ -36,7 +36,7 @@ public class DepositDAO {
     }
 
     public void deleteDepositById(User user, Deposit deposit) {
-        query = "";
+        query = "DELETE FROM `bank`.`Deposit` WHERE `idDeposit`='1';\n";
 
 
 
