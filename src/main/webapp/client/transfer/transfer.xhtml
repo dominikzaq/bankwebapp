@@ -32,31 +32,31 @@
                                 <h:outputText value="#{login.user.money}" styleClass="outputLabel"/>
 
                                 <p:outputLabel value="Amount"/>
-                                <p:inputNumber value="#{transferMoney.}" required="true" label="Amount:"/>
+                                <p:inputNumber value="#{transferMoney.transfer.amount}" required="true" label="Amount:"/>
 
                                 <p:outputLabel value="Data transfer"/>
-                                <p:calendar id="button" value="#{transferMoney.dataTransfer}" showOn="button" required="true" label="Data transfer:" />
+                                <p:calendar id="button" value="#{transferMoney.transfer.dataTransfer}" showOn="button" required="true" label="Data transfer:" />
                             </p:panelGrid>
                         </div>
                         <div class="ui-g-4">
                             <p:panelGrid columns="2">
                                 <p:outputLabel value="Recipient's name:"/>
-                                <p:inputText value="#{transferMoney.recipientName}">
+                                <p:inputText value="#{transferMoney.transfer.recipientName}">
                                     <f:validateRegex pattern="[a-zA-Z]+"/>
                                 </p:inputText>
 
                                 <p:outputLabel value="Account number:"/>
-                                <p:inputText value="#{transferMoney.accountNumberRecipient}" required="true" label="Account number:">
-
-                                </p:inputText>
+                                <p:inputMask value="#{transferMoney.transfer.accountNumberRecipient}" required="true" label="Account number:" mask="99 9999 9999 9999 9999"/>
 
                                 <p:outputLabel value="The recipient's address:"/>
-                                <p:inputText value="#{transferMoney.recipientAddress}" required="true" label="The recipient's address:"/>
+                                <p:inputText value="#{transferMoney.transfer.recipientAddress}" required="true" label="The recipient's address:"/>
 
                                 <p:outputLabel value="Transfer title:"/>
-                                <p:inputText value="#{transferMoney.transferTitle}" required="true" label="Transfer title"/>
+                                <p:inputText value="#{transferMoney.transfer.transferTitle}" required="true" label="Transfer title"/>
                             </p:panelGrid>
-                            <p:commandButton  value="send" actionListener="#{transferMoney.transferMoney}"  update="send"/>
+
+                            <p:commandButton value="send money" action="#{transferMoney.transferMoney}" update="send"/>
+
                             <p:commandButton value="clean field" type="reset" update="send"/>
                         </div>
                     </div>
@@ -71,48 +71,6 @@
         </div>
     </div>
 
-
-    <h:form id="dialogSend" >
-        <p:dialog visible="false" id ="d" message="Are you sure to transfer money?"
-                         header="Transfer money" widgetVar="sm">
-            <div class="ui-g">
-            <div class="ui-g-6">
-            <p:panelGrid columns="2">
-                <p:outputLabel value="FROM"/>
-                <h:outputText value="#{login.user.numberAccount}" styleClass="outputLabel"/>
-
-                <p:outputLabel value="Available funds"/>
-                <h:outputText value="#{login.user.money}"/>
-
-                <p:outputLabel value="Amount"/>
-                <h:outputText value="#{transfer.amount}" />
-
-                <p:outputLabel value="Data transfer"/>
-                <h:outputText  value="#{transfer.dataTransfer}"/>
-            </p:panelGrid>
-            </div>
-            <div class="ui-g-6">
-            <p:panelGrid columns="2">
-                <p:outputLabel value="Recipient's name:"/>
-                <h:outputText value="#{transferMoney.recipientName}"/>
-
-                <p:outputLabel value="Account number:"/>
-                <h:outputText value="#{transfer.accountNumberRecipient}"/>
-
-                <p:outputLabel value="The recipient's address:"/>
-                <h:outputText value="#{transfer.recipientAddress}"/>
-
-                <p:outputLabel value="Transfer title:"/>
-                <h:outputText value="#{transfer.transferTitle}"/>
-            </p:panelGrid>
-            </div>
-            </div>
-            <p:commandButton value="send" actionListener="#{transfer.send}"
-                              oncomplete="PF('sm').hide()"/>
-            <p:commandButton value="cancel" onclick="PF('sm').hide();" type="button" />
-        </p:dialog>
-
-    </h:form>
 </h:body>
 
 </html>

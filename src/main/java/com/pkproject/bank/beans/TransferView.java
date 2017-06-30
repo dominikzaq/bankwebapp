@@ -1,12 +1,12 @@
 package com.pkproject.bank.beans;
 
 import com.pkproject.bank.model.Transfer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,5 +25,11 @@ public class TransferView implements Serializable{
 
     public void setTransfers(List<Transfer> transfers) {
         this.transfers = transfers;
+    }
+
+    public String getAllTransfers() {
+        transfers = new ArrayList<>();
+
+        return "/client/transfer/checkTransfer";
     }
 }

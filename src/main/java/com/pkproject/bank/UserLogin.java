@@ -1,8 +1,10 @@
 package com.pkproject.bank;
 
+import com.pkproject.bank.beans.Account;
+import com.pkproject.bank.model.Deposit;
+import com.pkproject.bank.model.Transfer;
 import com.pkproject.bank.beans.User;
 import com.pkproject.bank.dao.LoginDAO;
-import com.pkproject.bank.model.Employee;
 import com.pkproject.bank.util.SessionUtil;
 
 import javax.faces.application.FacesMessage;
@@ -25,13 +27,39 @@ public class UserLogin implements Serializable {
     private String typeAccount;
 
     private User user = new User();
-
+    private Account account = new Account();
+    private Transfer transfer = new Transfer();
+    private Deposit deposit = new Deposit();
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Transfer getTransfer() {
+        return transfer;
+    }
+
+    public void setTransfer(Transfer transfer) {
+        this.transfer = transfer;
+    }
+
+    public Deposit getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(Deposit deposit) {
+        this.deposit = deposit;
     }
 
     public String getUsername() {
@@ -53,7 +81,7 @@ public class UserLogin implements Serializable {
     public String validateClient() {
         user.setUsername(username);
         user.setPassword1(password);
-        boolean valid = LoginDAO.validate(user, "client");
+        boolean valid = LoginDAO.validate(user, "client", transfer, deposit);
 
         if (valid) {
             HttpSession session = SessionUtil.getSession();
@@ -73,7 +101,7 @@ public class UserLogin implements Serializable {
     public String validateEmployee() {
         user.setUsername(username);
         user.setPassword1(password);
-        boolean valid = LoginDAO.validate(user, "employee");
+        boolean valid = LoginDAO.validate(user, "employee", transfer, deposit);
 
         if (valid) {
             HttpSession session = SessionUtil.getSession();

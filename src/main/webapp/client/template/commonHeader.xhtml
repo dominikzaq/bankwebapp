@@ -18,9 +18,6 @@
                     <h1><h:outputText value="Bank name: #{bank.nameOfTheBank}" styleClass="outputLabel"/></h1>
                 </f:facet>
                 <f:facet name="right">
-<!--
-                    <p:commandButton value="My account" action=""/>
--->
                     <p:commandButton value="Change password"  onclick="PF('pass').show();"/>
                     <p:commandButton value="log out" action="#{login.logout}"/>
                 </f:facet>
@@ -31,7 +28,7 @@
                 <p:tab title="Transaction">
                     <h:panelGrid columns="2" cellspacing="0">
                         <p:commandButton value="transfer" action="/client/transfer/transfer" style="width: 200px; height: 80px"/>
-                        <p:commandButton value="check Transfer" action="/client/transfer/checkTransfer" style="width: 200px; height: 80px"/>
+                        <p:commandButton value="check Transfer" action="/client/transfer/transfer" style="width: 200px; height: 80px"/>
                     </h:panelGrid>
                 </p:tab>
                 <p:tab title="Savings">

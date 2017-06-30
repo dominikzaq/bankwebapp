@@ -15,7 +15,7 @@
     <div id="page">
         <div id="header">
             <ui:insert name="header" >
-                <ui:include src="/client/template/commonHeader.xhtml" />
+                <ui:include src="/client/template/commonHeader.xhtml/template/commonHeader.xhtml" />
             </ui:insert>
         </div>
 
@@ -24,7 +24,7 @@
                 <p:panelGrid columns="3">
                     <p:outputLabel value="Delete deposit: "/>
                     <p:inputText value="#{search.search}" required="true" label="search"/>
-                    <p:commandButton action="#{searchBean.search}" value="Search" />
+                    <p:commandButton action="#{searchBean.search}" value="delete deposit" />
                 </p:panelGrid>
             </h:form>
 

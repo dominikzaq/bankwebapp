@@ -1,5 +1,7 @@
 package com.pkproject.bank.beans;
 
+import com.pkproject.bank.model.Deposit;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;

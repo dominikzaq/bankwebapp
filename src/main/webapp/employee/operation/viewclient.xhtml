@@ -23,7 +23,8 @@
                 <p:panelGrid columns="3">
                     <p:outputLabel value="Type pesel: "/>
                     <p:inputMask value="#{search.search}" required="true" label="search" mask="99999999999"/>
-                    <p:commandButton action="#{search.searchClientByPesel}" value="Search" update="data"/>
+                    <p:commandButton action="#{search.searchClientByPesel}" value="Search" update=":data:personal">
+                    </p:commandButton>
                 </p:panelGrid>
             </h:form>
 

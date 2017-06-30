@@ -1,4 +1,4 @@
-package com.pkproject.bank.beans;
+package com.pkproject.bank.model;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;

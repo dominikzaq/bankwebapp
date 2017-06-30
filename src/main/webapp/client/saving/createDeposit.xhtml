@@ -25,8 +25,11 @@
                         <p:panel header="Personal Details">
                             <p:messages />
                             <h:panelGrid columns="2" columnClasses="label, value">
+                                <p:outputLabel value="Available funds"/>
+                                <h:outputText value="#{login.user.money}"/>
+
                                 <h:outputText value="Name of deposit: " />
-                                <p:inputText value="#{deposit.nameOfDeposit}" required="true" label="name deposit"/>
+                                <p:inputText value="#{depositAdd.deposit.nameOfDeposit}" required="true" label="name deposit"/>
 
                                 <h:outputText value="The contractual period of deposit: " />
                                 <p:outputLabel value="12 months"/>
@@ -38,11 +41,11 @@
                                 <p:outputLabel value="1000"/>
 
                                 <h:outputText value="The amount of deposit: " />
-                                <p:inputText value="#{deposit.amount}" required="true" label="The amount of deposit"/>
+                                <p:inputNumber value="#{depositAdd.deposit.amount}" required="true" label="The amount of deposit"/>
                             </h:panelGrid>
                         </p:panel>
                     </p:tab>
-                <p:commandButton  value="create deposit" oncomplete="sadsa" update="dep"/>
+                <p:commandButton  value="create deposit" action="#{depositAdd.addDeposit}" update="dep"/>
             </h:form>
         </div>
 
@@ -52,33 +55,6 @@
             </ui:insert>
         </div>
     </div>
-
-
-    <h:form id="create" >
-        <p:confirmDialog  message="Are you sure to create deposit?"
-                         header="Create deposit" widgetVar="deposit">
-                    <p:panelGrid columns="2">
-                        <h:outputText value="Name of deposit: " />
-                        <h:outputText value="#{deposit.nameOfDeposit}"/>
-
-                        <h:outputText value="The contractual period of deposit: " />
-                        <h:outputText value="12 months"/>
-
-                        <h:outputText value="The interest rate: " />
-                        <h:outputText value="3%" />
-
-                        <h:outputText value="Minimum deposit amount: " />
-                        <h:outputText value="1000"/>
-
-                        <h:outputText value="The amount of deposit: " />
-                        <h:outputText value="#{deposit.amount}" required="true" label="The amount of deposit"/>
-                    </p:panelGrid>
-
-            <p:commandButton value="send" actionListener="#{transferMoney.send}"
-                             oncomplete="PF('sm').hide()"/>
-            <p:commandButton value="cancel" onclick="PF('deposit').hide();" type="button" />
-        </p:confirmDialog>
-    </h:form>
 </h:body>
 
 

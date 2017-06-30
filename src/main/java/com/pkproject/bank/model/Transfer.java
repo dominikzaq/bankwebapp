@@ -8,19 +8,20 @@ import java.util.Date;
 /**
  * Created by domin on 5/16/17.
  */
-
 @ManagedBean
 @SessionScoped
 public class Transfer implements Serializable {
-    private Integer idTransfer;
-    private String description;
-    private String money;
-    private Integer balance;
-    private Integer operation;
-    private Date date;
-    private int accountNumber;
+    private int idTransfer;
+    private String recipientName;
+    private String accountNumberRecipient;
+    private String senderAccountNumber;
+    private String recipientAddress;
+    private String transferTitle;
+    private Date dataTransfer;
+    private Integer amount;
+    private String nameSender;
 
-    public Integer getIdTransfer() {
+    public int getIdTransfer() {
         return idTransfer;
     }
 
@@ -28,53 +29,72 @@ public class Transfer implements Serializable {
         this.idTransfer = idTransfer;
     }
 
-    public String getDescription() {
-        return description;
+    public String getRecipientName() {
+        return recipientName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setRecipientName(String recipientName) {
+        this.recipientName = recipientName;
     }
 
-    public String getMoney() {
-        return money;
+    public String getAccountNumberRecipient() {
+        return accountNumberRecipient;
     }
 
-    public void setMoney(String money) {
-        this.money = money;
+    public void setAccountNumberRecipient(String accountNumberRecipient) {
+        this.accountNumberRecipient = accountNumberRecipient;
     }
 
-    public Integer getBalance() {
-        return balance;
+    public String getSenderAccountNumber() {
+        return senderAccountNumber;
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
+    public void setSenderAccountNumber(String senderAccountNumber) {
+        this.senderAccountNumber = senderAccountNumber;
     }
 
-    public Date getDate() {
-        return date;
+    public String getRecipientAddress() {
+        return recipientAddress;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setRecipientAddress(String recipientAddress) {
+        this.recipientAddress = recipientAddress;
     }
 
-    public Integer getOperation() {
-        return operation;
+    public String getTransferTitle() {
+        return transferTitle;
     }
 
-    public void setOperation(int operation) {
-        this.operation = operation;
+    public void setTransferTitle(String transferTitle) {
+        this.transferTitle = transferTitle;
     }
 
-    public int getAccountNumber() {
-        return accountNumber;
+    public Date getDataTransfer() {
+        return dataTransfer;
     }
 
-    public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setDataTransfer(Date dataTransfer) {
+        this.dataTransfer = dataTransfer;
     }
 
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public String getNameSender() {
+        return nameSender;
+    }
+
+    public void setNameSender(String nameSender) {
+        this.nameSender = nameSender;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public boolean getTrue() {
+        return true;
+    }
 }
 

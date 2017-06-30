@@ -187,104 +187,99 @@
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="52" parent="15" name="opening_date">
+    <column id="52" parent="15" name="closing_date">
       <Position>3</Position>
       <DataType>date|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="53" parent="15" name="expiration">
+    <column id="53" parent="15" name="Account_idAccount">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
     </column>
-    <column id="54" parent="15" name="Account_idAccount">
-      <Position>5</Position>
-      <DataType>int(11)|0</DataType>
-    </column>
-    <index id="55" parent="15" name="Account_idAccount">
+    <index id="54" parent="15" name="Account_idAccount">
       <ColNames>Account_idAccount</ColNames>
     </index>
-    <key id="56" parent="15" name="PRIMARY">
+    <key id="55" parent="15" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idDeposit</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="57" parent="15" name="Deposit_ibfk_1">
+    <foreign-key id="56" parent="15" name="Deposit_ibfk_1">
       <ColNames>Account_idAccount</ColNames>
       <RefSchemaName>bank</RefSchemaName>
       <RefTableName>Account</RefTableName>
       <RefColNames>idAccount</RefColNames>
     </foreign-key>
-    <column id="58" parent="16" name="idEmployee">
+    <column id="57" parent="16" name="idEmployee">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="59" parent="16" name="name">
+    <column id="58" parent="16" name="name">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="60" parent="16" name="idNumber">
+    <column id="59" parent="16" name="idNumber">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="61" parent="16" name="PRIMARY">
+    <key id="60" parent="16" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idEmployee</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="62" parent="17" name="idTransfer">
+    <column id="61" parent="17" name="idTransfer">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="63" parent="17" name="recipient_name">
+    <column id="62" parent="17" name="recipient_name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="64" parent="17" name="recipient_account_number">
+    <column id="63" parent="17" name="recipient_account_number">
       <Position>3</Position>
       <DataType>varchar(27)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="65" parent="17" name="sender_account_number">
+    <column id="64" parent="17" name="sender_account_number">
       <Position>4</Position>
       <DataType>varchar(27)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="66" parent="17" name="recipient_address">
+    <column id="65" parent="17" name="recipient_address">
       <Position>5</Position>
       <DataType>varchar(500)|0</DataType>
     </column>
-    <column id="67" parent="17" name="transfer_title">
+    <column id="66" parent="17" name="transfer_title">
       <Position>6</Position>
       <DataType>varchar(1000)|0</DataType>
     </column>
-    <column id="68" parent="17" name="amount">
+    <column id="67" parent="17" name="amount">
       <Position>7</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>double|0</DataType>
     </column>
-    <column id="69" parent="17" name="data_transfer">
+    <column id="68" parent="17" name="data_transfer">
       <Position>8</Position>
       <DataType>date|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="70" parent="17" name="Account_idAccount">
+    <column id="69" parent="17" name="Account_idAccount">
       <Position>9</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <index id="71" parent="17" name="Account_idAccount">
+    <index id="70" parent="17" name="Account_idAccount">
       <ColNames>Account_idAccount</ColNames>
     </index>
-    <key id="72" parent="17" name="PRIMARY">
+    <key id="71" parent="17" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idTransfer</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="73" parent="17" name="Transfer_ibfk_1">
+    <foreign-key id="72" parent="17" name="Transfer_ibfk_1">
       <ColNames>Account_idAccount</ColNames>
       <RefSchemaName>bank</RefSchemaName>
       <RefTableName>Account</RefTableName>

@@ -40,8 +40,11 @@ public class SearchBean implements Serializable {
     public void searchClientByPesel() {
         searchDAO = new SearchDAO();
         user = new User();
-        user.setPesel(search);
-        boolean isPesel = searchDAO.clientByPesel(user);
+       // user.setPesel(search);
+        user.setStreetNumber(4500);
+        user.setMoney(45654.);
+        user.setEmail("sdadoas@wp.pl");
+      /*  boolean isPesel = searchDAO.clientByPesel(user);
         if(isPesel) {
 
         } else {
@@ -50,7 +53,7 @@ public class SearchBean implements Serializable {
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
                             "this pesel doesn't exist",
                             "Please enter correct pesel"));
-        }
+        }*/
     }
 
     public void deleteAccount() {

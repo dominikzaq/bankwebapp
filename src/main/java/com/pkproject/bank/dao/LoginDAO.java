@@ -1,6 +1,8 @@
 package com.pkproject.bank.dao;
 
+import com.pkproject.bank.model.Deposit;
 import com.pkproject.bank.beans.User;
+import com.pkproject.bank.model.Transfer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginDAO {
-	public static boolean validate(User user, String typeAccount) {
+	public static boolean validate(User user, String typeAccount, Transfer transfer, Deposit deposit) {
 		Connection con = null;
 		PreparedStatement ps = null;
 		String query = "";

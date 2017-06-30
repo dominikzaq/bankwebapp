@@ -49,15 +49,15 @@ public class SearchDAO {
                 user.setNumberAccount(rs.getString("number_account"));
                 user.setMoney(rs.getDouble("money"));
 
-                result = true;
+                return true;
             }
 
         } catch (SQLException ex) {
             System.out.println("Login error -->" + ex.getMessage());
-            return result;
+            return false;
         } finally {
             DataConnect.close(con);
         }
-        return result;
+        return false;
     }
 }
