@@ -16,11 +16,11 @@ import java.util.*;
 @Service
 @SessionScoped
 public class User implements Serializable {
-    private int idClient;
-    private int idEmployee;
-    private int idDeposit;
-    private int idTransfer;
-    private int idAccount;
+    private Integer idClient;
+    private Integer idEmployee;
+    private Integer idDeposit;
+    private Integer idTransfer;
+    private Integer idAccount;
 
     //personal data
     private String firstname;
@@ -44,49 +44,50 @@ public class User implements Serializable {
     private String username;
     private String password1;
     private String password2;
+    private String password3;
 
     //contact
     private Integer phoneNumber;
     private String email;
 
-    public int getIdClient() {
+    public Integer getIdClient() {
         return idClient;
     }
 
-    public void setIdClient(int idClient) {
+    public void setIdClient(Integer idClient) {
         this.idClient = idClient;
     }
 
-    public int getIdEmployee() {
+    public Integer getIdEmployee() {
         return idEmployee;
     }
 
-    public void setIdEmployee(int idEmployee) {
+    public void setIdEmployee(Integer idEmployee) {
         this.idEmployee = idEmployee;
     }
 
-    public int getIdAccount() {
-        return idAccount;
-    }
-
-    public void setIdAccount(int idAccount) {
-        this.idAccount = idAccount;
-    }
-
-    public int getIdDeposit() {
+    public Integer getIdDeposit() {
         return idDeposit;
     }
 
-    public void setIdDeposit(int idDeposit) {
+    public void setIdDeposit(Integer idDeposit) {
         this.idDeposit = idDeposit;
     }
 
-    public int getIdTransfer() {
+    public Integer getIdTransfer() {
         return idTransfer;
     }
 
-    public void setIdTransfer(int idTransfer) {
+    public void setIdTransfer(Integer idTransfer) {
         this.idTransfer = idTransfer;
+    }
+
+    public Integer getIdAccount() {
+        return idAccount;
+    }
+
+    public void setIdAccount(Integer idAccount) {
+        this.idAccount = idAccount;
     }
 
     public String getFirstname() {
@@ -240,5 +241,13 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword3() {
+        return password3;
+    }
+
+    public void setPassword3(String password3) {
+        this.password3 = password3;
     }
 }

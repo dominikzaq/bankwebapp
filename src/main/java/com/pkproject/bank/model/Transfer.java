@@ -18,8 +18,10 @@ public class Transfer implements Serializable {
     private String recipientAddress;
     private String transferTitle;
     private Date dataTransfer;
-    private Integer amount;
+    private Double amount;
     private String nameSender;
+    private String accountNumber;
+    private Double balance;
 
     public int getIdTransfer() {
         return idTransfer;
@@ -77,8 +79,12 @@ public class Transfer implements Serializable {
         this.dataTransfer = dataTransfer;
     }
 
-    public Integer getAmount() {
+    public Double getAmount() {
         return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 
     public String getNameSender() {
@@ -89,12 +95,25 @@ public class Transfer implements Serializable {
         this.nameSender = nameSender;
     }
 
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
 
     public boolean getTrue() {
         return true;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
     }
 }
 

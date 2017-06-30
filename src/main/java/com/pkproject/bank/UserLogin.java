@@ -1,6 +1,7 @@
 package com.pkproject.bank;
 
 import com.pkproject.bank.beans.Account;
+import com.pkproject.bank.dao.AccountDAO;
 import com.pkproject.bank.model.Deposit;
 import com.pkproject.bank.model.Transfer;
 import com.pkproject.bank.beans.User;
@@ -30,6 +31,8 @@ public class UserLogin implements Serializable {
     private Account account = new Account();
     private Transfer transfer = new Transfer();
     private Deposit deposit = new Deposit();
+    private AccountDAO accountDAO = new AccountDAO();
+
     public User getUser() {
         return user;
     }
@@ -84,9 +87,6 @@ public class UserLogin implements Serializable {
         boolean valid = LoginDAO.validate(user, "client", transfer, deposit);
 
         if (valid) {
-            HttpSession session = SessionUtil.getSession();
-
-            session.setAttribute("client", user);
             return "client/mainclient";
         } else {
             FacesContext.getCurrentInstance().addMessage(
@@ -104,8 +104,6 @@ public class UserLogin implements Serializable {
         boolean valid = LoginDAO.validate(user, "employee", transfer, deposit);
 
         if (valid) {
-            HttpSession session = SessionUtil.getSession();
-            session.setAttribute("employee", user);
             return "employee/mainemployee";
         } else {
             FacesContext.getCurrentInstance().addMessage(
@@ -133,10 +131,13 @@ public class UserLogin implements Serializable {
     }
 
     public void changePassword() {
-
+        accountDAO.changePassword(user);
+        FacesContext.getCurrentInstance().addMessage(
+                null,
+                new FacesMessage(FacesMessage.SEVERITY_WARN,
+                        "password is changed",
+                        "password is changed"));
     }
 
-    public void changeLogin() {
 
-    }
 }

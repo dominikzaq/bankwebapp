@@ -3,6 +3,7 @@ package com.pkproject.bank.model;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by domin on 5/12/17.
@@ -13,12 +14,10 @@ public class Deposit implements Serializable {
     private int idDeposit;
     private String nameOfDeposit;
     private int accountDeposit;
-    private String duration;
     private Double amount;
     private Double interestRate = 0.03;
-    private String openingDate;
-    private String expiration;
     private int minimumOfDepositAmount = 1000;
+    private Date closingDate;
 
     public int getIdDeposit() {
         return idDeposit;
@@ -44,14 +43,6 @@ public class Deposit implements Serializable {
         this.accountDeposit = accountDeposit;
     }
 
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
     public Double getAmount() {
         return amount;
     }
@@ -68,24 +59,20 @@ public class Deposit implements Serializable {
         this.interestRate = interestRate;
     }
 
-    public String getOpeningDate() {
-        return openingDate;
-    }
-
-    public void setOpeningDate(String openingDate) {
-        this.openingDate = openingDate;
-    }
-
-    public String getExpiration() {
-        return expiration;
-    }
-
-    public void setExpiration(String expiration) {
-        this.expiration = expiration;
-    }
 
     public void setMinimumOfDepositAmount(int minimumOfDepositAmount) {
         this.minimumOfDepositAmount = minimumOfDepositAmount;
     }
 
+    public int getMinimumOfDepositAmount() {
+        return minimumOfDepositAmount;
+    }
+
+    public Date getClosingDate() {
+        return closingDate;
+    }
+
+    public void setClosingDate(Date closingDate) {
+        this.closingDate = closingDate;
+    }
 }

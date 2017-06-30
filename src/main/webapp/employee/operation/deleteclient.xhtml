@@ -19,15 +19,16 @@
         </div>
 
         <div id="content">
-            <h:form>
+            <h:form id="x">
                 <p:panelGrid columns="3">
                     <p:outputLabel value="Type pesel: "/>
                     <p:inputMask value="#{search.search}" required="true" label="search" mask="99999999999"/>
-                    <p:commandButton action="#{search.searchClientByPesel}" value="Search" />
+                    <p:commandButton action="#{search.searchClientByPesel}" value="Search" update=":data, x"/>
                 </p:panelGrid>
             </h:form>
 
-            <h:form>
+            <h:form id="data">
+                <p:messages />
                 <p:tab id="personal" title="Personal">
                     <p:panel header="Personal Details">
                         <h:panelGrid columns="2" columnClasses="label, value">
@@ -54,8 +55,7 @@
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
-            </h:form>
-            <h:form>
+
                 <p:tab id="address" title="Address">
                     <p:panel header="Address Details">
                         <h:panelGrid columns="2" columnClasses="label, value">
@@ -76,11 +76,9 @@
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
-            </h:form>
-            <h:form>
+
                 <p:tab id="contact" title="Contact">
                     <p:panel header="Contact Information">
-                        <p:messages />
                         <h:panelGrid columns="2" columnClasses="label, value">
                             <h:outputText value="Email: " />
                             <h:outputText value="#{search.user.email}" styleClass="outputLabel"/>
@@ -90,8 +88,7 @@
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
-            </h:form>
-            <h:form>
+
                 <p:tab id="account" title="Account">
                     <p:panel header="Account">
                         <h:panelGrid columns="2" columnClasses="label, value">
@@ -107,10 +104,12 @@
                     </p:panel>
                 </p:tab>
 
-                <h1><p:commandButton value="delete account" onclick="PF('delete').show();"/></h1>
-            </h:form>
-            <h:form>
-                <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+                <h1><p:commandButton value="delete account" action="#{search.deleteAccount}"/></h1>
+<!--
+                <h1><p:commandButton value="delete account"  onclick="PF('delete').show();"/></h1>
+-->
+
+               <!-- <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
                 <p:dialog header="Delete account" widgetVar="delete" resizable="false" modal="true">
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
@@ -119,7 +118,7 @@
                             <p:commandButton value="cancel" onclick="PF('delete').hide()"/>
                         </f:facet>
                     </h:panelGrid>
-                </p:dialog>
+                </p:dialog>-->
             </h:form>
         </div>
 

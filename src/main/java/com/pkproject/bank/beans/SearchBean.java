@@ -7,6 +7,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 
@@ -14,7 +15,7 @@ import java.io.Serializable;
  * Created by domin on 5/14/17.
  */
 @ManagedBean(name = "search")
-@SessionScoped
+@ViewScoped
 public class SearchBean implements Serializable {
     private String search;
     private SearchDAO searchDAO;
@@ -40,24 +41,41 @@ public class SearchBean implements Serializable {
     public void searchClientByPesel() {
         searchDAO = new SearchDAO();
         user = new User();
-       // user.setPesel(search);
-        user.setStreetNumber(4500);
-        user.setMoney(45654.);
-        user.setEmail("sdadoas@wp.pl");
-      /*  boolean isPesel = searchDAO.clientByPesel(user);
-        if(isPesel) {
+        user.setPesel(search);
 
+        boolean isPesel = searchDAO.clientByPesel(user);
+        if(isPesel) {
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                            "Account exists",
+                            "Now, you can delete account"));
         } else {
             FacesContext.getCurrentInstance().addMessage(
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
-                            "this pesel doesn't exist",
+                            "Account doesn't exists",
                             "Please enter correct pesel"));
-        }*/
+        }
     }
 
     public void deleteAccount() {
-        accountDAO = new AccountDAO();
-        accountDAO.deleteUser(user);
+        if(user.getIdAccount() != null) {
+            accountDAO = new AccountDAO();
+            accountDAO.deleteUser(user);
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                            "Account exist",
+                            "Account"));
+            user = null;
+        } else {
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                            "Account exists",
+                            "you have not choose any client's account"));
+        }
+
     }
 }

@@ -17,8 +17,6 @@ public class SearchDAO {
     private boolean result;
 
     public boolean clientByPesel(User user) {
-        result = false;
-
         try {
             query = "Select * from Account as a join Client as c on a.Client_idClient = c.idClient where c.pesel=?";
             con = DataConnect.getConnection();

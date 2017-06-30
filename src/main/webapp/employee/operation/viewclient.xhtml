@@ -19,16 +19,15 @@
         </div>
 
         <div id="content">
-            <h:form id="searchForm">
+            <h:form id="x">
                 <p:panelGrid columns="3">
                     <p:outputLabel value="Type pesel: "/>
                     <p:inputMask value="#{search.search}" required="true" label="search" mask="99999999999"/>
-                    <p:commandButton action="#{search.searchClientByPesel}" value="Search" update=":data:personal">
-                    </p:commandButton>
+                    <p:commandButton action="#{search.searchClientByPesel}" value="Search" update=":data, x"/>
                 </p:panelGrid>
             </h:form>
 
-            <h:form id="data">
+            <h:form id="data" >
             <p:tab id="personal" title="Personal">
                 <p:panel header="Personal Details">
                     <p:messages />
@@ -58,8 +57,7 @@
                     </h:panelGrid>
                 </p:panel>
             </p:tab>
-            </h:form>
-            <h:form>
+
                 <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
                 <p:dialog header="personal" widgetVar="personal" resizable="false" modal="true">
                     <p:messages />
@@ -100,10 +98,7 @@
                         </f:facet>
                     </h:panelGrid>
                 </p:dialog>
-            </h:form>
 
-
-            <h:form>
             <p:tab id="address" title="Address">
                 <p:panel header="Address Details">
                     <p:messages />
@@ -126,8 +121,7 @@
                     </h:panelGrid>
                 </p:panel>
             </p:tab>
-            </h:form>
-            <h:form>
+
                 <p:growl id="growl2" sticky="true" showDetail="true" life="3000" />
                 <p:dialog header="Address" widgetVar="address" resizable="false" modal="true">
                     <p:messages />
@@ -159,10 +153,7 @@
                         </f:facet>
                     </h:panelGrid>
                 </p:dialog>
-            </h:form>
 
-
-            <h:form>
             <p:tab id="contact" title="Contact">
                 <p:panel header="Contact Information">
                     <p:messages />
@@ -176,8 +167,7 @@
                     </h:panelGrid>
                 </p:panel>
             </p:tab>
-            </h:form>
-            <h:form>
+
                 <p:growl id="growl3" sticky="true" showDetail="true" life="3000" />
                 <p:dialog header="Contact" widgetVar="contact" resizable="false" modal="true">
                     <p:messages />
@@ -194,10 +184,7 @@
                         </f:facet>
                     </h:panelGrid>
                 </p:dialog>
-            </h:form>
 
-
-            <h:form>
             <p:tab id="account" title="Account">
                 <p:panel header="Account">
                     <h:panelGrid columns="2" columnClasses="label, value">
@@ -221,8 +208,7 @@
                     <p:commandButton value="Change password"  onclick="PF('password').show();"/>
                 </p:panel>
             </p:tab>
-            </h:form>
-            <h:form>
+
                 <p:growl id="growl4" sticky="true" showDetail="true" life="3000" />
                 <p:dialog header="Password" widgetVar="password" resizable="false" modal="true">
                     <p:messages />
@@ -239,9 +225,7 @@
                         </f:facet>
                     </h:panelGrid>
                 </p:dialog>
-            </h:form>
 
-            <h:form>
                 <p:growl id="growl5" sticky="true" showDetail="true" life="3000" />
                 <p:dialog header="Money" widgetVar="money" resizable="false" modal="true">
                     <p:messages />

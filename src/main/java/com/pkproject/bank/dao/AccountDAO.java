@@ -75,21 +75,20 @@ public class AccountDAO {
     public void deleteUser(User user) {
         con = DataConnect.getConnection();
 
-        query = "DELETE from Transfer where Account_idAccount = 4";
         try {
-            preparedStatement = con.prepareStatement(query);
-
-            preparedStatement.executeUpdate();
-
-            query = "DELETE from Deposit where Account_idAccount = 4";
+            query = "DELETE from Transfer where Account_idAccount = " + user.getIdAccount();
             preparedStatement = con.prepareStatement(query);
             preparedStatement.executeUpdate();
 
-            query = "DELETE from Account where Account_idAccount = 4";
+            query = "DELETE from Deposit where Account_idAccount = "+ user.getIdAccount();
             preparedStatement = con.prepareStatement(query);
             preparedStatement.executeUpdate();
 
-            query = "DELETE from Client where idClient = 4";
+            query = "DELETE from Account where idAccount = " + user.getIdAccount();
+            preparedStatement = con.prepareStatement(query);
+            preparedStatement.executeUpdate();
+
+            query = "DELETE from Client where idClient = " + user.getIdClient();
             preparedStatement = con.prepareStatement(query);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -97,8 +96,20 @@ public class AccountDAO {
         }
     }
 
-    public void changePassword(User user) {
+    public void addMoney() {
 
+    }
+
+    public void changePassword(User user) {
+        try {
+            query = "UPDATE `bank`.`Account` SET `password`=? WHERE `idAccount`= ?";
+            preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, user.getPassword2());
+            preparedStatement.setInt(2, user.getIdAccount());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+        e.printStackTrace();
+    }
     }
 }
 

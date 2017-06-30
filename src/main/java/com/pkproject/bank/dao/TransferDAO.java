@@ -27,7 +27,7 @@ public class TransferDAO {
             ps.setString(3, user.getNumberAccount());
             ps.setString(4, transfer.getRecipientAddress());
             ps.setString(5,transfer.getTransferTitle());
-            ps.setInt(6, transfer.getAmount());
+            ps.setDouble(6, transfer.getAmount());
             ps.setInt(7, 1);
 
             ps.execute();
@@ -36,8 +36,8 @@ public class TransferDAO {
         }
     }
 
-    public void getAllTransfers(User user, List<Transfer> transfers) {
-        query = "select * from Account  as a join Transfer as t on a.idAccount = t.Account_idAccount where a.idAccount = " +  user.getIdAccount();
+    public void getAllTransfersById(User user, List<Transfer> transfers) {
+        query = "select * from Account  as a join Transfer as t on a.idAccount = t.Account_idAccount where a.idAccount = 1";
         con = DataConnect.getConnection();
         try {
             ps = con.prepareStatement(query);
@@ -45,12 +45,12 @@ public class TransferDAO {
 
             while(rs.next()) {
                 Transfer transfer = new Transfer();
-               // transfer.setDataTransfer(new Date("2017-05-05"));
-                transfer.setAccountNumberRecipient(rs.getString("number_account"));
-                transfer.setTransferTitle(rs.getString("transfer_title"));
-                transfer.setAmount(rs.getInt("amount"));
-                transfer.setIdTransfer(rs.getInt("idTransfer"));
 
+                transfer.setAccountNumber(rs.getString("number_account"));
+                transfer.setTransferTitle(rs.getString("transfer_title"));
+                transfer.setAmount(rs.getDouble("amount"));
+                transfer.setIdTransfer(rs.getInt("idTransfer"));
+                transfers.add(transfer);
             }
 
         } catch (SQLException e) {

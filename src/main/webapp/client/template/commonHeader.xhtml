@@ -28,7 +28,7 @@
                 <p:tab title="Transaction">
                     <h:panelGrid columns="2" cellspacing="0">
                         <p:commandButton value="transfer" action="/client/transfer/transfer" style="width: 200px; height: 80px"/>
-                        <p:commandButton value="check Transfer" action="/client/transfer/transfer" style="width: 200px; height: 80px"/>
+                        <p:commandButton value="check Transfer" action="#{transferView.getAllTransfers}" style="width: 200px; height: 80px"/>
                     </h:panelGrid>
                 </p:tab>
                 <p:tab title="Savings">
@@ -45,13 +45,13 @@
         <p:dialog header="pass" widgetVar="pass" resizable="false" modal="true">
             <h:panelGrid columns="2" cellpadding="5">
                 <h:outputText value="Password1: " />
-                <p:password id="password1" value="#{userWizard.user.password1}" match="password2" required="true" label="Password1"/>
+                <p:password id="password1" value="#{login.user.password2}" match="password2" required="true" label="Password1"/>
 
                 <h:outputText value="Password2: " />
-                <p:password id="password2" value="#{userWizard.user.password2}" required="true" label="Password2"/>
+                <p:password id="password2" value="#{login.user.password3}" required="true" label="Password2"/>
 
                 <f:facet name="footer">
-                    <p:commandButton value="changePassword" update="growl" actionListener="onpass"/>
+                    <p:commandButton value="changePassword" update="growl" action="#{login.changePassword}" onclick="PF('pass').hide()"/>
                     <p:commandButton value="cancel" onclick="PF('pass').hide()"/>
                 </f:facet>
             </h:panelGrid>

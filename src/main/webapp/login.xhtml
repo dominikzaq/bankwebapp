@@ -28,7 +28,7 @@
 
                     <f:facet name="footer">
                         <p:commandButton value="mainclient" action="#{login.validateClient}" update="loginForm"/>
-                        <p:commandButton value="mainemployee" action="employee/mainemployee" update="loginForm"/>
+                        <p:commandButton value="mainemployee" action="#{login.validateEmployee}" update="loginForm"/>
                         <p:commandButton value="clean field" type="reset" update="loginForm"></p:commandButton>
                     </f:facet>
                 </h:panelGrid>

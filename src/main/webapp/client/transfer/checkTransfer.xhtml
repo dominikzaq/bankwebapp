@@ -15,21 +15,18 @@
     <div id="page">
         <div id="header">
             <ui:insert name="header" >
-                <ui:include src="/client/template/commonHeader.xhtml/template/commonHeader.xhtml" />
+                <ui:include src="/client/template/commonHeader.xhtml" />
             </ui:insert>
         </div>
 
         <div id="content">
-            <p:inputText value="#{search.search}" required="true" label="search"/>
-            <p:commandButton action="#{searchBean.search}" value="Search" />
-
-            <p:dataTable var="operation" value="#{operation.niezrobionejeszcze}">
+            <p:dataTable var="transfer" value="#{transferView.transfers}">
                 <p:column headerText="Id">
                     <h:outputText value="#{transfer.idTransfer}" />
                 </p:column>
 
                 <p:column headerText="Data">
-                    <h:outputText value="#{transfer.data}" />
+                    <h:outputText value="#{transfer.dataTransfer}" />
                 </p:column>
 
                 <p:column headerText="receiver/sender">
@@ -37,10 +34,10 @@
                 </p:column>
 
                 <p:column headerText="description of the operation">
-                    <h:outputText value="#{transfer.description}" />
+                    <h:outputText value="#{transfer.transferTitle}" />
                 </p:column>
                 <p:column headerText="The amount of operation">
-                    <h:outputText value="#{transfer.operation}" />
+                    <h:outputText value="#{transfer.amount}" />
                 </p:column>
                 <p:column headerText="balance">
                     <h:outputText value="#{transfer.balance}" />

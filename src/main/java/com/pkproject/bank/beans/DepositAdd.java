@@ -14,6 +14,7 @@ import javax.faces.bean.SessionScoped;
 public class DepositAdd {
     private Deposit deposit = new Deposit();
     private DepositDAO depositDAO = new DepositDAO();
+    private  User user = new User();
 
     public Deposit getDeposit() {
         return deposit;
@@ -24,8 +25,8 @@ public class DepositAdd {
     }
 
     public String addDeposit() {
-       /* deposit = new Deposit();
-        depositDAO = new DepositDAO();*/
+        user.setIdAccount(1);
+        depositDAO.createDeposit(user,deposit);
         return "/client/mainclient";
     }
 }
