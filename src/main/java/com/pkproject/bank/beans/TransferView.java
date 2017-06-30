@@ -1,14 +1,17 @@
 package com.pkproject.bank.beans;
 
+import com.pkproject.bank.UserLogin;
 import com.pkproject.bank.dao.TransferDAO;
 import com.pkproject.bank.model.Transfer;
 import org.springframework.stereotype.Component;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by domin on 12.04.17.
@@ -30,7 +33,9 @@ public class TransferView implements Serializable{
     }
 
     public String getAllTransfers() {
-        user.setIdAccount(1);
+        Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+        UserLogin  userLogin = (UserLogin) sessionMap.get("userLogin");
+        user = userLogin.getUser();
         transferDAO.getAllTransfersById(user, transfers);
 
         return "/client/transfer/checkTransfer";

@@ -53,7 +53,7 @@
                         <h:outputText value="citizenship: " />
                         <h:outputText value="#{search.user.citizenship}" styleClass="outputLabel"/>
 
-                        <p:commandButton value="Change personal details"  onclick="PF('personal').show();"/>
+                        <p:commandButton value="Change personal details"  onclick="PF('personal').show();" disabled="#{search.disable}"/>
                     </h:panelGrid>
                 </p:panel>
             </p:tab>
@@ -93,7 +93,7 @@
                         </p:inputText>
 
                         <f:facet name="footer">
-                            <p:commandButton value="changePassword" update="growl" actionListener="onpass"/>
+                            <p:commandButton value="change personal details" update="growl" actionListener="onpass"  onclick="PF('personal').hide()" />
                             <p:commandButton value="cancel" onclick="PF('personal').hide()"/>
                         </f:facet>
                     </h:panelGrid>
@@ -117,7 +117,7 @@
 
                         <h:outputText value="Country: " />
                         <h:outputText value="#{search.user.country}" required="true" label="Countr"/>
-                        <p:commandButton value="Change address"  onclick="PF('address').show();"/>
+                        <p:commandButton value="Change address"  onclick="PF('address').show();" disabled="#{search.disable}"/>
                     </h:panelGrid>
                 </p:panel>
             </p:tab>
@@ -163,7 +163,7 @@
 
                         <h:outputText value="Phone " />
                         <h:outputText value="#{search.user.phoneNumber}" styleClass="outputLabel"/>
-                        <p:commandButton value="Change contact"  onclick="PF('contact').show();"/>
+                        <p:commandButton value="Change contact"  onclick="PF('contact').show();" disabled="#{search.disable}"/>
                     </h:panelGrid>
                 </p:panel>
             </p:tab>
@@ -197,15 +197,9 @@
                         <h:outputText value="Username: " />
                         <h:outputText value="#{search.user.username}" styleClass="outputLabel"/>
 
-                        <h:outputText value="Password1: " />
-                        <h:outputText value="#{search.user.password1}" styleClass="outputLabel"/>
-
-                        <h:outputText value="Password2: " />
-                        <h:outputText value="#{search.user.password2}" rstyleClass="outputLabel"/>
-
                     </h:panelGrid>
-                    <p:commandButton value="Add money"  onclick="PF('money').show();"/>
-                    <p:commandButton value="Change password"  onclick="PF('password').show();"/>
+                    <p:commandButton value="Add money"  onclick="PF('money').show();" disabled="#{search.disable}"/>
+                    <p:commandButton value="Reset password"  onclick="PF('password').show();" disabled="#{search.disable}"/>
                 </p:panel>
             </p:tab>
 
@@ -234,7 +228,7 @@
                         <p:inputText value="#{userWizard.user.money}" required="true" label="Phone"/>
 
                         <f:facet name="footer">
-                            <p:commandButton value="add money" update="growl5" actionListener="onpass"/>
+                            <p:commandButton value="add money" update="growl5" actionListener="onpass" />
                             <p:commandButton value="cancel" onclick="PF('money').hide()"/>
                         </f:facet>
                     </h:panelGrid>

@@ -9,6 +9,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import java.util.Map;
 
 /**
  * Created by domin on 6/21/17.
@@ -29,10 +30,14 @@ public class TransferMoney {
     }
 
     public String transferMoney() {
-        //transferDAO = new TransferDAO();
-        //transfer = new Transfer();
-        //user = new User();
-       // transferDAO.sendMoney(user, transfer);
+
+        Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+        UserLogin  userLogin = (UserLogin) sessionMap.get("userLogin");
+        user = userLogin.getUser();
+        transferDAO = new TransferDAO();
+        transfer = new Transfer();
+        user = new User();
+        transferDAO.sendMoney(user, transfer);
 
         transferDAO = new TransferDAO();
         user = new User();

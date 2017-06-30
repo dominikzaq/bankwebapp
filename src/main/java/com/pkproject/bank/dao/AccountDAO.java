@@ -96,10 +96,6 @@ public class AccountDAO {
         }
     }
 
-    public void addMoney() {
-
-    }
-
     public void changePassword(User user) {
         try {
             query = "UPDATE `bank`.`Account` SET `password`=? WHERE `idAccount`= ?";
@@ -109,7 +105,32 @@ public class AccountDAO {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
         e.printStackTrace();
+        }
     }
+
+
+    public void changePersonalDetails() {
+        query = "UPDATE `bank`.`Account` SET `money`='50' WHERE `idAccount`='2';";
     }
+
+    public void changeAddressDetails() {
+        query = "UPDATE `bank`.`Account` SET `money`='50' WHERE `idAccount`='2';";
+
+    }
+
+    public void changeContactInformation() {
+        query = "UPDATE `bank`.`Client` SET `email`='asds@wp.pl', `phone`='665654' WHERE `idClient`='2';\n";
+
+    }
+
+    public void addMoney() {
+        query = "UPDATE `bank`.`Account` SET `money`='50' WHERE `idAccount`='2';";
+
+    }
+
+    public void payOut() {
+        query = "UPDATE `bank`.`Account` SET `money`='0' WHERE `idAccount`='2';";
+    }
+
 }
 

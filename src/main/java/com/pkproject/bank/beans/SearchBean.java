@@ -18,9 +18,10 @@ import java.io.Serializable;
 @ViewScoped
 public class SearchBean implements Serializable {
     private String search;
-    private SearchDAO searchDAO;
-    private AccountDAO accountDAO;
-    private User user;
+    private SearchDAO searchDAO = new SearchDAO();
+    private AccountDAO accountDAO = new AccountDAO();
+    private User user = new User();
+    private boolean disable = true;
 
     public User getUser() {
         return user;
@@ -39,17 +40,11 @@ public class SearchBean implements Serializable {
     }
 
     public void searchClientByPesel() {
-        searchDAO = new SearchDAO();
-        user = new User();
         user.setPesel(search);
 
         boolean isPesel = searchDAO.clientByPesel(user);
         if(isPesel) {
-            FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                            "Account exists",
-                            "Now, you can delete account"));
+            disable = false;
         } else {
             FacesContext.getCurrentInstance().addMessage(
                     null,
@@ -63,11 +58,6 @@ public class SearchBean implements Serializable {
         if(user.getIdAccount() != null) {
             accountDAO = new AccountDAO();
             accountDAO.deleteUser(user);
-            FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                            "Account exist",
-                            "Account"));
             user = null;
         } else {
             FacesContext.getCurrentInstance().addMessage(
@@ -77,5 +67,13 @@ public class SearchBean implements Serializable {
                             "you have not choose any client's account"));
         }
 
+    }
+
+    public boolean isDisable() {
+        return disable;
+    }
+
+    public void setDisable(boolean disable) {
+        this.disable = disable;
     }
 }
