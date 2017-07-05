@@ -43,8 +43,8 @@ public class User implements Serializable {
     private Double money;
     private String username;
     private String password1;
-    private String password2;
-    private String password3;
+    private String tempPassword2;
+    private String tempPassword3;
 
     //contact
     private Integer phoneNumber;
@@ -223,14 +223,6 @@ public class User implements Serializable {
         this.password1 = password1;
     }
 
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
-    }
-
     public Integer getPhoneNumber() {
         return phoneNumber;
     }
@@ -243,11 +235,19 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getPassword3() {
-        return password3;
+    public String getTempPassword2() {
+        return tempPassword2;
     }
 
-    public void setPassword3(String password3) {
-        this.password3 = password3;
+    public void setTempPassword2(String tempPassword2) {
+        this.tempPassword2 = tempPassword2;
+    }
+
+    public String getTempPassword3() {
+        return tempPassword3;
+    }
+
+    public void setTempPassword3(String tempPassword3) {
+        this.tempPassword3 = tempPassword3;
     }
 }

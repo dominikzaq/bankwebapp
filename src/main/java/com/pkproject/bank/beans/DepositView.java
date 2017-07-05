@@ -30,4 +30,9 @@ public class DepositView implements Serializable {
     public void deleteDepositById() {
         depositDAO.deleteDepositById(user, deposit);
     }
+
+    public String getDeposit() {
+        depositDAO.getAllDeposit(deposits);
+        return "/client / saving / checkDeposit ";
+    }
 }

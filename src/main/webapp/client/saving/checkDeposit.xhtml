@@ -20,16 +20,16 @@
         </div>
 
         <div id="content">
-            <h:form>
+        <!--    <h:form>
                 <p:panelGrid columns="3">
                     <p:outputLabel value="Delete deposit: "/>
                     <p:inputText value="#{search.search}" required="true" label="search"/>
                     <p:commandButton action="#{searchBean.search}" value="delete deposit" />
                 </p:panelGrid>
-            </h:form>
+            </h:form>-->
 
             <h:form>
-                <p:dataTable var="car" value="#{depositView.deposits}">
+                <p:dataTable var="deposit" value="#{depositView.deposits}">
                     <p:column headerText="Id">
                         <h:outputText value="#{deposit.id}" />
                     </p:column>

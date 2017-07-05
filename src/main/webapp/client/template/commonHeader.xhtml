@@ -34,7 +34,7 @@
                 <p:tab title="Savings">
                     <h:panelGrid columns="2" cellspacing="0">
                         <p:commandButton value="create deposit" action="/client/saving/createDeposit" style="width: 200px; height: 80px"/>
-                        <p:commandButton value="check deposit" action="/client/saving/checkDeposit"  style="width: 200px; height: 80px"/>
+                        <p:commandButton value="check deposit" action=""  style="width: 200px; height: 80px"/>
                     </h:panelGrid>
                 </p:tab>
             </p:tabView>
@@ -42,13 +42,13 @@
         <p style="padding: 20px;"></p>
         <h:form>
         <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
-        <p:dialog header="pass" widgetVar="pass" resizable="false" modal="true">
+        <p:dialog header="Change password" widgetVar="pass" resizable="false" modal="true">
             <h:panelGrid columns="2" cellpadding="5">
                 <h:outputText value="Password1: " />
-                <p:password id="password1" value="#{login.user.password2}" match="password2" required="true" label="Password1"/>
+                <p:password id="password1" value="#{login.user.tempPassword2}" match="password2" required="true" label="Password1"/>
 
                 <h:outputText value="Password2: " />
-                <p:password id="password2" value="#{login.user.password3}" required="true" label="Password2"/>
+                <p:password id="password2" value="#{login.user.tempPassword3}" required="true" label="Password2"/>
 
                 <f:facet name="footer">
                     <p:commandButton value="changePassword" update="growl" action="#{login.changePassword}" onclick="PF('pass').hide()"/>

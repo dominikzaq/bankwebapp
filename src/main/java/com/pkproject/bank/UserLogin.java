@@ -82,6 +82,7 @@ public class UserLogin implements Serializable {
     }
 
     public String validateClient() {
+        user.setIdAccount(2);
         user.setUsername(username);
         user.setPassword1(password);
         boolean valid = LoginDAO.validate(user, "client", transfer, deposit);
@@ -130,13 +131,17 @@ public class UserLogin implements Serializable {
         this.typeAccount = typeAccount;
     }
 
-    public void changePassword() {
+    public String changePassword() {
         accountDAO.changePassword(user);
         FacesContext.getCurrentInstance().addMessage(
                 null,
                 new FacesMessage(FacesMessage.SEVERITY_WARN,
                         "password is changed",
                         "password is changed"));
+
+        HttpSession session = SessionUtil.getSession();
+        session.invalidate();
+        return "/login";
     }
 
 

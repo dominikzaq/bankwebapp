@@ -21,6 +21,7 @@ public class SearchBean implements Serializable {
     private SearchDAO searchDAO = new SearchDAO();
     private AccountDAO accountDAO = new AccountDAO();
     private User user = new User();
+    private User tempUser = new User();
     private boolean disable = true;
 
     public User getUser() {
@@ -37,6 +38,14 @@ public class SearchBean implements Serializable {
 
     public void setSearch(String search) {
         this.search = search;
+    }
+
+    public User getTempUser() {
+        return tempUser;
+    }
+
+    public void setTempUser(User tempUser) {
+        this.tempUser = tempUser;
     }
 
     public void searchClientByPesel() {
@@ -58,7 +67,9 @@ public class SearchBean implements Serializable {
         if(user.getIdAccount() != null) {
             accountDAO = new AccountDAO();
             accountDAO.deleteUser(user);
-            user = null;
+            user = new User();
+            disable = true;
+            search = "";
         } else {
             FacesContext.getCurrentInstance().addMessage(
                     null,

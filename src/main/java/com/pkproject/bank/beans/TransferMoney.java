@@ -17,9 +17,9 @@ import java.util.Map;
 @ManagedBean
 @SessionScoped
 public class TransferMoney {
-    private TransferDAO transferDAO;
+    private TransferDAO transferDAO = new TransferDAO();
     private Transfer transfer = new Transfer();
-    private User user;
+    private User user = new User();
 
     public Transfer getTransfer() {
         return transfer;
@@ -34,9 +34,6 @@ public class TransferMoney {
         Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
         UserLogin  userLogin = (UserLogin) sessionMap.get("userLogin");
         user = userLogin.getUser();
-        transferDAO = new TransferDAO();
-        transfer = new Transfer();
-        user = new User();
         transferDAO.sendMoney(user, transfer);
 
         transferDAO = new TransferDAO();

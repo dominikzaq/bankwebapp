@@ -44,4 +44,25 @@ public class DepositDAO {
         query = "";
 
     }
+
+    public void getAllDeposit(List<Deposit> deposits) {
+        query = "SELECT *FROM `bank`.`Deposit` WHERE `Account_idAccount`='4';\n";
+        try {
+            ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                Deposit deposit = new Deposit();
+                deposit.setIdDeposit(rs.getInt("idDeposit"));
+                deposit.setNameOfDeposit(rs.getString("name_deposit"));
+                deposit.setAmount(rs.getDouble("amount"));
+                deposit.setClosingDate(rs.getDate(String.valueOf(rs.getDate("closing_date"))));
+                deposit.setInterestRate(rs.getDouble("1.5"));
+                deposits.add(deposit);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
