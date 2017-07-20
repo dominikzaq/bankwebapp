@@ -109,28 +109,57 @@ public class AccountDAO {
     }
 
 
-    public void changePersonalDetails() {
-        query = "UPDATE `bank`.`Client` SET `firstname`='a', `lastname`='a', `sex`='Malae', `pesel`='95121206811', `date_of_birth`='2017-05-06', `place_of_birth`='asdf', `citizenship`='sadq' WHERE `idClient`='2';\n";
+    public void changePersonalDetails(User tempUser) {
+        con = DataConnect.getConnection();
+        try {
+            query = "UPDATE `bank`.`Client` SET `firstname`=?, `lastname`=?, `sex`=?, `pesel`=?, `date_of_birth`=?, `place_of_birth`=?, `citizenship`=? WHERE `idClient`=?;\n";
+            preparedStatement = con.prepareStatement(query);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void changeAddressDetails() {
-        query = "UPDATE `bank`.`Client` SET `city`='a', `street`='a', `number_street`='89', `postcode`='56-56a', `country`='fasa' WHERE `idClient`='2';\n";
+    public void changeAddressDetails(User user) {
+        con = DataConnect.getConnection();
+        try {
+            query = "UPDATE `bank`.`Client` SET `city`=?, `street`=?, `number_street`=?, `postcode`=?, `country`=? WHERE `idClient`=?;\n";
+            preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, user.getCity());
+            preparedStatement.setString(2, user.getStreet());
+            preparedStatement.setInt(3, user.getStreetNumber());
+            preparedStatement.setString(4, user.getPostCode());
+            preparedStatement.setString(5, user.getCountry());
+            preparedStatement.setInt(6, user.getIdAccount());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public void changeContactInformation() {
-        query = "UPDATE `bank`.`Client` SET `email`='asds@wp.pl', `phone`='665654' WHERE `idClient`='2';\n\n";
+    public void changeContactInformation(User tempUser) {
+        con = DataConnect.getConnection();
+        query = "UPDATE `bank`.`Client` SET `email`=?, `phone`=? WHERE `idClient`=?;\n\n";
+        try {
+            preparedStatement = con.prepareStatement(query);
 
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void addMoney() {
-        query = "UPDATE `bank`.`Account` SET `money`='50' WHERE `idAccount`='2';";
+    public void moneyOperation(User tempUser) {
+        con = DataConnect.getConnection();
+        try {
+            query = "UPDATE `bank`.`Account` SET `money`=? WHERE `idAccount`=?;";
+            preparedStatement = con.prepareStatement(query);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
-
-    public void payOut() {
-        query = "UPDATE `bank`.`Account` SET `money`='0' WHERE `idAccount`='2';";
-    }
-
 }
 

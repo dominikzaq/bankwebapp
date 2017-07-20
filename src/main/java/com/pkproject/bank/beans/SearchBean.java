@@ -54,7 +54,11 @@ public class SearchBean implements Serializable {
         boolean isPesel = searchDAO.clientByPesel(user);
         if(isPesel) {
             disable = false;
+            tempUser = user;
         } else {
+            search = "";
+            user = new User();
+            tempUser = new User();
             FacesContext.getCurrentInstance().addMessage(
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
@@ -80,11 +84,35 @@ public class SearchBean implements Serializable {
 
     }
 
+    public void changePersonalDetails() {
+        accountDAO.changePersonalDetails(tempUser);
+        user = tempUser;
+    }
+
+    public void changeAddressDetails() {
+        accountDAO.changeAddressDetails(tempUser);
+        user = tempUser;
+    }
+
+    public void changeContactInformation() {
+        accountDAO.changeContactInformation(tempUser);
+        user = tempUser;
+    }
+
+    public void addMoney() {
+        accountDAO.moneyOperation(tempUser);
+        user = tempUser;
+    }
+
     public boolean isDisable() {
         return disable;
     }
 
     public void setDisable(boolean disable) {
         this.disable = disable;
+    }
+
+    public void changePassword() {
+
     }
 }

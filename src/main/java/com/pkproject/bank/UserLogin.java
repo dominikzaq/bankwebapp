@@ -82,7 +82,6 @@ public class UserLogin implements Serializable {
     }
 
     public String validateClient() {
-        user.setIdAccount(2);
         user.setUsername(username);
         user.setPassword1(password);
         boolean valid = LoginDAO.validate(user, "client", transfer, deposit);

@@ -59,6 +59,7 @@ public class LoginDAO {
 				ResultSet rs = ps.executeQuery();
 
 				if (rs.next()) {
+					user.setIdAccount(rs.getInt("idAccount"));
 					return true;
 				}
 			}

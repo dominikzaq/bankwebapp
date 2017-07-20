@@ -93,7 +93,7 @@
                         </p:inputText>
 
                         <f:facet name="footer">
-                            <p:commandButton value="change personal details" update="growl" actionListener="onpass"  onclick="PF('personal').hide()" />
+                            <p:commandButton value="change personal details" update="growl" action="#{search.changePersonalDetails}"  onclick="PF('personal').hide()" />
                             <p:commandButton value="cancel" onclick="PF('personal').hide()"/>
                         </f:facet>
                     </h:panelGrid>
@@ -148,7 +148,7 @@
                         <p:inputText value="#{search.tempUser.country}" required="true" label="Countr"/>
 
                         <f:facet name="footer">
-                            <p:commandButton value="change address" update="growl2" actionListener="onpass"/>
+                            <p:commandButton value="change address" action="#{search.changeAddressDetails}" update="growl2" actionListener="onpass"/>
                             <p:commandButton value="cancel" onclick="PF('address').hide()"/>
                         </f:facet>
                     </h:panelGrid>
@@ -179,7 +179,7 @@
                         <p:inputText value="#{search.tempUser.phoneNumber}" required="true" label="Phone"/>
 
                         <f:facet name="footer">
-                            <p:commandButton value="change contact" update="growl3" actionListener="onpass"/>
+                            <p:commandButton value="change contact" action="#{search.changeContactInformation}" update="growl3" actionListener="onpass"/>
                             <p:commandButton value="cancel" onclick="PF('contact').hide()"/>
                         </f:facet>
                     </h:panelGrid>
@@ -214,7 +214,7 @@
                         <p:password id="password2" value="#{search.tempUser.tempPassword3}" required="true" label="Password2"/>
 
                         <f:facet name="footer">
-                            <p:commandButton value="changePassword" update="growl4" actionListener="onpass"/>
+                            <p:commandButton value="changePassword" action="#{search.changePassword}"  update="growl4" actionListener="onpass"/>
                             <p:commandButton value="cancel" onclick="PF('password').hide()"/>
                         </f:facet>
                     </h:panelGrid>
@@ -228,7 +228,7 @@
                         <p:inputText value="#{search.tempUser.money}" required="true" label="Phone"/>
 
                         <f:facet name="footer">
-                            <p:commandButton value="add money" update="growl5" actionListener="onpass" />
+                            <p:commandButton value="add money" action="#{search.addMoney}"  update="growl5" actionListener="onpass" />
                             <p:commandButton value="cancel" onclick="PF('money').hide()"/>
                         </f:facet>
                     </h:panelGrid>
