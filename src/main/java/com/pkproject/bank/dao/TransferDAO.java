@@ -28,12 +28,25 @@ public class TransferDAO {
             ps.setString(4, transfer.getRecipientAddress());
             ps.setString(5,transfer.getTransferTitle());
             ps.setDouble(6, transfer.getAmount());
-            ps.setInt(7, 1);
+            ps.setInt(7, user.getIdAccount());
 
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        query = "UPDATE `bank`.`Account` SET `money`=? WHERE `idAccount`= ?";
+        con = DataConnect.getConnection();
+        try {
+            ps = con.prepareStatement(query);
+            ps.setDouble(1,user.getMoney() - transfer.getAmount());
+            ps.setInt(2, user.getIdAccount());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        transfer = new Transfer();
+
     }
 
     public void getAllTransfersById(User user, List<Transfer> transfers) {

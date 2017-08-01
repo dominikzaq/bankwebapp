@@ -7,6 +7,8 @@ import com.pkproject.bank.util.SessionUtil;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.util.Map;
@@ -15,11 +17,23 @@ import java.util.Map;
  * Created by domin on 6/21/17.
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class TransferMoney {
     private TransferDAO transferDAO = new TransferDAO();
     private Transfer transfer = new Transfer();
+    private UserLogin login;
     private User user = new User();
+
+    @ManagedProperty(value = "#{login}")
+    UserLogin userLogin;
+
+    public UserLogin getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(UserLogin userLogin) {
+        this.userLogin = userLogin;
+    }
 
     public Transfer getTransfer() {
         return transfer;
@@ -30,18 +44,18 @@ public class TransferMoney {
     }
 
     public String transferMoney() {
-
-        Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-        UserLogin  userLogin = (UserLogin) sessionMap.get("userLogin");
         user = userLogin.getUser();
-        transferDAO.sendMoney(user, transfer);
+        if(transfer.getAmount() > 0 && transfer.getAmount() < user.getMoney()) {
+            transferDAO.sendMoney(user, transfer);
+            transfer = new Transfer();
+            userLogin.getUser().setMoney(userLogin.getUser().getMoney() - transfer.getAmount());
+        } else {
+            new FacesMessage(FacesMessage.SEVERITY_WARN,
+                    "Incorrect amount",
+                    "Please enter correct amount");
+        }
 
-        transferDAO = new TransferDAO();
-        user = new User();
-        user.setIdAccount(1);
-        user.setNumberAccount("111111111111");
-        transferDAO.sendMoney(user, transfer);
-        return "/client/mainclient";
+        return "/client/transfer/transfer";
     }
 
 

@@ -87,6 +87,8 @@ public class UserLogin implements Serializable {
         boolean valid = LoginDAO.validate(user, "client", transfer, deposit);
 
         if (valid) {
+            FacesContext.getCurrentInstance().getExternalContext()
+                    .getRequestMap().put("user", this);
             return "client/mainclient";
         } else {
             FacesContext.getCurrentInstance().addMessage(
