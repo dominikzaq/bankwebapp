@@ -34,26 +34,26 @@ public class TransferDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        user.setMoney(user.getMoney() - transfer.getAmount());
 
-  /*      query = "UPDATE `bank`.`Account` SET `money`=? WHERE `idAccount`= ?";
+        query = "UPDATE `bank`.`Account` SET `money`=? WHERE `idAccount`= ?";
         con = DataConnect.getConnection();
         try {
             ps = con.prepareStatement(query);
-            ps.setDouble(1,user.getMoney() - transfer.getAmount());
+            ps.setDouble(1,user.getMoney());
             ps.setInt(2, user.getIdAccount());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        transfer = new Transfer();*/
-
     }
 
     public void getAllTransfersById(User user, List<Transfer> transfers) {
-        query = "select * from Account  as a join Transfer as t on a.idAccount = t.Account_idAccount where a.idAccount = 1";
+        query = "select * from Account  as a join Transfer as t on a.idAccount = t.Account_idAccount where a.idAccount = ?";
         con = DataConnect.getConnection();
         try {
             ps = con.prepareStatement(query);
+            ps.setInt(1, user.getIdAccount());
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()) {

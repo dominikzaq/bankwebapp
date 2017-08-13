@@ -20,27 +20,29 @@
         </div>
 
         <div id="content">
-            <p:dataTable var="transfer" value="#{transferView.transfers}">
+            <p:dataTable var="t" value="#{transferView.transfers}">
                 <p:column headerText="Id">
-                    <h:outputText value="#{transfer.idTransfer}" />
+                    <h:outputText value="#{t.idTransfer}" />
                 </p:column>
 
                 <p:column headerText="Data">
-                    <h:outputText value="#{transfer.dataTransfer}" />
+                    <h:outputText value="#{t.dataTransfer}" />
                 </p:column>
 
                 <p:column headerText="receiver/sender">
-                    <h:outputText value="#{transfer.accountNumber}" />
+                    <h:outputText value="#{t.accountNumber}" />
                 </p:column>
 
                 <p:column headerText="description of the operation">
-                    <h:outputText value="#{transfer.transferTitle}" />
+                    <h:outputText value="#{t.transferTitle}" />
                 </p:column>
+
                 <p:column headerText="The amount of operation">
-                    <h:outputText value="#{transfer.amount}" />
+                    <h:outputText value="#{t.amount}" />
                 </p:column>
+
                 <p:column headerText="balance">
-                    <h:outputText value="#{transfer.balance}" />
+                    <h:outputText value="#{t.balance}" />
                 </p:column>
             </p:dataTable>
         </div>

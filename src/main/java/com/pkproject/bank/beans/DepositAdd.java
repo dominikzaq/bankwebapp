@@ -48,7 +48,7 @@ public class DepositAdd implements Serializable{
                                     "Incorrect sum of money",
                             "\n" +
                                     "You do not have sufficient funds in your account"));
-        } else if(deposit.getAmount() > 1000 && deposit.getAmount() < user.getMoney()) {
+        } else if(deposit.getAmount() > 1000 && deposit.getAmount() <= user.getMoney()) {
             depositDAO.createDeposit(user,deposit);
             FacesContext.getCurrentInstance().addMessage(
                     null,

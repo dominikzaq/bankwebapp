@@ -5,7 +5,9 @@ import com.pkproject.bank.dao.TransferDAO;
 import com.pkproject.bank.model.Transfer;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
@@ -21,9 +23,19 @@ import java.util.Map;
 @SessionScoped
 public class TransferView implements Serializable{
 
-    private List<Transfer> transfers = new ArrayList<>();
-    private TransferDAO transferDAO = new TransferDAO();
+    @ManagedProperty(value = "user")
     private User user = new User();
+
+    private List<Transfer> transfers;
+    private TransferDAO transferDAO;
+
+    @PostConstruct
+    public void init() {
+        transfers = new ArrayList<>();
+        transferDAO = new TransferDAO();
+        transferDAO.getAllTransfersById(user, transfers);
+    }
+
     public List<Transfer> getTransfers() {
         return transfers;
     }
@@ -32,12 +44,13 @@ public class TransferView implements Serializable{
         this.transfers = transfers;
     }
 
-    public String getAllTransfers() {
-        Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-        UserLogin  userLogin = (UserLogin) sessionMap.get("userLogin");
-        user = userLogin.getUser();
-        transferDAO.getAllTransfersById(user, transfers);
-
-        return "/client/transfer/checkTransfer";
+    public User getUser() {
+        return user;
     }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
 }

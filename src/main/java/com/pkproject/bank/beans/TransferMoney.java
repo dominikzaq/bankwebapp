@@ -23,18 +23,9 @@ public class TransferMoney {
 
     @ManagedProperty(value = "#{transfer}")
     private Transfer transfer;
+
+    @ManagedProperty(value = "#{user}")
     private User user;
-
-    @ManagedProperty(value = "#{login}")
-    UserLogin userLogin;
-
-    public UserLogin getUserLogin() {
-        return userLogin;
-    }
-
-    public void setUserLogin(UserLogin userLogin) {
-        this.userLogin = userLogin;
-    }
 
     public Transfer getTransfer() {
         return transfer;
@@ -44,18 +35,24 @@ public class TransferMoney {
         this.transfer = transfer;
     }
 
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public String transferMoney() {
-        user = userLogin.getUser();
-        if(transfer.getAmount() > 0) {
+        if(transfer.getAmount() > 0 && transfer.getAmount() <= user.getMoney()) {
             transferDAO.sendMoney(user, transfer);
-/*
-            userLogin.getUser().setMoney(userLogin.getUser().getMoney() - transfer.getAmount());
-*/
         } else {
             new FacesMessage(FacesMessage.SEVERITY_WARN,
                     "Incorrect amount",
                     "Please enter correct amount");
         }
+        transfer = new Transfer();
         return "/client/transfer/transfer";
     }
 
