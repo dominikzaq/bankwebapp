@@ -4,11 +4,9 @@ import com.pkproject.bank.beans.User;
 import com.pkproject.bank.model.Deposit;
 import com.pkproject.bank.model.Transfer;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
+import java.sql.*;
+import java.util.*;
+import java.util.Date;
 
 /**
  * Created by domin on 6/20/17.
@@ -19,6 +17,24 @@ public class DepositDAO {
     String query = "";
 
     public void createDeposit(User user, Deposit deposit) {
+        /*
+         * delete money with account
+         */
+        user.setMoney(user.getMoney() - deposit.getAmount());
+        query = "UPDATE `bank`.`Account` SET `money`=? WHERE `idAccount`= ?";
+        con = DataConnect.getConnection();
+        try {
+            ps = con.prepareStatement(query);
+            ps.setDouble(1, user.getMoney());
+            ps.setInt(2, user.getIdAccount());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        /*
+         * add money to deposit
+         */
         query = "INSERT INTO `bank`.`Deposit` (`name_deposit`, `closing_date`,`amount`, `Account_idAccount`) VALUES (?, '2017-05-09',?, ?);\n";
         con = DataConnect.getConnection();
         try {
@@ -30,9 +46,6 @@ public class DepositDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-        //usun pieniadze z konta
     }
 
     public void deleteDepositById(User user, Deposit deposit) {
@@ -45,19 +58,26 @@ public class DepositDAO {
 
     }
 
-    public void getAllDeposit(List<Deposit> deposits) {
-        query = "SELECT *FROM `bank`.`Deposit` WHERE `Account_idAccount`='4';\n";
+    public void getAllDeposit(List<Deposit> deposits, User user) {
+        query = "SELECT *FROM `bank`.`Deposit` WHERE `Account_idAccount`= ?;\n";
+        con = DataConnect.getConnection();
         try {
             ps = con.prepareStatement(query);
+            ps.setInt(1, user.getIdAccount());
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()) {
                 Deposit deposit = new Deposit();
-                deposit.setIdDeposit(rs.getInt("idDeposit"));
+           /*     deposit.setIdDeposit(rs.getInt("idDeposit"));
                 deposit.setNameOfDeposit(rs.getString("name_deposit"));
                 deposit.setAmount(rs.getDouble("amount"));
-                deposit.setClosingDate(rs.getDate(String.valueOf(rs.getDate("closing_date"))));
-                deposit.setInterestRate(rs.getDouble("1.5"));
+                deposit.setClosingDate(rs.getDate("closing_date"));
+                deposit.setInterestRate(1.5);*/
+                deposit.setIdDeposit(1);
+                deposit.setNameOfDeposit("asd");
+                deposit.setAmount(1.015);
+                deposit.setClosingDate(new Date());
+                deposit.setInterestRate(1.5);
                 deposits.add(deposit);
             }
 

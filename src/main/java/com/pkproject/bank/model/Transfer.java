@@ -1,6 +1,7 @@
 package com.pkproject.bank.model;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.util.Date;
@@ -9,7 +10,7 @@ import java.util.Date;
  * Created by domin on 5/16/17.
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class Transfer implements Serializable {
     private int idTransfer;
     private String recipientName;

@@ -35,7 +35,7 @@ public class TransferDAO {
             e.printStackTrace();
         }
 
-        query = "UPDATE `bank`.`Account` SET `money`=? WHERE `idAccount`= ?";
+  /*      query = "UPDATE `bank`.`Account` SET `money`=? WHERE `idAccount`= ?";
         con = DataConnect.getConnection();
         try {
             ps = con.prepareStatement(query);
@@ -45,7 +45,7 @@ public class TransferDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        transfer = new Transfer();
+        transfer = new Transfer();*/
 
     }
 

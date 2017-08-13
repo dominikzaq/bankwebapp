@@ -20,9 +20,10 @@ import java.util.Map;
 @RequestScoped
 public class TransferMoney {
     private TransferDAO transferDAO = new TransferDAO();
-    private Transfer transfer = new Transfer();
-    private UserLogin login;
-    private User user = new User();
+
+    @ManagedProperty(value = "#{transfer}")
+    private Transfer transfer;
+    private User user;
 
     @ManagedProperty(value = "#{login}")
     UserLogin userLogin;
@@ -45,16 +46,16 @@ public class TransferMoney {
 
     public String transferMoney() {
         user = userLogin.getUser();
-        if(transfer.getAmount() > 0 && transfer.getAmount() < user.getMoney()) {
+        if(transfer.getAmount() > 0) {
             transferDAO.sendMoney(user, transfer);
-            transfer = new Transfer();
+/*
             userLogin.getUser().setMoney(userLogin.getUser().getMoney() - transfer.getAmount());
+*/
         } else {
             new FacesMessage(FacesMessage.SEVERITY_WARN,
                     "Incorrect amount",
                     "Please enter correct amount");
         }
-
         return "/client/transfer/transfer";
     }
 

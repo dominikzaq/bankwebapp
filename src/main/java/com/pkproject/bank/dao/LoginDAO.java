@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginDAO {
-	public static boolean validate(User user, String typeAccount, Transfer transfer, Deposit deposit) {
+	public static boolean validate(User user, String typeAccount, Transfer transfer) {
 		Connection con = null;
 		PreparedStatement ps = null;
 		String query = "";

@@ -10,6 +10,7 @@ import com.pkproject.bank.util.SessionUtil;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -19,7 +20,6 @@ import java.io.Serializable;
  * Created by domin on 12.04.17.
  */
 
-
 @ManagedBean(name = "login")
 @SessionScoped
 public class UserLogin implements Serializable {
@@ -27,10 +27,13 @@ public class UserLogin implements Serializable {
     private String password;
     private String typeAccount;
 
-    private User user = new User();
-    private Account account = new Account();
-    private Transfer transfer = new Transfer();
-    private Deposit deposit = new Deposit();
+    @ManagedProperty(value = "#{user}")
+    private User user;
+
+    @ManagedProperty(value = "#{message}")
+    private Transfer transfer;
+
+
     private AccountDAO accountDAO = new AccountDAO();
 
     public User getUser() {
@@ -41,28 +44,12 @@ public class UserLogin implements Serializable {
         this.user = user;
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
     public Transfer getTransfer() {
         return transfer;
     }
 
     public void setTransfer(Transfer transfer) {
         this.transfer = transfer;
-    }
-
-    public Deposit getDeposit() {
-        return deposit;
-    }
-
-    public void setDeposit(Deposit deposit) {
-        this.deposit = deposit;
     }
 
     public String getUsername() {
@@ -84,7 +71,7 @@ public class UserLogin implements Serializable {
     public String validateClient() {
         user.setUsername(username);
         user.setPassword1(password);
-        boolean valid = LoginDAO.validate(user, "client", transfer, deposit);
+        boolean valid = LoginDAO.validate(user, "client", transfer);
 
         if (valid) {
             FacesContext.getCurrentInstance().getExternalContext()
@@ -103,7 +90,7 @@ public class UserLogin implements Serializable {
     public String validateEmployee() {
         user.setUsername(username);
         user.setPassword1(password);
-        boolean valid = LoginDAO.validate(user, "employee", transfer, deposit);
+        boolean valid = LoginDAO.validate(user, "employee", transfer);
 
         if (valid) {
             return "employee/mainemployee";
