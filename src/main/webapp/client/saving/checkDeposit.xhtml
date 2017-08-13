@@ -22,32 +22,32 @@
         <div id="content">
             <h:form>
                 <p:panelGrid columns="3">
-                    <p:outputLabel value="Delete deposit: "/>
+                    <p:outputLabel value="Type id,if you want delete deposit: "/>
                     <p:inputText value="#{search.search}" required="true" label="search"/>
                     <p:commandButton action="#{searchBean.search}" value="delete deposit" />
                 </p:panelGrid>
             </h:form>
 
             <h:form>
-                <p:dataTable var="deposit" value="#{depositView.deposits}">
+                <p:dataTable var="dep" value="#{depositView.deposits}">
                     <p:column headerText="Id">
-                        <h:outputText value="#{deposit.idDeposit}" />
+                        <h:outputText value="#{dep.idDeposit}" />
                     </p:column>
 
                     <p:column headerText="Name of deposit:">
-                        <h:outputText value="#{deposit.nameOfDeposit}" />
+                        <h:outputText value="#{dep.nameOfDeposit}" />
                     </p:column>
 
                     <p:column headerText="The contractual of deposit">
-                        <h:outputText value="#{deposit.closingDate}" />
+                        <h:outputText value="#{dep.closingDate}" />
                     </p:column>
 
                     <p:column headerText="Minimum deposit amount">
-                        <h:outputText value="#{deposit.minimumOfDepositAmount}" />
+                        <h:outputText value="#{dep.minimumOfDepositAmount}" />
                     </p:column>
 
                     <p:column headerText="The amount of deposit">
-                        <h:outputText value="#{deposit.amount}" />
+                        <h:outputText value="#{dep.amount}" />
                     </p:column>
                 </p:dataTable>
             </h:form>

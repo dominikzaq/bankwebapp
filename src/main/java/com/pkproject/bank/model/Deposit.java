@@ -13,19 +13,19 @@ import java.util.Date;
 @ManagedBean
 @ViewScoped
 public class Deposit implements Serializable {
-    private int idDeposit;
+    private Integer idDeposit;
     private String nameOfDeposit;
-    private int accountDeposit;
+    private Integer accountDeposit;
     private Double amount;
     private Double interestRate = 0.03;
-    private int minimumOfDepositAmount = 1000;
+    private Integer minimumOfDepositAmount = 1000;
     private Date closingDate;
 
-    public int getIdDeposit() {
+    public Integer getIdDeposit() {
         return idDeposit;
     }
 
-    public void setIdDeposit(int idDeposit) {
+    public void setIdDeposit(Integer idDeposit) {
         this.idDeposit = idDeposit;
     }
 
@@ -37,11 +37,11 @@ public class Deposit implements Serializable {
         this.nameOfDeposit = nameOfDeposit;
     }
 
-    public int getAccountDeposit() {
+    public Integer getAccountDeposit() {
         return accountDeposit;
     }
 
-    public void setAccountDeposit(int accountDeposit) {
+    public void setAccountDeposit(Integer accountDeposit) {
         this.accountDeposit = accountDeposit;
     }
 
@@ -62,12 +62,12 @@ public class Deposit implements Serializable {
     }
 
 
-    public void setMinimumOfDepositAmount(int minimumOfDepositAmount) {
-        this.minimumOfDepositAmount = minimumOfDepositAmount;
+    public Integer getMinimumOfDepositAmount() {
+        return minimumOfDepositAmount;
     }
 
-    public int getMinimumOfDepositAmount() {
-        return minimumOfDepositAmount;
+    public void setMinimumOfDepositAmount(Integer minimumOfDepositAmount) {
+        this.minimumOfDepositAmount = minimumOfDepositAmount;
     }
 
     public Date getClosingDate() {

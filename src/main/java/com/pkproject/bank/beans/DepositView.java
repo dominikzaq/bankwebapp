@@ -3,6 +3,7 @@ package com.pkproject.bank.beans;
 import com.pkproject.bank.dao.DepositDAO;
 import com.pkproject.bank.model.Deposit;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,17 +15,25 @@ import java.util.List;
 @ManagedBean(name = "depositView")
 @ViewScoped
 public class DepositView implements Serializable {
-    private List<Deposit> deposits = new ArrayList<>();
-    private DepositDAO depositDAO = new DepositDAO();
+    private List<Deposit> deposits;
+    private DepositDAO depositDAO;
+
+    @PostConstruct
+    public void init() {
+        depositDAO = new DepositDAO();
+        deposits = new ArrayList<>();
+        depositDAO.getAllDeposit(deposits, user);
+
+    }
 
     @ManagedProperty(value = "#{user}")
     private User user;
 
-/*
     public void deleteDepositById() {
+/*
         depositDAO.deleteDepositById(user, deposit);
-    }
 */
+    }
 
     public User getUser() {
         return user;
@@ -36,7 +45,6 @@ public class DepositView implements Serializable {
 
 
     public List<Deposit> getDeposits() {
-        depositDAO.getAllDeposit(deposits, user);
         return deposits;
     }
 }

@@ -68,15 +68,10 @@ public class DepositDAO {
 
             while(rs.next()) {
                 Deposit deposit = new Deposit();
-           /*     deposit.setIdDeposit(rs.getInt("idDeposit"));
+                deposit.setIdDeposit(rs.getInt("idDeposit"));
                 deposit.setNameOfDeposit(rs.getString("name_deposit"));
                 deposit.setAmount(rs.getDouble("amount"));
                 deposit.setClosingDate(rs.getDate("closing_date"));
-                deposit.setInterestRate(1.5);*/
-                deposit.setIdDeposit(1);
-                deposit.setNameOfDeposit("asd");
-                deposit.setAmount(1.015);
-                deposit.setClosingDate(new Date());
                 deposit.setInterestRate(1.5);
                 deposits.add(deposit);
             }
