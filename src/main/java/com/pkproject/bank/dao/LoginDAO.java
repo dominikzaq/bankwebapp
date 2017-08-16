@@ -51,11 +51,12 @@ public class LoginDAO {
 					return true;
 				}
 			} else {
-				query = "Select * from Account as a  where a.username = ? and a.password = ?";
+				query = "Select * from Account as a  where a.username = ? and a.password = ? AND type_account= ?";
 				con = DataConnect.getConnection();
 				ps = con.prepareStatement(query);
 				ps.setString(1, user.getUsername());
 				ps.setString(2, user.getPassword1());
+				ps.setString(3, "employee");
 				ResultSet rs = ps.executeQuery();
 
 				if (rs.next()) {

@@ -123,7 +123,7 @@
                                 <p:password id="password1" value="#{userWizard.user.password1}" match="password2" required="true" label="Password1"/>
 
                                 <h:outputText value="Password2: " />
-                                <p:password id="password2" value="#{userWizard.user.password2}" required="true" label="Password2"/>
+                                <p:password id="password2" value="#{userWizard.user.tempPassword2}" required="true" label="Password2"/>
                             </h:panelGrid>
                         </p:panel>
                     </p:tab>
@@ -212,12 +212,6 @@
 
                                         <h:outputText value="Username: " />
                                         <h:outputText value="#{userWizard.user.username}" styleClass="outputLabel"/>
-
-                                        <h:outputText value="Password1: " />
-                                        <h:outputText value="#{userWizard.user.password1}" styleClass="outputLabel"/>
-
-                                        <h:outputText value="Password2: " />
-                                        <h:outputText value="#{userWizard.user.password2}" rstyleClass="outputLabel"/>
 
                                         <h:outputText />
                                         <h:outputText />

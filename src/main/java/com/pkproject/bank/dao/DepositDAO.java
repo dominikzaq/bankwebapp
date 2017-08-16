@@ -49,12 +49,28 @@ public class DepositDAO {
     }
 
     public void deleteDepositById(User user, Deposit deposit) {
-        query = "DELETE FROM `bank`.`Deposit` WHERE `idDeposit`='1';\n";
+        query = "DELETE FROM `bank`.`Deposit` WHERE `idDeposit`=?;\n";
 
+        con = DataConnect.getConnection();
+        try {
+            ps = con.prepareStatement(query);
+            ps.setInt(1, deposit.getIdDeposit());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-
-        //dodaj pieniadze do konta
-        query = "";
+        //add money to user' account
+        user.setMoney(user.getMoney() + deposit.getAmount());
+        try {
+            query = "UPDATE `bank`.`Account` SET `money`=? WHERE `idAccount`=?;";
+            ps = con.prepareStatement(query);
+            ps.setDouble(1,user.getMoney());
+            ps.setInt(2, user.getIdAccount());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 

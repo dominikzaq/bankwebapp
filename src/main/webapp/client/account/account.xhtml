@@ -74,24 +74,6 @@
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
-
-                <p:tab id="account" title="Account">
-                    <p:panel header="Account">
-                        <h:panelGrid columns="2" columnClasses="label, value">
-                            <h:outputText value="account number: " />
-                            <h:outputText value="#{login.user.numberAccount}" styleClass="outputLabel"/>
-
-                            <h:outputText value="Money: " />
-                            <h:outputText value="#{login.user.money}" styleClass="outputLabel"/>
-
-                            <h:outputText value="Username: " />
-                            <h:outputText value="#{login.user.username}" styleClass="outputLabel"/>
-
-                            <h:outputText />
-                            <h:outputText />
-                        </h:panelGrid>
-                    </p:panel>
-                </p:tab>
             </div>
         </h:form>
     </ui:component>

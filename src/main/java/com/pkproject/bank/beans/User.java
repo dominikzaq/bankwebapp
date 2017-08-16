@@ -50,6 +50,7 @@ public class User implements Serializable {
     private Integer phoneNumber;
     private String email;
 
+
     public Integer getIdClient() {
         return idClient;
     }

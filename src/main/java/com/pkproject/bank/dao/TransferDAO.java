@@ -3,10 +3,9 @@ package com.pkproject.bank.dao;
 import com.pkproject.bank.beans.User;
 import com.pkproject.bank.model.Transfer;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -18,7 +17,7 @@ public class TransferDAO {
     String query = "";
 
     public void sendMoney(User user, Transfer transfer) {
-        query = "INSERT INTO `bank`.`Transfer` (`recipient_name`, `recipient_account_number`, `sender_account_number`, `recipient_address`, `transfer_title`, `amount`, `data_transfer`, `Account_idAccount`) VALUES (?, ?, ?, ?, ?, ?, '2017-06-06', ?);\n";
+        query = "INSERT INTO `bank`.`Transfer` (`recipient_name`, `recipient_account_number`, `sender_account_number`, `recipient_address`, `transfer_title`, `amount`, `data_transfer`, `Account_idAccount`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);\n";
         con = DataConnect.getConnection();
         try {
             ps = con.prepareStatement(query);
@@ -28,7 +27,9 @@ public class TransferDAO {
             ps.setString(4, transfer.getRecipientAddress());
             ps.setString(5,transfer.getTransferTitle());
             ps.setDouble(6, transfer.getAmount());
-            ps.setInt(7, user.getIdAccount());
+            DateFormat df=new SimpleDateFormat("dd-MM-yyyy");
+            ps.setDate(7, Date.valueOf(df.format(transfer.getDataTransfer())));
+            ps.setInt(8, user.getIdAccount());
 
             ps.execute();
         } catch (SQLException e) {

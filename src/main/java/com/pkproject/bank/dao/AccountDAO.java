@@ -159,7 +159,6 @@ public class AccountDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 }
 

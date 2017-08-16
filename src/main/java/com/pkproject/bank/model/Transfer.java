@@ -4,7 +4,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
+
 
 /**
  * Created by domin on 5/16/17.

@@ -23,13 +23,14 @@
             <h:form>
                 <p:panelGrid columns="3">
                     <p:outputLabel value="Type id,if you want delete deposit: "/>
-                    <p:inputText value="#{search.search}" required="true" label="search"/>
-                    <p:commandButton action="#{searchBean.search}" value="delete deposit" />
+                    <p:inputText value="#{depositView.idDelete}" required="true" label="search"/>
+                    <p:commandButton action="#{depositView.deleteDepositById}" value="delete deposit" update=":d"/>
                 </p:panelGrid>
             </h:form>
 
-            <h:form>
-                <p:dataTable var="dep" value="#{depositView.deposits}">
+            <h:form id="d">
+                <p:messages/>
+                <p:dataTable  var="dep" value="#{depositView.deposits}">
                     <p:column headerText="Id">
                         <h:outputText value="#{dep.idDeposit}" />
                     </p:column>

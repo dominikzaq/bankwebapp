@@ -4,7 +4,9 @@ import com.pkproject.bank.dao.DepositDAO;
 import com.pkproject.bank.model.Deposit;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.*;
+import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +19,11 @@ import java.util.List;
 public class DepositView implements Serializable {
     private List<Deposit> deposits;
     private DepositDAO depositDAO;
+    private int idDelete;
 
+    @ManagedProperty(value = "#{user}")
+    private User user;
+    
     @PostConstruct
     public void init() {
         depositDAO = new DepositDAO();
@@ -26,13 +32,28 @@ public class DepositView implements Serializable {
 
     }
 
-    @ManagedProperty(value = "#{user}")
-    private User user;
+    public int getIdDelete() {
+        return idDelete;
+    }
 
-    public void deleteDepositById() {
-/*
-        depositDAO.deleteDepositById(user, deposit);
-*/
+    public void setIdDelete(int idDelete) {
+        this.idDelete = idDelete;
+    }
+
+    public String deleteDepositById() {
+        Deposit deposit = deposits.stream().filter(d -> d.getIdDeposit() == idDelete).findFirst().orElse(null);
+
+        if(deposits != null) {
+            depositDAO.deleteDepositById(user, deposit);
+            deposits.remove(deposit);
+        } else {
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                            "Incorrect id of deposit",
+                            "Please enter correct id of deposit"));
+        }
+        return "client/saving/checkDeposit";
     }
 
     public User getUser() {

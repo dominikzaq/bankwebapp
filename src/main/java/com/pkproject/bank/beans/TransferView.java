@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,13 +19,12 @@ import java.util.Map;
 /**
  * Created by domin on 12.04.17.
  */
-@Component
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class TransferView implements Serializable{
 
-    @ManagedProperty(value = "user")
-    private User user = new User();
+    @ManagedProperty(value = "#{user}")
+    private User user;
 
     private List<Transfer> transfers;
     private TransferDAO transferDAO;
@@ -33,7 +33,9 @@ public class TransferView implements Serializable{
     public void init() {
         transfers = new ArrayList<>();
         transferDAO = new TransferDAO();
+/*
         transferDAO.getAllTransfersById(user, transfers);
+*/
     }
 
     public List<Transfer> getTransfers() {
