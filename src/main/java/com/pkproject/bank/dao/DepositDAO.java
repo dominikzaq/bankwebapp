@@ -20,7 +20,7 @@ public class DepositDAO {
         /*
          * delete money with account
          */
-        user.setMoney(user.getMoney() - deposit.getAmount());
+        user.deleteMoney(deposit.getAmount());
         query = "UPDATE `bank`.`Account` SET `money`=? WHERE `idAccount`= ?";
         con = DataConnect.getConnection();
         try {
@@ -35,13 +35,16 @@ public class DepositDAO {
         /*
          * add money to deposit
          */
-        query = "INSERT INTO `bank`.`Deposit` (`name_deposit`, `closing_date`,`amount`, `Account_idAccount`) VALUES (?, '2017-05-09',?, ?);\n";
+        query = "INSERT INTO `bank`.`Deposit` (`name_deposit`, `closing_date`,`amount`, `Account_idAccount`) VALUES (?, ?,?, ?);\n";
         con = DataConnect.getConnection();
         try {
             ps = con.prepareStatement(query);
             ps.setString(1, deposit.getNameOfDeposit());
-            ps.setDouble(2, deposit.getAmount());
-            ps.setInt(3, user.getIdAccount());
+            long millis=System.currentTimeMillis();
+            java.sql.Date date=new java.sql.Date(millis);
+            ps.setDate(2, date);
+            ps.setDouble(3, deposit.getAmount());
+            ps.setInt(4, user.getIdAccount());
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,7 +64,7 @@ public class DepositDAO {
         }
 
         //add money to user' account
-        user.setMoney(user.getMoney() + deposit.getAmount());
+        user.addMoney(deposit.getAmount());
         try {
             query = "UPDATE `bank`.`Account` SET `money`=? WHERE `idAccount`=?;";
             ps = con.prepareStatement(query);

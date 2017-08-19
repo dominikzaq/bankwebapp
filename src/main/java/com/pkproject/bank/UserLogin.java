@@ -106,8 +106,7 @@ public class UserLogin implements Serializable {
 
 
     public String logout() {
-        HttpSession session = SessionUtil.getSession();
-        session.invalidate();
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/login";
     }
 

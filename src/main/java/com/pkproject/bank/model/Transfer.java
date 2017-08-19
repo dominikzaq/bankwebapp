@@ -4,7 +4,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 
 /**
@@ -13,7 +13,7 @@ import java.sql.Date;
 @ManagedBean
 @RequestScoped
 public class Transfer implements Serializable {
-    private int idTransfer;
+    private Integer idTransfer;
     private String recipientName;
     private String accountNumberRecipient;
     private String senderAccountNumber;
@@ -25,11 +25,11 @@ public class Transfer implements Serializable {
     private String accountNumber;
     private Double balance;
 
-    public int getIdTransfer() {
+    public Integer getIdTransfer() {
         return idTransfer;
     }
 
-    public void setIdTransfer(int idTransfer) {
+    public void setIdTransfer(Integer idTransfer) {
         this.idTransfer = idTransfer;
     }
 

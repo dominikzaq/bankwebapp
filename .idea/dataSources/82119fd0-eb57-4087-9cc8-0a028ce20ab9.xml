@@ -266,28 +266,32 @@
       <Position>6</Position>
       <DataType>varchar(1000)|0</DataType>
     </column>
-    <column id="69" parent="18" name="amount">
+    <column id="69" parent="18" name="amount_of_operation">
       <Position>7</Position>
       <DataType>double|0</DataType>
     </column>
-    <column id="70" parent="18" name="data_transfer">
+    <column id="70" parent="18" name="balance">
       <Position>8</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="71" parent="18" name="data_transfer">
+      <Position>9</Position>
       <DataType>date|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="71" parent="18" name="Account_idAccount">
-      <Position>9</Position>
+    <column id="72" parent="18" name="Account_idAccount">
+      <Position>10</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <index id="72" parent="18" name="Account_idAccount">
+    <index id="73" parent="18" name="Transfer_ibfk_1">
       <ColNames>Account_idAccount</ColNames>
     </index>
-    <key id="73" parent="18" name="PRIMARY">
+    <key id="74" parent="18" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idTransfer</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="74" parent="18" name="Transfer_ibfk_1">
+    <foreign-key id="75" parent="18" name="Transfer_ibfk_1">
       <ColNames>Account_idAccount</ColNames>
       <RefSchemaName>bank</RefSchemaName>
       <RefTableName>Account</RefTableName>

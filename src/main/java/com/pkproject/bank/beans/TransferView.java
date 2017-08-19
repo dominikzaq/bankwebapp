@@ -33,9 +33,7 @@ public class TransferView implements Serializable{
     public void init() {
         transfers = new ArrayList<>();
         transferDAO = new TransferDAO();
-/*
         transferDAO.getAllTransfersById(user, transfers);
-*/
     }
 
     public List<Transfer> getTransfers() {

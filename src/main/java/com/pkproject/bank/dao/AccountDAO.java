@@ -3,10 +3,8 @@ package com.pkproject.bank.dao;
 import com.pkproject.bank.beans.Account;
 import com.pkproject.bank.beans.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 
 
 /**
@@ -21,7 +19,7 @@ public class AccountDAO {
         con = DataConnect.getConnection();
 
        query = "INSERT INTO `bank`.`Client` (`firstname`, `lastname`,`email`, `sex`, `pesel`, `date_of_birth`, `place_of_birth`, `citizenship`, `city`, `street`, `number_street`, `postcode`, `country`, `phone`) " +
-                "VALUES (?, ?, ?, ?, ?, '2017-05-05', ?, ?, ?, ?, ?, ?, ?, ?);\n";
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);\n";
         try {
             preparedStatement = con.prepareStatement(query);
             preparedStatement.setString(1, user.getFirstname());
@@ -29,15 +27,16 @@ public class AccountDAO {
             preparedStatement.setString(3, user.getEmail());
             preparedStatement.setString(4, user.getSex());
             preparedStatement.setString(5, user.getPesel());
-           // preparedStatement.setDate(5, user.getDateOfBirth());
-            preparedStatement.setString(6, user.getPlaceOfBirth());
-            preparedStatement.setString(7, user.getCitizenship());
-            preparedStatement.setString(8, user.getCity());
-            preparedStatement.setString(9, user.getStreet());
-            preparedStatement.setInt(10, user.getStreetNumber());
-            preparedStatement.setString(11, user.getPostCode());
-            preparedStatement.setString(12, user.getCountry());
-            preparedStatement.setInt(13, user.getPhoneNumber());
+            Date date=Date.valueOf("" +user.getDateOfBirth());
+            preparedStatement.setDate(6, date);
+            preparedStatement.setString(7, user.getPlaceOfBirth());
+            preparedStatement.setString(8, user.getCitizenship());
+            preparedStatement.setString(9, user.getCity());
+            preparedStatement.setString(10, user.getStreet());
+            preparedStatement.setInt(11, user.getStreetNumber());
+            preparedStatement.setString(12, user.getPostCode());
+            preparedStatement.setString(13, user.getCountry());
+            preparedStatement.setInt(14, user.getPhoneNumber());
             preparedStatement.execute();
 
             query = "select idClient from `Client` where pesel='" + user.getPesel() + "'";
@@ -109,11 +108,22 @@ public class AccountDAO {
     }
 
 
-    public void changePersonalDetails(User tempUser) {
+    public void changePersonalDetails(User user) {
         con = DataConnect.getConnection();
         try {
             query = "UPDATE `bank`.`Client` SET `firstname`=?, `lastname`=?, `sex`=?, `pesel`=?, `date_of_birth`=?, `place_of_birth`=?, `citizenship`=? WHERE `idClient`=?;\n";
             preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, user.getFirstname());
+            preparedStatement.setString(2, user.getLastname());
+            preparedStatement.setString(3, user.getSex());
+            preparedStatement.setString(4, user.getPesel());
+
+            Date date=Date.valueOf("2020-04-01");
+
+            preparedStatement.setDate(5, date);
+            preparedStatement.setString(6, user.getPlaceOfBirth());
+            preparedStatement.setString(7, user.getCitizenship());
+            preparedStatement.setInt(8, user.getIdClient());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -130,7 +140,7 @@ public class AccountDAO {
             preparedStatement.setInt(3, user.getStreetNumber());
             preparedStatement.setString(4, user.getPostCode());
             preparedStatement.setString(5, user.getCountry());
-            preparedStatement.setInt(6, user.getIdAccount());
+            preparedStatement.setInt(6, user.getIdClient());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -138,23 +148,27 @@ public class AccountDAO {
 
     }
 
-    public void changeContactInformation(User tempUser) {
+    public void changeContactInformation(User user) {
         con = DataConnect.getConnection();
         query = "UPDATE `bank`.`Client` SET `email`=?, `phone`=? WHERE `idClient`=?;\n\n";
         try {
             preparedStatement = con.prepareStatement(query);
-
+            preparedStatement.setString(1, user.getEmail());
+            preparedStatement.setInt(2, user.getPhoneNumber());
+            preparedStatement.setInt(3, user.getIdClient());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void moneyOperation(User tempUser) {
+    public void moneyOperation(User user) {
         con = DataConnect.getConnection();
         try {
             query = "UPDATE `bank`.`Account` SET `money`=? WHERE `idAccount`=?;";
             preparedStatement = con.prepareStatement(query);
+            preparedStatement.setDouble(1, user.getMoney());
+            preparedStatement.setInt(2, user.getIdAccount());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

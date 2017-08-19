@@ -15,7 +15,7 @@ import java.util.*;
 @ManagedBean
 @Service
 @SessionScoped
-public class User implements Serializable {
+public class User implements Serializable, Cloneable, UserInterface {
     private Integer idClient;
     private Integer idEmployee;
     private Integer idDeposit;
@@ -250,5 +250,25 @@ public class User implements Serializable {
 
     public void setTempPassword3(String tempPassword3) {
         this.tempPassword3 = tempPassword3;
+    }
+
+    public Object clone() {
+        Object clone = null;
+
+        try {
+            clone = super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+
+        return clone;
+    }
+
+    public void addMoney(double m) {
+        this.money = this.money + m;
+    }
+
+    public void deleteMoney(double m) {
+        this.money = this.money - m;
     }
 }

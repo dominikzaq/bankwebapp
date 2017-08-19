@@ -19,23 +19,21 @@
         </div>
 
         <div id="content">
-            <h:form id="send">
-                <p:panel header="Send money">
+            <h:form>
+                <p:panel id="send" header="Send money">
                     <p:messages />
                     <div class="ui-g">
                         <div class="ui-g-4">
                             <p:panelGrid columns="2">
                                 <p:outputLabel value="FROM"/>
-                                <h:outputText value="#{login.user.numberAccount}" styleClass="outputLabel"/>
+                                <h:outputText value="#{user.numberAccount}" styleClass="outputLabel"/>
 
                                 <p:outputLabel value="Available funds"/>
-                                <h:outputText value="#{login.user.money}" styleClass="outputLabel"/>
+                                <h:outputText value="#{user.money}" styleClass="outputLabel"/>
 
                                 <p:outputLabel value="Amount"/>
                                 <p:inputNumber value="#{transferMoney.transfer.amount}" required="true" label="Amount:"/>
 
-                                <p:outputLabel value="Data transfer"/>
-                                <p:calendar id="button" value="#{transferMoney.transfer.dataTransfer}" showOn="button" required="true" label="Data transfer:" />
                             </p:panelGrid>
                         </div>
                         <div class="ui-g-4">
@@ -54,12 +52,10 @@
                                 <p:outputLabel value="Transfer title:"/>
                                 <p:inputText value="#{transferMoney.transfer.transferTitle}" required="true" label="Transfer title"/>
                             </p:panelGrid>
-
-                            <p:commandButton value="send money" action="#{transferMoney.transferMoney}" update="send"/>
-
-                            <p:commandButton value="clean field" type="reset" update="send"/>
                         </div>
                     </div>
+                    <p:commandButton value="send money" action="#{transferMoney.transferMoney}" update="send"/>
+                    <p:commandButton value="clean field" type="reset" update="send"/>
                 </p:panel>
             </h:form>
         </div>

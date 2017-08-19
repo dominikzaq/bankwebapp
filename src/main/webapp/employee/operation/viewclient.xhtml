@@ -23,42 +23,40 @@
                 <p:panelGrid columns="3">
                     <p:outputLabel value="Type pesel: "/>
                     <p:inputMask value="#{search.search}" required="true" label="search" mask="99999999999"/>
-                    <p:commandButton action="#{search.searchClientByPesel}" value="Search" update=":data, x"/>
+                    <p:commandButton action="#{search.searchClientByPesel}" value="Search" update=":pl,:as,:c,:at,:pd,:m, x"/>
                 </p:panelGrid>
             </h:form>
 
-            <h:form id="data" >
-            <p:tab id="personal" title="Personal">
-                <p:panel header="Personal Details">
-                    <p:messages />
-                    <h:panelGrid columns="2" columnClasses="label, value">
-                        <h:outputText value="Firstname: " />
-                        <h:outputText value="#{search.user.firstname}" styleClass="outputLabel"/>
+            <h:form id="pl">
+                <p:tab id="personal" title="Personal">
+                    <p:panel header="Personal Details">
+                        <p:messages />
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="Firstname: " />
+                            <h:outputText value="#{search.user.firstname}" styleClass="outputLabel"/>
 
-                        <h:outputText value="Lastname: " />
-                        <h:outputText value="#{search.user.lastname}" styleClass="outputLabel"/>
+                            <h:outputText value="Lastname: " />
+                            <h:outputText value="#{search.user.lastname}" styleClass="outputLabel"/>
 
-                        <h:outputText value="Sex:" />
-                        <h:outputText value="#{search.user.sex}" styleClass="outputLabel"/>
+                            <h:outputText value="Sex:" />
+                            <h:outputText value="#{search.user.sex}" styleClass="outputLabel"/>
 
-                        <h:outputText value="Pesel: " />
-                        <h:outputText value="#{search.user.pesel}" styleClass="outputLabel"/>
+                            <h:outputText value="Pesel: " />
+                            <h:outputText value="#{search.user.pesel}" styleClass="outputLabel"/>
 
-                        <h:outputText value="dateOfBirth: " />
-                        <h:outputText value="#{search.user.dateOfBirth}" styleClass="outputLabel"/>
+                            <h:outputText value="dateOfBirth: " />
+                            <h:outputText value="#{search.user.dateOfBirth}" styleClass="outputLabel"/>
 
-                        <h:outputText value="placeOfBirth: " />
-                        <h:outputText value="#{search.user.placeOfBirth}" styleClass="outputLabel"/>
+                            <h:outputText value="placeOfBirth: " />
+                            <h:outputText value="#{search.user.placeOfBirth}" styleClass="outputLabel"/>
 
-                        <h:outputText value="citizenship: " />
-                        <h:outputText value="#{search.user.citizenship}" styleClass="outputLabel"/>
+                            <h:outputText value="citizenship: " />
+                            <h:outputText value="#{search.user.citizenship}" styleClass="outputLabel"/>
 
-                        <p:commandButton value="Change personal details"  onclick="PF('personal').show();" disabled="#{search.disable}"/>
-                    </h:panelGrid>
-                </p:panel>
-            </p:tab>
-
-                <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+                            <p:commandButton value="Change personal details"  onclick="PF('personal').show();" disabled="#{search.disable}"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
                 <p:dialog header="personal" widgetVar="personal" resizable="false" modal="true">
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
@@ -93,37 +91,37 @@
                         </p:inputText>
 
                         <f:facet name="footer">
-                            <p:commandButton value="change personal details" update="growl" action="#{search.changePersonalDetails}"  onclick="PF('personal').hide()" />
+                            <p:commandButton value="change personal details"  action="#{search.changePersonalDetails}"  onclick="PF('personal').hide()" update="pl"/>
                             <p:commandButton value="cancel" onclick="PF('personal').hide()"/>
                         </f:facet>
                     </h:panelGrid>
                 </p:dialog>
+            </h:form>
 
-            <p:tab id="address" title="Address">
-                <p:panel header="Address Details">
-                    <p:messages />
-                    <h:panelGrid columns="2" columnClasses="label, value">
-                        <h:outputText value="City: " />
-                        <h:outputText value="#{search.user.city}" styleClass="outputLabel"/>
+            <h:form id="as">
+                <p:tab id="address" title="Address">
+                    <p:panel header="Address Details">
+                        <p:messages />
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="City: " />
+                            <h:outputText value="#{search.user.city}" styleClass="outputLabel"/>
 
-                        <h:outputText value="Street: " />
-                        <h:outputText value="#{search.user.street}" styleClass="outputLabel"/>
+                            <h:outputText value="Street: " />
+                            <h:outputText value="#{search.user.street}" styleClass="outputLabel"/>
 
-                        <h:outputText value="Street number: " />
-                        <h:outputText value="#{search.user.streetNumber}" styleClass="outputLabel"/>
+                            <h:outputText value="Street number: " />
+                            <h:outputText value="#{search.user.streetNumber}" styleClass="outputLabel"/>
 
-                        <h:outputText value="Post Code: " />
-                        <h:outputText value="#{search.user.postCode}" styleClass="outputLabel"/>
+                            <h:outputText value="Post Code: " />
+                            <h:outputText value="#{search.user.postCode}" styleClass="outputLabel"/>
 
-                        <h:outputText value="Country: " />
-                        <h:outputText value="#{search.user.country}" required="true" label="Countr"/>
-                        <p:commandButton value="Change address"  onclick="PF('address').show();" disabled="#{search.disable}"/>
-                    </h:panelGrid>
-                </p:panel>
-            </p:tab>
-
-                <p:growl id="growl2" sticky="true" showDetail="true" life="3000" />
-                <p:dialog header="Address" widgetVar="address" resizable="false" modal="true">
+                            <h:outputText value="Country: " />
+                            <h:outputText value="#{search.user.country}" required="true" label="Countr"/>
+                            <p:commandButton value="Change address"  onclick="PF('address').show();" disabled="#{search.disable}"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                <p:dialog id = "a" header="Address" widgetVar="address" resizable="false" modal="true">
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="City: " />
@@ -145,30 +143,30 @@
                         <p:inputMask value="#{search.tempUser.postCode}" required="true" label="Post Code" mask="99-999"/>
 
                         <h:outputText value="Country: " />
-                        <p:inputText value="#{search.tempUser.country}" required="true" label="Countr"/>
+                        <p:inputText value="#{search.tempUser.country}" required="true" label="Country"/>
 
                         <f:facet name="footer">
-                            <p:commandButton value="change address" action="#{search.changeAddressDetails}" update="growl2" actionListener="onpass"/>
+                            <p:commandButton value="change address" action="#{search.changeAddressDetails}" update="as" actionListener="onpass"/>
                             <p:commandButton value="cancel" onclick="PF('address').hide()"/>
                         </f:facet>
                     </h:panelGrid>
                 </p:dialog>
+            </h:form>
 
-            <p:tab id="contact" title="Contact">
-                <p:panel header="Contact Information">
-                    <p:messages />
-                    <h:panelGrid columns="2" columnClasses="label, value">
-                        <h:outputText value="Email: " />
-                        <h:outputText value="#{search.user.email}" styleClass="outputLabel"/>
+            <h:form id="c">
+                <p:tab id="contact" title="Contact">
+                    <p:panel header="Contact Information">
+                        <p:messages />
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="Email: " />
+                            <h:outputText value="#{search.user.email}" styleClass="outputLabel"/>
 
-                        <h:outputText value="Phone " />
-                        <h:outputText value="#{search.user.phoneNumber}" styleClass="outputLabel"/>
-                        <p:commandButton value="Change contact"  onclick="PF('contact').show();" disabled="#{search.disable}"/>
-                    </h:panelGrid>
-                </p:panel>
-            </p:tab>
-
-                <p:growl id="growl3" sticky="true" showDetail="true" life="3000" />
+                            <h:outputText value="Phone " />
+                            <h:outputText value="#{search.user.phoneNumber}" styleClass="outputLabel"/>
+                            <p:commandButton value="Change contact"  onclick="PF('contact').show();" disabled="#{search.disable}"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
                 <p:dialog header="Contact" widgetVar="contact" resizable="false" modal="true">
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
@@ -179,31 +177,34 @@
                         <p:inputText value="#{search.tempUser.phoneNumber}" required="true" label="Phone"/>
 
                         <f:facet name="footer">
-                            <p:commandButton value="change contact" action="#{search.changeContactInformation}" update="growl3" actionListener="onpass"/>
+                            <p:commandButton value="change contact" action="#{search.changeContactInformation}"  update="c" actionListener="onpass"/>
                             <p:commandButton value="cancel" onclick="PF('contact').hide()"/>
                         </f:facet>
                     </h:panelGrid>
                 </p:dialog>
+            </h:form>
 
-            <p:tab id="account" title="Account">
-                <p:panel header="Account">
-                    <h:panelGrid columns="2" columnClasses="label, value">
-                        <h:outputText value="account number: " />
-                        <h:outputText value="#{search.user.numberAccount}" styleClass="outputLabel"/>
+            <h:form id="at">
+                <p:tab id="account" title="Account">
+                    <p:panel header="Account">
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="account number: " />
+                            <h:outputText value="#{search.user.numberAccount}" styleClass="outputLabel"/>
 
-                        <h:outputText value="Money: " />
-                        <h:outputText value="#{search.user.money}" styleClass="outputLabel"/>
+                            <h:outputText value="Money: " />
+                            <h:outputText value="#{search.user.money}" styleClass="outputLabel"/>
 
-                        <h:outputText value="Username: " />
-                        <h:outputText value="#{search.user.username}" styleClass="outputLabel"/>
+                            <h:outputText value="Username: " />
+                            <h:outputText value="#{search.user.username}" styleClass="outputLabel"/>
 
-                    </h:panelGrid>
-                    <p:commandButton value="Add money"  onclick="PF('money').show();" disabled="#{search.disable}"/>
-                    <p:commandButton value="Reset password"  onclick="PF('password').show();" disabled="#{search.disable}"/>
-                </p:panel>
-            </p:tab>
+                        </h:panelGrid>
+                        <p:commandButton value="Add money"  onclick="PF('money').show();" disabled="#{search.disable}"/>
+                        <p:commandButton value="Reset password"  onclick="PF('password').show();" disabled="#{search.disable}"/>
+                    </p:panel>
+                </p:tab>
+            </h:form>
 
-                <p:growl id="growl4" sticky="true" showDetail="true" life="3000" />
+            <h:form id="pd">
                 <p:dialog header="Password" widgetVar="password" resizable="false" modal="true">
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
@@ -214,21 +215,22 @@
                         <p:password id="password2" value="#{search.tempUser.tempPassword3}" required="true" label="Password2"/>
 
                         <f:facet name="footer">
-                            <p:commandButton value="changePassword" action="#{search.changePassword}"  update="growl4" actionListener="onpass"/>
+                            <p:commandButton value="changePassword" action="#{search.changePassword}" update="pd"  actionListener="onpass"/>
                             <p:commandButton value="cancel" onclick="PF('password').hide()"/>
                         </f:facet>
                     </h:panelGrid>
                 </p:dialog>
+            </h:form>
 
-                <p:growl id="growl5" sticky="true" showDetail="true" life="3000" />
+            <h:form id="m">
                 <p:dialog header="Money" widgetVar="money" resizable="false" modal="true">
                     <p:messages />
                     <h:panelGrid columns="2" columnClasses="label, value">
                         <h:outputText value="Add money: " />
-                        <p:inputText value="#{search.tempUser.money}" required="true" label="Phone"/>
+                        <p:inputText value="#{search.money}" required="true" label="Phone"/>
 
                         <f:facet name="footer">
-                            <p:commandButton value="add money" action="#{search.addMoney}"  update="growl5" actionListener="onpass" />
+                            <p:commandButton value="add money" action="#{search.addMoney}" update="at,m" actionListener="onpass" />
                             <p:commandButton value="cancel" onclick="PF('money').hide()"/>
                         </f:facet>
                     </h:panelGrid>

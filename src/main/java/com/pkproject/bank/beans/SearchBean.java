@@ -2,12 +2,11 @@ package com.pkproject.bank.beans;
 
 import com.pkproject.bank.dao.AccountDAO;
 import com.pkproject.bank.dao.SearchDAO;
+import com.pkproject.bank.dao.TransferDAO;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.*;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 
@@ -20,9 +19,18 @@ public class SearchBean implements Serializable {
     private String search;
     private SearchDAO searchDAO = new SearchDAO();
     private AccountDAO accountDAO = new AccountDAO();
-    private User user = new User();
-    private User tempUser = new User();
+    private Double money;
+
+    @ManagedProperty(value = "#{user}")
+    private User user;
+
+    private User tempUser;
     private boolean disable = true;
+
+    @PostConstruct
+    public void init() {
+        tempUser = new User();
+    }
 
     public User getUser() {
         return user;
@@ -48,6 +56,14 @@ public class SearchBean implements Serializable {
         this.tempUser = tempUser;
     }
 
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
+    }
+
     public void searchClientByPesel() {
         user.setPesel(search);
 
@@ -58,7 +74,7 @@ public class SearchBean implements Serializable {
         } else {
             search = "";
             user = new User();
-            tempUser = new User();
+            tempUser = (User) user.clone();
             FacesContext.getCurrentInstance().addMessage(
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
@@ -86,23 +102,25 @@ public class SearchBean implements Serializable {
 
     public void changePersonalDetails() {
         accountDAO.changePersonalDetails(tempUser);
-        user = tempUser;
+        user = (User) tempUser.clone();
     }
 
     public void changeAddressDetails() {
         accountDAO.changeAddressDetails(tempUser);
-        user = tempUser;
+        user = (User) tempUser.clone();
     }
 
     public void changeContactInformation() {
         accountDAO.changeContactInformation(tempUser);
-        user = tempUser;
+        user = (User) tempUser.clone();
     }
 
     public void addMoney() {
+        user.addMoney(money);
         accountDAO.moneyOperation(tempUser);
-        user = tempUser;
+        money = 0.;
     }
+
 
     public boolean isDisable() {
         return disable;
@@ -113,6 +131,6 @@ public class SearchBean implements Serializable {
     }
 
     public void changePassword() {
-
+        accountDAO.changePassword(tempUser);
     }
 }
