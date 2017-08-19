@@ -43,9 +43,14 @@ public class DepositView implements Serializable {
     public String deleteDepositById() {
         Deposit deposit = deposits.stream().filter(d -> d.getIdDeposit() == idDelete).findFirst().orElse(null);
 
-        if(deposits != null) {
+        if(deposit != null) {
             depositDAO.deleteDepositById(user, deposit);
             deposits.remove(deposit);
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                            "you deleted deposit",
+                            "Please enter correct id of deposit"));
         } else {
             FacesContext.getCurrentInstance().addMessage(
                     null,

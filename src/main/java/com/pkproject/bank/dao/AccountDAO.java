@@ -27,8 +27,7 @@ public class AccountDAO {
             preparedStatement.setString(3, user.getEmail());
             preparedStatement.setString(4, user.getSex());
             preparedStatement.setString(5, user.getPesel());
-            Date date=Date.valueOf("" +user.getDateOfBirth());
-            preparedStatement.setDate(6, date);
+            preparedStatement.setDate(6, sqlDate(user.getDateOfBirth()));
             preparedStatement.setString(7, user.getPlaceOfBirth());
             preparedStatement.setString(8, user.getCitizenship());
             preparedStatement.setString(9, user.getCity());
@@ -117,10 +116,7 @@ public class AccountDAO {
             preparedStatement.setString(2, user.getLastname());
             preparedStatement.setString(3, user.getSex());
             preparedStatement.setString(4, user.getPesel());
-
-            Date date=Date.valueOf("2020-04-01");
-
-            preparedStatement.setDate(5, date);
+            preparedStatement.setDate(5, sqlDate(user.getDateOfBirth()));
             preparedStatement.setString(6, user.getPlaceOfBirth());
             preparedStatement.setString(7, user.getCitizenship());
             preparedStatement.setInt(8, user.getIdClient());
@@ -173,6 +169,11 @@ public class AccountDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public java.sql.Date sqlDate(java.util.Date calendarDate) {
+        return new java.sql.Date(calendarDate.getTime());
     }
 }
 
