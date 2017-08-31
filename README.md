@@ -1,12 +1,13 @@
 <h1>web application</h1>
-you have to import database into mysql 
-mysql
+<p>jsf/primefaces</p>
 
+<p>
+database: mysql
 login: root
 password: root
+</p>
 
-
-
+<code>
 CREATE SCHEMA bank;
 
 create table Account
@@ -84,4 +85,4 @@ create table Transfer
   Account_idAccount int null,
   foreign key (Account_idAccount) references bank.Account (idAccount)
 );
-
+</code>
