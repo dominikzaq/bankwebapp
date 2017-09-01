@@ -17,7 +17,7 @@ create table Account
   username varchar(255) not null,
   password varchar(255) not null,
   type_account varchar(100) not null,
-  money int null,
+  money double null,
   number_account varchar(27) not null,
   Client_idClient int null,
   foreign key (Client_idClient) references bank.Client (idClient)
