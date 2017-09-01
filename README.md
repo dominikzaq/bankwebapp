@@ -70,6 +70,5 @@ create table Employee
   name int null,
   idNumber int not null
 );
-
-create table Transfer ( idTransfer int not null auto_increment primary key, recipient_name varchar(255) null, recipient_account_number varchar(27) not null, sender_account_number varchar(27) not null, recipient_address varchar(500) null, transfer_title varchar(1000) null, amount_of_operation DOUBLE null, data_transfer date not null, Account_idAccount int null, foreign key (Account_idAccount) references bank.Account (idAccount) ); 
+create table Transfer ( idTransfer int not null auto_increment primary key, recipient_name varchar(255) null, recipient_account_number varchar(27) not null, sender_account_number varchar(27) not null, recipient_address varchar(500) null, transfer_title varchar(1000) null, amount_of_operation DOUBLE null,balance DOUBLE null, data_transfer date not null, Account_idAccount int null, foreign key (Account_idAccount) references bank.Account (idAccount) ); 
 </code>
